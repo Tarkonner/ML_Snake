@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -350601074343783875}
   m_Layer: 0
   m_Name: Food
-  m_TagString: edible
+  m_TagString: Edible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

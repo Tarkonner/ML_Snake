@@ -110,10 +110,36 @@ public class SnakeMovement : MonoBehaviour
         snakesBody.Add(go);
     }
 
+    public void ResetSnake()
+    {
+        transform.localPosition = Vector2.zero;
+        movementDirection = Vector2.up;
+
+        foreach (var bodyPart in snakesBody)
+        {
+            PoolManager.instance.ReturnObject("SnakeBodypart", bodyPart);
+        }
+        snakesBody.Clear();
+    }
+
+    public Vector2Int GetNextTile()
+    {
+        return new Vector2Int(
+            Mathf.RoundToInt(transform.localPosition.x + movementDirection.x),
+            Mathf.RoundToInt(transform.localPosition.y + movementDirection.y)
+        );
+    }
+
+    public Vector2 GetDirection()
+    {
+        return movementDirection;
+    }
 
     public void Dead()
     {
         Debug.Log("Dead");
         SnakeGameManager.instance.GameStep -= Move;
+        GetComponent<SnakeAgent>().PenalizeForDeath();
     }
+
 }

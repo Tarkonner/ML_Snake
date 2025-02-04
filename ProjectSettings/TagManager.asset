@@ -4,7 +4,9 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - edible
+  - Wall
+  - Body
+  - Edible
   layers:
   - Default
   - TransparentFX
