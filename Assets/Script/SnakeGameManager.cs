@@ -8,7 +8,7 @@ public class SnakeGameManager : MonoBehaviour
     public static SnakeGameManager instance;
 
     // Public field setting the time interval (in seconds) between game ticks (each snake move).
-    [SerializeField] private float TickInterval = 0.2f;
+    [SerializeField] private float TickInterval = 0.5f;
 
     // Private flag to track whether the game is over.
     private bool _isGameOver = false;
