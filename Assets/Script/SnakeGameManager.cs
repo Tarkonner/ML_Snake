@@ -48,17 +48,4 @@ public class SnakeGameManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Transitions the game into a game over state.
-    /// </summary>
-    private void GameOver()
-    {
-        // Set the game over flag so the game loop will cease.
-        _isGameOver = true;
-
-        // Output a message to the Unity Console indicating that the game has ended.
-        Debug.Log("Game Over");
-
-        // Additional game over handling (such as UI feedback or a restart mechanism) can be added here.
-    }
 }

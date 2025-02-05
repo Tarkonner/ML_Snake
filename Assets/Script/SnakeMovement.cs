@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class SnakeMovement : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class SnakeMovement : MonoBehaviour
     private Vector2 movementDirection = Vector2.up;
     private Vector2 moveDirectionLastTurn;
     [SerializeField] int startBodySize = 3;
+    [SerializeField] Vector2 startDirection = Vector2.right;
 
     [Header("Color")]
     [SerializeField] Color mainColor;
@@ -24,11 +26,14 @@ public class SnakeMovement : MonoBehaviour
         //Move with game tick
         SnakeGameManager.instance.GameStep += Move;
 
-        //Make body
-        for (int i = 1; i < startBodySize + 1; i++)
-        {
-            SpawnBodyInEnd((Vector2)transform.localPosition - (movementDirection * i)); 
-        }
+        MakeSnake();
+    }
+
+
+    private void OnDisable()
+    {
+        //Move with game tick
+        SnakeGameManager.instance.GameStep -= Move;
     }
 
     #region Movement
@@ -50,7 +55,10 @@ public class SnakeMovement : MonoBehaviour
                 Destroy(go);
             }                
             else
+            {
                 Dead();
+                return;
+            }
         }
 
 
@@ -141,10 +149,28 @@ public class SnakeMovement : MonoBehaviour
     }
 
 
+    private void MakeSnake()
+    {
+        movementDirection = startDirection;
+
+        //Make body
+        for (int i = 1; i < startBodySize + 1; i++)
+        {
+            SpawnBodyInEnd((Vector2)transform.localPosition - (startDirection * i));
+        }
+    }
+
     public void Dead()
     {
-        Debug.Log("Dead");
-        SnakeGameManager.instance.GameStep -= Move;
+        //Remove body
+        foreach (GameObject item in snakesBody)
+        {
+            PoolManager.instance.ReturnObject("SnakeBodypart", item);
+        }
+        snakesBody.Clear();
+
+        transform.localPosition = Vector2.zero;
+        MakeSnake();
     }
 
     public void SetSnakesColor(GameObject bodypart)
