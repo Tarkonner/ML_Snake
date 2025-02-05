@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70c17c93-c167-49b7-bd35-1353d05256f8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Snakebody.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Snakebody.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/FoodSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/FoodSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/SnakeGameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/SnakeGameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/SnakeMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/SnakeMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/SnakeAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/SnakeAgent.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +108,7 @@
       <workItem from="1738681213265" duration="44000" />
       <workItem from="1738681682297" duration="9561000" />
       <workItem from="1738745617193" duration="1786000" />
-      <workItem from="1738754897271" duration="4898000" />
+      <workItem from="1738754897271" duration="5844000" />
     </task>
     <servers />
   </component>

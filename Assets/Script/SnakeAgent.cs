@@ -16,14 +16,14 @@ public class SnakeAgent : Agent
 
     public override void Initialize()
     {
-        Reset();
         Debug.Log("ini");
+        Reset();
     }
     
     public override void OnEpisodeBegin()
     {
-        Reset();
         Debug.Log("epid");
+        Reset();
     }
     
     public override void CollectObservations(VectorSensor sensor)

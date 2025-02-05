@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ML_Snake Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 684926259601645219, guid: 3133371ad1b99ef4fa9e94df35c9c0a6, type: 3}
+      propertyPath: m_TagString
+      value: edible
+      objectReference: {fileID: 0}
     - target: {fileID: 9084837386338112470, guid: 3133371ad1b99ef4fa9e94df35c9c0a6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -55,5 +59,130 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2709866188481950566, guid: 3133371ad1b99ef4fa9e94df35c9c0a6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5957986955675377915}
+    - targetCorrespondingSourceObject: {fileID: 2709866188481950566, guid: 3133371ad1b99ef4fa9e94df35c9c0a6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 909932534717127617}
+    - targetCorrespondingSourceObject: {fileID: 2709866188481950566, guid: 3133371ad1b99ef4fa9e94df35c9c0a6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1714607508677533323}
+    - targetCorrespondingSourceObject: {fileID: 2709866188481950566, guid: 3133371ad1b99ef4fa9e94df35c9c0a6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5948763722621875221}
   m_SourcePrefab: {fileID: 100100000, guid: 3133371ad1b99ef4fa9e94df35c9c0a6, type: 3}
+--- !u!114 &2423309244421147325 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3723953474303960443, guid: 3133371ad1b99ef4fa9e94df35c9c0a6, type: 3}
+  m_PrefabInstance: {fileID: 1301383197394513862}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4004845689452518560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94bd471330bdd144c9f3bfeb9c6627b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &4004845689452518560 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2709866188481950566, guid: 3133371ad1b99ef4fa9e94df35c9c0a6, type: 3}
+  m_PrefabInstance: {fileID: 1301383197394513862}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5957986955675377915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4004845689452518560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a501962d056745d1a30e99146ee39fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SensorName: GridSensor
+  m_CellScale: {x: 1, y: 0.01, z: 1}
+  m_GridSize: {x: 15, y: 1, z: 9}
+  m_RotateWithAgent: 1
+  m_AgentGameObject: {fileID: 0}
+  m_DetectableTags:
+  - Body
+  - Wall
+  - edible
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 0
+  m_MaxColliderBufferSize: 500
+  m_InitialColliderBufferSize: 4
+  m_DebugColors:
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  m_GizmoYOffset: 0
+  m_ShowGizmos: 0
+  m_CompressionType: 1
+  m_ObservationStacks: 1
+--- !u!114 &909932534717127617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4004845689452518560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 630dd52824baa014c83295f562599de4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 1000
+  snake: {fileID: 2423309244421147325}
+--- !u!114 &1714607508677533323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4004845689452518560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BrainParameters:
+    VectorObservationSize: 6000
+    NumStackedVectorObservations: 1
+    m_ActionSpec:
+      m_NumContinuousActions: 0
+      BranchSizes: 01000000010000000100000001000000
+    VectorActionSize: 01000000010000000100000001000000
+    VectorActionDescriptions: []
+    VectorActionSpaceType: 0
+    hasUpgradedBrainParametersWithActionSpec: 1
+  m_Model: {fileID: 0}
+  m_InferenceDevice: 0
+  m_BehaviorType: 0
+  m_BehaviorName: SnakeAgent
+  TeamId: 0
+  m_UseChildSensors: 1
+  m_UseChildActuators: 1
+  m_DeterministicInference: 0
+  m_ObservableAttributeHandling: 0
+--- !u!114 &5948763722621875221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4004845689452518560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DecisionPeriod: 5
+  DecisionStep: 0
+  TakeActionsBetweenDecisions: 1
