@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4893630206104603855}
   - component: {fileID: 6635284425446679398}
   - component: {fileID: -350601074343783875}
+  - component: {fileID: 7899512330273925158}
   m_Layer: 0
   m_Name: Food
   m_TagString: edible
@@ -134,3 +135,15 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.9, y: 0.9}
   m_EdgeRadius: 0
+--- !u!114 &7899512330273925158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2691247728414036450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94e6f903efccc8b4a8584c0002ab4d4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

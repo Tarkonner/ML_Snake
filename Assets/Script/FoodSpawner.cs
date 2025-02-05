@@ -12,10 +12,6 @@ public class FoodSpawner : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
-    {
-        SpawnFood();
-    }
 
     public void SpawnFood()
     {

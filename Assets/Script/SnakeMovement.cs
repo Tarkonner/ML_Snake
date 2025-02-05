@@ -8,7 +8,7 @@ public class SnakeMovement : MonoBehaviour
 {
     //Movement
     private List<GameObject> snakesBody = new List<GameObject>();
-    private Vector2 movementDirection = Vector2.up;
+    public Vector2 movementDirection = Vector2.up;
     private Vector2 moveDirectionLastTurn;
     [SerializeField] int startBodySize = 3;
     [SerializeField] Vector2 startDirection = Vector2.right;
@@ -37,6 +37,14 @@ public class SnakeMovement : MonoBehaviour
     }
 
     #region Movement
+    public void MoveGivenDirection(Vector2 intake)
+    {
+        if (intake == moveDirectionLastTurn * -1)
+            return;
+
+        movementDirection = intake;
+    }
+    
     public void Move()
     {
         Vector3 origonPoint = transform.localPosition;
@@ -169,6 +177,13 @@ public class SnakeMovement : MonoBehaviour
         }
         snakesBody.Clear();
 
+        ResetSnake();
+        
+        SnakeGameManager.instance.GameOver?.Invoke();
+    }
+
+    private void ResetSnake()
+    {
         transform.localPosition = Vector2.zero;
         MakeSnake();
     }
