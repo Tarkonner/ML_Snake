@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class SnakeMovement : MonoBehaviour
@@ -6,6 +8,7 @@ public class SnakeMovement : MonoBehaviour
     //Movement
     private List<GameObject> snakesBody = new List<GameObject>();
     private Vector2 movementDirection = Vector2.up;
+    private Vector2 moveDirectionLastTurn;
     [SerializeField] int startBodySize = 3;
 
     [Header("Color")]
@@ -32,8 +35,8 @@ public class SnakeMovement : MonoBehaviour
     public void Move()
     {
         Vector3 origonPoint = transform.localPosition;
-
         Vector2 moveToPoint = transform.localPosition + (Vector3)(movementDirection * Grid.gridSize);
+        moveDirectionLastTurn = movementDirection;
 
         Vector2 boxSize = new Vector2(0.1f, 0.1f); // Small square area
         Collider2D hit = Physics2D.OverlapBox(moveToPoint, boxSize, 0f);
@@ -56,9 +59,14 @@ public class SnakeMovement : MonoBehaviour
                 
         if(!snakeGrowing)
         {
+            //Get part
             GameObject lastBodypart = snakesBody[snakesBody.Count - 1].gameObject;
             snakesBody.RemoveAt(snakesBody.Count - 1);
+            
+            //Place and change color
             lastBodypart.transform.localPosition = origonPoint;
+            SetSnakesColor(lastBodypart);
+
             snakesBody.Insert(0, lastBodypart);
         }
         else
@@ -68,10 +76,35 @@ public class SnakeMovement : MonoBehaviour
         }
     }
 
-    public void MoveLeft() => movementDirection = Vector2.left;
-    public void MoveRight() => movementDirection = Vector2.right;
-    public void MoveUp() => movementDirection = Vector2.up;
-    public void MoveDown() => movementDirection = Vector2.down;
+    public void MoveLeft()
+    {
+        if (moveDirectionLastTurn == Vector2.right)
+            return;
+
+        movementDirection = Vector2.left;
+
+    }
+    public void MoveRight()
+    {
+        if (moveDirectionLastTurn == Vector2.left)
+            return;
+
+        movementDirection = Vector2.right;
+    }
+    public void MoveUp()
+    {
+        if (moveDirectionLastTurn == Vector2.down)
+            return;
+
+        movementDirection = Vector2.up;
+    }
+    public void MoveDown()
+    {
+        if (moveDirectionLastTurn == Vector2.up)
+            return;
+
+        movementDirection = Vector2.down;
+    }
     #endregion
 
     public void Grow()
@@ -87,10 +120,7 @@ public class SnakeMovement : MonoBehaviour
         bodypart.transform.parent = transform.parent;
         bodypart.transform.localPosition = position;
 
-        //Change color
-        Color targetColor = useMainColor ? mainColor : seconddaryColor;
-        useMainColor = !useMainColor;
-        bodypart.GetComponent<SpriteRenderer>().color = targetColor;
+        SetSnakesColor(bodypart);
 
         //Show
         bodypart.SetActive(true);
@@ -115,5 +145,12 @@ public class SnakeMovement : MonoBehaviour
     {
         Debug.Log("Dead");
         SnakeGameManager.instance.GameStep -= Move;
+    }
+
+    public void SetSnakesColor(GameObject bodypart)
+    {
+        Color targetColor = useMainColor ? mainColor : seconddaryColor;
+        useMainColor = !useMainColor;
+        bodypart.GetComponent<SpriteRenderer>().color = targetColor;
     }
 }
