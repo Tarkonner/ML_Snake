@@ -36,8 +36,8 @@ public class SnakeAgent : Agent
 
         // Add agent's position (normalized)
         Vector2 snakePosition = snake.transform.position;
-        sensor.AddObservation(snakePosition.x / (Grid.horzontalGridSize*2 +1));
-        sensor.AddObservation(snakePosition.y / (Grid.verticalGirdSize*2 +1));
+        sensor.AddObservation(snakePosition.x / (Grid.horzontalGridSize * 2 + 1));
+        sensor.AddObservation(snakePosition.y / (Grid.verticalGirdSize * 2 + 1));
 
         // // Add the distance to the nearest food (normalized)
         // Vector2 foodPosition = GetClosestFoodPosition(snakePosition);
