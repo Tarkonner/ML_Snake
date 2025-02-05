@@ -11,13 +11,14 @@ public class SnakeAgent : Agent
 
     private void Reset()
     {
+        Debug.Log("reset");
         SnakeGameManager.instance.StartGame();
     }
 
     public override void Initialize()
     {
         Debug.Log("ini");
-        Reset();
+        //Reset();
     }
     
     public override void OnEpisodeBegin()
