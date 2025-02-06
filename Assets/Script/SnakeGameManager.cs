@@ -26,6 +26,12 @@ public class SnakeGameManager : MonoBehaviour
 
     private void Start()
     {
+        // Set the game over flag to false to indicate an active game.
+        _isGameOver = false;
+
+        // Start the game loop coroutine which controls the game ticks.
+        StartCoroutine(GameLoop());
+
         StartGame();
     }
 
@@ -33,13 +39,7 @@ public class SnakeGameManager : MonoBehaviour
     /// Called before the first frame update; initializes game state, positions, and starts the game loop.
     /// </summary>
     public void StartGame()
-    {
-        // Set the game over flag to false to indicate an active game.
-        _isGameOver = false;
-
-        // Start the game loop coroutine which controls the game ticks.
-        StartCoroutine(GameLoop());
-        
+    {        
         FoodSpawner.Instance.SpawnFood();
         Instantiate(snakePrefab, Vector2.zero, Quaternion.identity);
         

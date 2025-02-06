@@ -19,4 +19,10 @@ public class FoodPallet : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    public void EatMe()
+    {
+        FoodSpawner.Instance.SpawnFood();
+        Destroy(gameObject);
+    }
 }

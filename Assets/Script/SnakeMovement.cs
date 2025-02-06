@@ -59,8 +59,8 @@ public class SnakeMovement : MonoBehaviour
             GameObject go = hit.gameObject;
             if (go.CompareTag("edible"))
             {
+                go.GetComponent<FoodPallet>().EatMe();
                 Grow();
-                Destroy(go);
             }                
             else
             {
