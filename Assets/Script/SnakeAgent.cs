@@ -1,167 +1,74 @@
-using System;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class SnakeAgent : Agent
 {
-    [SerializeField] private SnakeMovement snake;
+    public float forceMultiplier = 10;
+    public Transform target;
 
-    private void Reset()
+    private Rigidbody rb;
+
+    private void Start()
     {
-        Debug.Log("reset");
-        SnakeGameManager.instance.StartGame();
+        rb = GetComponent<Rigidbody>();
     }
 
-    public override void Initialize()
-    {
-        Debug.Log("ini");
-        //Reset();
-    }
-    
     public override void OnEpisodeBegin()
     {
-        Debug.Log("epid");
-        Reset();
+        // If the Agent fell, zero its momentum
+        if (this.transform.localPosition.y < 0)
+        {
+            this.rb.angularVelocity = Vector3.zero;
+            this.rb.linearVelocity = Vector3.zero;
+            this.transform.localPosition = new Vector3(0, 0.5f, 0);
+        }
+
+        // Move the target to a new spot
+        target.localPosition = new Vector3(Random.value * 8 - 4,
+            0.5f,
+            Random.value * 8 - 4);
     }
-    
+
     public override void CollectObservations(VectorSensor sensor)
     {
-        // Add agent's current direction
-        Vector2 direction = snake.movementDirection;
-        sensor.AddObservation(direction.x);
-        sensor.AddObservation(direction.y);
+        sensor.AddObservation(this.transform.localPosition);
 
-        // Add agent's position (normalized)
-        Vector2 snakePosition = snake.transform.position;
-        sensor.AddObservation(snakePosition.x / (Grid.horzontalGridSize*2 +1));
-        sensor.AddObservation(snakePosition.y / (Grid.verticalGirdSize*2 +1));
-
-        // // Add the distance to the nearest food (normalized)
-        // Vector2 foodPosition = GetClosestFoodPosition(snakePosition);
-        // Vector2 foodDirection = (foodPosition - snakePosition).normalized;
-        // sensor.AddObservation(foodDirection.x);
-        // sensor.AddObservation(foodDirection.y);
+        // Agent velocity
+        sensor.AddObservation(rb.linearVelocity.x);
+        sensor.AddObservation(rb.linearVelocity.z);
     }
-
-    private Vector2 GetClosestFoodPosition(Vector2 snakePosition)
+    public override void OnActionReceived(ActionBuffers actionBuffers)
     {
-        GameObject[] foodObjects = GameObject.FindGameObjectsWithTag("Food");
-        if (foodObjects.Length == 0)
+        // Actions, size = 2
+        Vector3 controlSignal = Vector3.zero;
+        controlSignal.x = actionBuffers.ContinuousActions[0];
+        controlSignal.z = actionBuffers.ContinuousActions[1];
+        rb.AddForce(controlSignal * forceMultiplier);
+
+        // Rewards
+        float distanceToTarget = Vector3.Distance(this.transform.localPosition, target.localPosition);
+
+        // Reached target
+        if (distanceToTarget < 1.42f)
         {
-            return snakePosition;
+            Debug.Log("Reward");
+            SetReward(1.0f);
+            EndEpisode();
         }
 
-        GameObject closestFood = foodObjects[0];
-        float closestDistance = Vector2.Distance(snakePosition, closestFood.transform.position);
-        foreach (GameObject food in foodObjects)
+        // Fell off platform
+        else if (this.transform.localPosition.y < 0)
         {
-            float distance = Vector2.Distance(snakePosition, food.transform.position);
-            if (distance < closestDistance)
-            {
-                closestDistance = distance;
-                closestFood = food;
-            }
+            EndEpisode();
         }
-
-        return closestFood.transform.position;
     }
 
-
-    public override void OnActionReceived(ActionBuffers actions)
-    {
-        // Extract the first discrete action.
-        int action = actions.DiscreteActions[0];
-
-        // Map the action to a directional vector.
-        Vector2 newDirection = Vector2.zero;
-        if (action == 0)
-        {
-            newDirection = Vector2.up;
-        }
-        else if (action == 1)
-        {
-            newDirection = Vector2.down;
-        }
-        else if (action == 2)
-        {
-            newDirection = Vector2.left;
-        }
-        else if (action == 3)
-        {
-            newDirection = Vector2.right;
-        }
-        
-        // move snake to new direction
-        snake.MoveGivenDirection(newDirection);
-
-        // Apply a small step penalty to motivate shorter paths and efficient food collection.
-        AddReward(-0.001f);
-    }
-    
     public override void Heuristic(in ActionBuffers actionsOut)
     {
-        ActionSegment<int> discreteActions = actionsOut.DiscreteActions;
-        discreteActions[0] = 0;
-        if (Input.GetKey(KeyCode.W))
-        {
-            discreteActions[0] = 0;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            discreteActions[0] = 1;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            discreteActions[0] = 2;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            discreteActions[0] = 3;
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        // If the snake head collides with an object tagged "Food"
-        if (collision.CompareTag("edible"))
-        {
-            // Grow the snake.
-            snake.Grow();
-
-            // Destroy the food object.
-            Destroy(collision.gameObject);
-
-            // Optionally, spawn new food.
-            
-            if (SnakeGameManager.instance != null && FoodSpawner.Instance != null)
-            {
-                FoodSpawner.Instance.SpawnFood();
-            }
-
-            // Reward the agent for eating food.
-            SnakeAgent agent = GetComponent<SnakeAgent>();
-            if (agent != null)
-            {
-                agent.AddReward(1.0f);  // Adjust reward as needed.
-            }
-        }
-        // If the snake head collides with a wall or its own body.
-        else if (collision.CompareTag("Wall") || collision.CompareTag("Body"))
-        {
-            Debug.Log("Collision detected: " + collision.tag);
-
-            // Penalize the agent for a collision.
-            SnakeAgent agent = GetComponent<SnakeAgent>();
-            if (agent != null)
-            {
-                agent.AddReward(-1.0f);  // Adjust penalty as needed.
-                agent.EndEpisode();      // End the episode.
-            }
-
-            snake.Dead();
-        }
+        var continuousActionsOut = actionsOut.ContinuousActions;
+        continuousActionsOut[0] = Input.GetAxis("Horizontal");
+        continuousActionsOut[1] = Input.GetAxis("Vertical");
     }
 }
