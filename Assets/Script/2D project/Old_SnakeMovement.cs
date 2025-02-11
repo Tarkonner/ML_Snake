@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class SnakeMovement : MonoBehaviour
+public class Old_SnakeMovement : MonoBehaviour
 {
     //Movement
     private List<GameObject> snakesBody = new List<GameObject>();
@@ -24,7 +24,7 @@ public class SnakeMovement : MonoBehaviour
     void Start()
     {
         //Move with game tick
-        SnakeGameManager.instance.GameStep += Move;
+        Old_SnakeGameManager.instance.GameStep += Move;
 
         MakeSnake();
     }
@@ -33,7 +33,7 @@ public class SnakeMovement : MonoBehaviour
     private void OnDisable()
     {
         //Move with game tick
-        SnakeGameManager.instance.GameStep -= Move;
+        Old_SnakeGameManager.instance.GameStep -= Move;
     }
 
     #region Movement
@@ -179,7 +179,7 @@ public class SnakeMovement : MonoBehaviour
 
         ResetSnake();
         
-        SnakeGameManager.instance.GameOver?.Invoke();
+        Old_SnakeGameManager.instance.GameOver?.Invoke();
     }
 
     private void ResetSnake()

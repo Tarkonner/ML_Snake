@@ -7,12 +7,12 @@ public class FoodPallet : MonoBehaviour
     void Start()
     {
         //Move with game tick
-        SnakeGameManager.instance.GameOver += RemoveFood;  
+        Old_SnakeGameManager.instance.GameOver += RemoveFood;  
     }
     
     void OnDisable()
     {
-        SnakeGameManager.instance.GameOver -= RemoveFood;
+        Old_SnakeGameManager.instance.GameOver -= RemoveFood;
     }
     
     void RemoveFood()

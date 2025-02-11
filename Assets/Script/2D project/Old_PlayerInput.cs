@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class PlayerInput : MonoBehaviour
+public class Old_PlayerInput : MonoBehaviour
 {
-    private SnakeMovement snakeMovement;
+    private Old_SnakeMovement snakeMovement;
 
     void Start()
     {
-        // Get reference to the SnakeMovement component on the same GameObject.
-        snakeMovement = GetComponent<SnakeMovement>();
+        // Get reference to the Old_SnakeMovement component on the same GameObject.
+        snakeMovement = GetComponent<Old_SnakeMovement>();
     }
 
     void Update()

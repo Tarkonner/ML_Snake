@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SnakeGameManager : MonoBehaviour
+public class Old_SnakeGameManager : MonoBehaviour
 {
-    public static SnakeGameManager instance;
+    public static Old_SnakeGameManager instance;
 
     // Public field setting the time interval (in seconds) between game ticks (each snake move).
     [SerializeField] private float TickInterval = 0.2f;

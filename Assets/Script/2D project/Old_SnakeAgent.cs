@@ -7,12 +7,12 @@ using UnityEngine;
 
 public class Old_SnakeAgent : Agent
 {
-    [SerializeField] private SnakeMovement snake;
+    [SerializeField] private Old_SnakeMovement snake;
 
     private void Reset()
     {
         Debug.Log("reset");
-        SnakeGameManager.instance.StartGame();
+        Old_SnakeGameManager.instance.StartGame();
     }
 
     public override void Initialize()
@@ -136,7 +136,7 @@ public class Old_SnakeAgent : Agent
 
             // Optionally, spawn new food.
             
-            if (SnakeGameManager.instance != null && FoodSpawner.Instance != null)
+            if (Old_SnakeGameManager.instance != null && FoodSpawner.Instance != null)
             {
                 FoodSpawner.Instance.SpawnFood();
             }
