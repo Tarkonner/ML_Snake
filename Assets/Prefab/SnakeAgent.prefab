@@ -236,8 +236,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 100
   bodyPrefab: {fileID: 6555164450744074074, guid: 53dec15c75b518145acd262d27a7f4ed, type: 3}
-  targetDistance: 1.5
-  smoothSpeed: 5
+  targetDistance: 0.8
+  smoothSpeed: 10
+  startBodySize: 3
 --- !u!114 &6954146446796350118
 MonoBehaviour:
   m_ObjectHideFlags: 0

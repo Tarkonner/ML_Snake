@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerSnake Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6676187475054730374, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
+      propertyPath: startBodySize
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 42804526320452302, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
     - {fileID: 4572177278481860242, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
@@ -68,22 +72,22 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2603193171156403207, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7665751382539169698}
+    - targetCorrespondingSourceObject: {fileID: 4218471239017000936, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
+      insertIndex: 6
+      addedObject: {fileID: 8017936819932239523}
   m_SourcePrefab: {fileID: 100100000, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
---- !u!1 &6281734180890216661 stripped
+--- !u!1 &5298010714821845818 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 2603193171156403207, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4218471239017000936, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
   m_PrefabInstance: {fileID: 8290376570349292754}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7665751382539169698
+--- !u!114 &8017936819932239523
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6281734180890216661}
+  m_GameObject: {fileID: 5298010714821845818}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edede291039812d46827ca6468c7d2dd, type: 3}
