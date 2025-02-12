@@ -40,7 +40,7 @@ public class SnakeGameManager : MonoBehaviour
         // Start the game loop coroutine which controls the game ticks.
         StartCoroutine(GameLoop());
         
-        FoodSpawner.Instance.SpawnFood();
+        //FoodSpawner.Instance.SpawnFood();
         Instantiate(snakePrefab, Vector2.zero, Quaternion.identity);
         
     }

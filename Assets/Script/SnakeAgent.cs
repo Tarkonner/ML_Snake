@@ -36,14 +36,18 @@ public class SnakeAgent : Agent
 
         // Add agent's position (normalized)
         Vector2 snakePosition = snake.transform.position;
-        sensor.AddObservation(snakePosition.x / (Grid.horzontalGridSize * 2 + 1));
-        sensor.AddObservation(snakePosition.y / (Grid.verticalGirdSize * 2 + 1));
+        sensor.AddObservation(snakePosition.x / (Grid.horzontalGridSize)); 
+        sensor.AddObservation(snakePosition.y / (Grid.verticalGirdSize));
+
 
         // // Add the distance to the nearest food (normalized)
         // Vector2 foodPosition = GetClosestFoodPosition(snakePosition);
         // Vector2 foodDirection = (foodPosition - snakePosition).normalized;
         // sensor.AddObservation(foodDirection.x);
         // sensor.AddObservation(foodDirection.y);
+        
+        Debug.Log($"Observations: Direction ({snake.movementDirection.x}, {snake.movementDirection.y})");
+
     }
 
     private Vector2 GetClosestFoodPosition(Vector2 snakePosition)
@@ -134,12 +138,12 @@ public class SnakeAgent : Agent
             // Destroy the food object.
             Destroy(collision.gameObject);
 
-            // Optionally, spawn new food.
-            
-            if (SnakeGameManager.instance != null && FoodSpawner.Instance != null)
-            {
-                FoodSpawner.Instance.SpawnFood();
-            }
+            // // Optionally, spawn new food.
+            //
+            // if (SnakeGameManager.instance != null && FoodSpawner.Instance != null)
+            // {
+            //     FoodSpawner.Instance.SpawnFood();
+            // }
 
             // Reward the agent for eating food.
             SnakeAgent agent = GetComponent<SnakeAgent>();
