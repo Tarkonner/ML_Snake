@@ -36,6 +36,7 @@ public class SnakeAgent : Agent
         //Debug.Log(sensor.ObservationSize());
 
         sensor.AddObservation(this.transform.localPosition);
+        sensor.AddObservation(transform.rotation);
     }
 
     public override void OnActionReceived(ActionBuffers actionBuffers)
@@ -55,12 +56,11 @@ public class SnakeAgent : Agent
 
         if (GetCumulativeReward() > winScore)
             Ending();
-
-
     }
 
     void Ending()
     {
+        Debug.Log("Ending");
         CallEnding?.Invoke();
         EndEpisode();
     }
