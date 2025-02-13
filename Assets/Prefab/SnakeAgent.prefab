@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 8
+    VectorObservationSize: 7
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 2
@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
   m_BehaviorType: 0
-  m_BehaviorName: RollerBall
+  m_BehaviorName: SnakeAgent
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
@@ -220,8 +220,8 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 2000
-  winScore: 4
+  MaxStep: 1000
+  winScore: 5
 --- !u!114 &6676187475054730374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 100
+  rotationSpeed: 0.1
   bodyPrefab: {fileID: 6555164450744074074, guid: 53dec15c75b518145acd262d27a7f4ed, type: 3}
   targetDistance: 0.8
   smoothSpeed: 10

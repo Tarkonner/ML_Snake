@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerSnake Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3331848926571576303, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6676187475054730374, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
       propertyPath: startBodySize
       value: 3

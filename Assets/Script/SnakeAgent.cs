@@ -17,11 +17,13 @@ public class SnakeAgent : Agent
     {
         snakeMovement = GetComponent<SnakeMovement>();
         snakeMovement.EatenFood += EatReward;
+        snakeMovement.Dying += EndEpisode;
     }
 
     private void OnDisable()
     {
         snakeMovement.EatenFood -= EatReward;
+        snakeMovement.Dying -= EndEpisode;
     }
 
     public override void OnEpisodeBegin()
@@ -34,6 +36,7 @@ public class SnakeAgent : Agent
         //Debug.Log(sensor.ObservationSize());
 
         sensor.AddObservation(this.transform.localPosition);
+        sensor.AddObservation(transform.rotation);
     }
 
     public override void OnActionReceived(ActionBuffers actionBuffers)
@@ -44,12 +47,6 @@ public class SnakeAgent : Agent
         controlSignal.z = actionBuffers.ContinuousActions[1];
 
         snakeMovement.SetMoveDirection(controlSignal);
-
-        // Fell off platform
-        if (this.transform.localPosition.y < -1)
-        {
-            Ending();
-        }
     }
 
     private void EatReward()
@@ -59,12 +56,11 @@ public class SnakeAgent : Agent
 
         if (GetCumulativeReward() > winScore)
             Ending();
-
-
     }
 
     void Ending()
     {
+        Debug.Log("Ending");
         CallEnding?.Invoke();
         EndEpisode();
     }

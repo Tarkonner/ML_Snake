@@ -5,43 +5,58 @@ using UnityEngine;
 
 public class SnakeMovement : MonoBehaviour
 {
-    [SerializeField] float movementSpeed = 5;
-    private Vector3 movementDirection = Vector3.forward;
     Rigidbody rb;
 
-    public Action EatenFood;
+    [Header("Movement")]
+    [SerializeField] float movementSpeed = 5;
+    [SerializeField] float rotationSpeed = 5;
+    private float rotationValue;
+    private Vector3 desiredDirection = Vector3.forward;
 
+    [Header("Body")]
     [SerializeField] GameObject bodyPrefab;
-
-    //Body
     private List<GameObject> bodyParts = new List<GameObject>();
     List<Vector3> segmentVelocity = new List<Vector3>();
     [SerializeField] float targetDistance = 1.5f;
     [SerializeField] float smoothSpeed = 5;
     [SerializeField] int startBodySize = 3;
 
+    public Action Dying;
+    public Action EatenFood;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody>();
 
+        StartGame();
+    }
+
+    public void StartGame()
+    {
         for (int i = 0; i < startBodySize; i++)
             GrowSnake();
+        Debug.Log("Start");
     }
 
     private void FixedUpdate()
-    {
-        Vector3 calSpeed = movementDirection * movementSpeed * Time.deltaTime;
-
+    {        
+        //Movement
+        Vector3 calSpeed = desiredDirection * movementSpeed * Time.deltaTime;
         rb.linearVelocity = new Vector3(calSpeed.x, rb.linearVelocity.y, calSpeed.z);
 
-        //Rotate to face movement direction
-        if (movementDirection.sqrMagnitude < 0.1f) // Ensure there's movement
-            return;
+        //Rotation
+        if (rotationValue > 0)
+        {
+            rotationValue -= rotationSpeed;
+            if(rotationValue < 0) 
+                rotationValue = 0;
+        }        
+        Vector3 currentDirection = GetVectorFromYAxis(transform.eulerAngles.y);
+        Vector3 smoothMovement = Vector3.Slerp(desiredDirection, currentDirection, rotationValue);
+        rb.MoveRotation(Quaternion.Euler(0, GetAngelIn3D(smoothMovement), 0));
 
-        //Movement
-        rb.MoveRotation(Quaternion.Euler(0, GetAngelIn3D(movementDirection), 0));
-
+        //Body parts movement
         for (int i = 0; i < bodyParts.Count; i++)
         {
             Transform previesPart;
@@ -70,6 +85,13 @@ public class SnakeMovement : MonoBehaviour
             Vector3 direction = previesPart.position - bodyParts[i].transform.position;
             bodyParts[i].transform.eulerAngles = new Vector3(0, GetAngelIn3D(direction), 0);
         }
+
+        //Fall of platform
+        // Fell off platform
+        if (transform.localPosition.y < -1)
+        {
+            ResetSnake();
+        }
     }
 
     private void GrowSnake()
@@ -89,17 +111,39 @@ public class SnakeMovement : MonoBehaviour
         segmentVelocity.Add(Vector3.zero);
     }
 
+    public void ResetSnake()
+    {
+
+
+        for (int i = bodyParts.Count - 1; i >= 0; i--)
+        {
+            Destroy(bodyParts[i]);
+        }
+        bodyParts.Clear();
+
+        Dying?.Invoke();
+    }
     public void SetMoveDirection(Vector3 direction)
     {
-        movementDirection = direction;
-        if (movementDirection.magnitude > 1)
-            movementDirection = movementDirection.normalized;
+        if (direction == Vector3.zero)
+            return;
+
+        if (direction.normalized != desiredDirection.normalized)
+            rotationValue = 1;
+
+        desiredDirection = direction.normalized;
     }
 
     // Rotate on the y-axis
     float GetAngelIn3D(Vector3 direction)
     {
         return Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+    }
+
+    Vector3 GetVectorFromYAxis(float angle)
+    {
+        float radian = angle * Mathf.Deg2Rad; // Convert degrees to radians
+        return new Vector3(Mathf.Sin(radian), 0, Mathf.Cos(radian));
     }
 
     private void OnCollisionEnter(Collision collision)
