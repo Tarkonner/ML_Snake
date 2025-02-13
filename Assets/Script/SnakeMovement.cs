@@ -88,7 +88,7 @@ public class SnakeMovement : MonoBehaviour
 
         //Fall of platform
         // Fell off platform
-        if (transform.localPosition.y < -1)
+        if (transform.localPosition.y < -0.1f)
         {
             ResetSnake();
         }
