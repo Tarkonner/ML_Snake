@@ -1,23 +1,23 @@
 {
-    "RollerBall": {
+    "SnakeAgent": {
         "checkpoints": [
             {
-                "steps": 387,
-                "file_path": "results\\NewSnake\\RollerBall\\RollerBall-387.onnx",
-                "reward": 0.6,
-                "creation_time": 1739442642.9121604,
+                "steps": 507,
+                "file_path": "results\\NewSnake\\SnakeAgent\\SnakeAgent-507.onnx",
+                "reward": 0.16666666666666666,
+                "creation_time": 1739444695.2102282,
                 "auxillary_file_paths": [
-                    "results\\NewSnake\\RollerBall\\RollerBall-387.pt"
+                    "results\\NewSnake\\SnakeAgent\\SnakeAgent-507.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 387,
-            "file_path": "results\\NewSnake\\RollerBall.onnx",
-            "reward": 0.6,
-            "creation_time": 1739442642.9121604,
+            "steps": 507,
+            "file_path": "results\\NewSnake\\SnakeAgent.onnx",
+            "reward": 0.16666666666666666,
+            "creation_time": 1739444695.2102282,
             "auxillary_file_paths": [
-                "results\\NewSnake\\RollerBall\\RollerBall-387.pt"
+                "results\\NewSnake\\SnakeAgent\\SnakeAgent-507.pt"
             ]
         }
     },
