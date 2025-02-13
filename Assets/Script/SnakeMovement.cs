@@ -36,7 +36,6 @@ public class SnakeMovement : MonoBehaviour
     {
         for (int i = 0; i < startBodySize; i++)
             GrowSnake();
-        Debug.Log("Start");
     }
 
     private void FixedUpdate()
@@ -56,34 +55,30 @@ public class SnakeMovement : MonoBehaviour
         Vector3 smoothMovement = Vector3.Slerp(desiredDirection, currentDirection, rotationValue);
         rb.MoveRotation(Quaternion.Euler(0, GetAngelIn3D(smoothMovement), 0));
 
-        //Body parts movement
+        // Define the desired distance between segments.
+        float desiredDistance = 1.0f;
+        float followSpeed = 5f;
+
+        // Loop over each segment.
         for (int i = 0; i < bodyParts.Count; i++)
         {
-            Transform previesPart;
-            if (i - 1 < 0)
-                previesPart = transform;
-            else
-                previesPart = bodyParts[i - 1].transform;
+            // The leader is the head for the first segment,
+            // or the previous segment for subsequent ones.
+            Transform leader = (i == 0) ? transform : bodyParts[i - 1].transform;
+            Transform follower = bodyParts[i].transform;
 
-            //Segment velocity
-            if (segmentVelocity.Count <= i)
-                segmentVelocity.Add(Vector3.zero);
+            // Compute the vector from the leader to the follower.
+            Vector3 offset = follower.position - leader.position;
+            float currentDistance = offset.magnitude;
 
-            // Use a temporary variable for velocity
-            Vector3 tempVelocity = segmentVelocity[i];
-
-            bodyParts[i].transform.position = Vector3.SmoothDamp(
-                bodyParts[i].transform.position,
-                previesPart.position - previesPart.forward * targetDistance,
-                ref tempVelocity,
-                smoothSpeed * Time.deltaTime);
-
-            //bodyParts[i].transform.position = previesPart.position - previesPart.forward * targetDistance;
-            segmentVelocity[i] = tempVelocity;
-
-            //Rotation
-            Vector3 direction = previesPart.position - bodyParts[i].transform.position;
-            bodyParts[i].transform.eulerAngles = new Vector3(0, GetAngelIn3D(direction), 0);
+            // If the follower is too far or too close, move it to maintain the desired distance.
+            if (Mathf.Abs(currentDistance - desiredDistance) > 0.01f)
+            {
+                // Compute the target position for the follower.
+                Vector3 targetPos = leader.position + offset.normalized * desiredDistance;
+                // Smoothly move the follower towards the target position.
+                follower.position = Vector3.MoveTowards(follower.position, targetPos, followSpeed * Time.deltaTime);
+            }
         }
     }
 
@@ -117,6 +112,8 @@ public class SnakeMovement : MonoBehaviour
     public void SetMoveDirection(Vector3 direction)
     {
         if (direction == Vector3.zero)
+            return;
+        if (Vector3.Dot(direction.normalized, desiredDirection) < -0.9f)
             return;
 
         if (direction.normalized != desiredDirection.normalized)
