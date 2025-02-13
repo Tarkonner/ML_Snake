@@ -6,9 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="70c17c93-c167-49b7-bd35-1353d05256f8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ML_Snake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ML_Snake/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ML-Agents/Timers/SampleScene_timers.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ML-Agents/Timers/SampleScene_timers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/ML_Snake Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/ML_Snake Variant.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ML-Agents/Timers/3D Snake_timers.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ML-Agents/Timers/3D Snake_timers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/PlayerSnake Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/PlayerSnake Variant.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/SnakeAgent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/SnakeAgent.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/3D Snake.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/3D Snake.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/EnviormentManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/EnviormentManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/SnakeAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/SnakeAgent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/SnakeMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/SnakeMovement.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,8 +36,10 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ml-agents@2b4ded88494d/Runtime/Agent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ml-agents@2b4ded88494d/Runtime/Sensors/BoxOverlapChecker.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../TEST_ML_Snake/Assets/Scripts/Spawner.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -46,7 +52,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;ThorfraAnders&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;MTB__TestOnAndersBranch&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -113,12 +119,18 @@
       <workItem from="1738745617193" duration="1786000" />
       <workItem from="1738754897271" duration="6484000" />
       <workItem from="1738762176986" duration="600000" />
+      <workItem from="1739372642472" duration="67000" />
+      <workItem from="1739434898903" duration="3497000" />
+      <workItem from="1739439732088" duration="313000" />
+      <workItem from="1739440106014" duration="322000" />
+      <workItem from="1739441304470" duration="225000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityProjectDiscoverer">
     <option name="hasUnityReference" value="true" />
