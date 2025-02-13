@@ -1,4 +1,3 @@
-using Unity.MLAgents;
 using UnityEngine;
 
 public class EnviormentManager : MonoBehaviour
@@ -11,17 +10,23 @@ public class EnviormentManager : MonoBehaviour
     [SerializeField] GameObject foodPrefab;
 
     private GameObject holdFood;
+    private GameObject holdAgent;
 
     void Start()
     {
-        ground.transform.localScale = new Vector3(enviormentSize.x  + 1, 0, enviormentSize.y + 1);
+        ground.transform.localScale = new Vector3(enviormentSize.x + 1, 0, enviormentSize.y + 1);
 
         //Agent
-        GameObject spawn = Instantiate(agentPrefab, transform);
-        spawn.transform.localPosition = GetFreeSpace();
-        if(spawn.TryGetComponent(out SnakeAgent sa))
+        holdAgent = Instantiate(agentPrefab, transform);
+        holdAgent.transform.localPosition = GetFreeSpace();
+        if (holdAgent.GetComponentInChildren<SnakeMovement>())
         {
-            sa.CallEnding += MoveFood;
+            holdAgent.GetComponentInChildren<SnakeMovement>().Dying += MoveAgent;
+        }
+
+        if (holdAgent.GetComponentInChildren<SnakeAgent>())
+        {
+            holdAgent.GetComponentInChildren<SnakeAgent>().CallEnding += MoveFood;
         }
 
         //Food
@@ -34,12 +39,19 @@ public class EnviormentManager : MonoBehaviour
     {
         holdFood.transform.localPosition = GetFreeSpace();
     }
+    public void MoveAgent()
+    {
+        holdAgent.transform.localPosition = GetFreeSpace();
+        MoveFood();
+        holdAgent.GetComponentInChildren<SnakeMovement>().StartGame();
+    }
+
 
     public Vector3 GetFreeSpace()
     {
         int maxStep = 1000;
 
-        while(maxStep > 0)
+        while (maxStep > 0)
         {
             Vector3 randomPos = new Vector3(
                 Random.Range(-enviormentRadius.x, enviormentRadius.x),
@@ -47,7 +59,7 @@ public class EnviormentManager : MonoBehaviour
                 Random.Range(-enviormentRadius.y, enviormentRadius.y));
 
             bool hit = Physics.BoxCast(randomPos, new Vector3(.1f, .1f, .1f), Vector3.zero);
-            if(!hit)
+            if (!hit)
                 return randomPos;
 
             maxStep--;

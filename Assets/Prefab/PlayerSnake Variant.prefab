@@ -61,10 +61,6 @@ PrefabInstance:
       value: PlayerSnake Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6676187475054730374, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
-      propertyPath: smoothSpeed
-      value: 0.001
-      objectReference: {fileID: 0}
-    - target: {fileID: 6676187475054730374, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
       propertyPath: startBodySize
       value: 3
       objectReference: {fileID: 0}

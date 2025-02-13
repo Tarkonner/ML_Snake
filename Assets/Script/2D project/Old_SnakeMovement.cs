@@ -131,7 +131,7 @@ public class Old_SnakeMovement : MonoBehaviour
 
     GameObject SpawnBody(Vector2 position)
     {
-        //Setup
+        //StartGame
         GameObject bodypart = PoolManager.instance.GetObject("SnakeBodypart");
         bodypart.transform.parent = transform.parent;
         bodypart.transform.localPosition = position;

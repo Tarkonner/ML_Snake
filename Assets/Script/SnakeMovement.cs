@@ -21,7 +21,7 @@ public class SnakeMovement : MonoBehaviour
     [SerializeField] float smoothSpeed = 5;
     [SerializeField] int startBodySize = 3;
 
-    
+    public Action Dying;
     public Action EatenFood;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -29,14 +29,18 @@ public class SnakeMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
+        StartGame();
+    }
+
+    public void StartGame()
+    {
         for (int i = 0; i < startBodySize; i++)
             GrowSnake();
+        Debug.Log("Start");
     }
 
     private void FixedUpdate()
     {        
-
-
         //Movement
         Vector3 calSpeed = desiredDirection * movementSpeed * Time.deltaTime;
         rb.linearVelocity = new Vector3(calSpeed.x, rb.linearVelocity.y, calSpeed.z);
@@ -47,14 +51,10 @@ public class SnakeMovement : MonoBehaviour
             rotationValue -= rotationSpeed;
             if(rotationValue < 0) 
                 rotationValue = 0;
-        }
-        
+        }        
         Vector3 currentDirection = GetVectorFromYAxis(transform.eulerAngles.y);
         Vector3 smoothMovement = Vector3.Slerp(desiredDirection, currentDirection, rotationValue);
         rb.MoveRotation(Quaternion.Euler(0, GetAngelIn3D(smoothMovement), 0));
-
-        //if (desiredDirection.sqrMagnitude < 0.1f) // Ensure there's movement
-        //    return;
 
         //Body parts movement
         for (int i = 0; i < bodyParts.Count; i++)
@@ -85,6 +85,13 @@ public class SnakeMovement : MonoBehaviour
             Vector3 direction = previesPart.position - bodyParts[i].transform.position;
             bodyParts[i].transform.eulerAngles = new Vector3(0, GetAngelIn3D(direction), 0);
         }
+
+        //Fall of platform
+        // Fell off platform
+        if (transform.localPosition.y < -1)
+        {
+            ResetSnake();
+        }
     }
 
     private void GrowSnake()
@@ -104,6 +111,18 @@ public class SnakeMovement : MonoBehaviour
         segmentVelocity.Add(Vector3.zero);
     }
 
+    public void ResetSnake()
+    {
+
+
+        for (int i = bodyParts.Count - 1; i >= 0; i--)
+        {
+            Destroy(bodyParts[i]);
+        }
+        bodyParts.Clear();
+
+        Dying?.Invoke();
+    }
     public void SetMoveDirection(Vector3 direction)
     {
         if (direction == Vector3.zero)
