@@ -12,6 +12,6 @@ public class Food : MonoBehaviour
 
     public void Eaten()
     {
-        enviormentManager.MoveFood();
+        enviormentManager.MoveFood(gameObject);
     }
 }

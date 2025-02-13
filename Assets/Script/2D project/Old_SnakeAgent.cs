@@ -148,7 +148,7 @@ public class Old_SnakeAgent : Agent
                 agent.AddReward(1.0f);  // Adjust reward as needed.
             }
         }
-        // If the snake head collides with a wall or its own body.
+        // If the snake head collides with a wallPrefab or its own body.
         else if (collision.CompareTag("Wall") || collision.CompareTag("Body"))
         {
             Debug.Log("Collision detected: " + collision.tag);

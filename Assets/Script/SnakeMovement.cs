@@ -85,13 +85,6 @@ public class SnakeMovement : MonoBehaviour
             Vector3 direction = previesPart.position - bodyParts[i].transform.position;
             bodyParts[i].transform.eulerAngles = new Vector3(0, GetAngelIn3D(direction), 0);
         }
-
-        //Fall of platform
-        // Fell off platform
-        if (transform.localPosition.y < -1)
-        {
-            ResetSnake();
-        }
     }
 
     private void GrowSnake()
@@ -113,8 +106,6 @@ public class SnakeMovement : MonoBehaviour
 
     public void ResetSnake()
     {
-
-
         for (int i = bodyParts.Count - 1; i >= 0; i--)
         {
             Destroy(bodyParts[i]);
@@ -154,6 +145,13 @@ public class SnakeMovement : MonoBehaviour
             collision.gameObject.GetComponent<Food>().Eaten();
             GrowSnake();
         }
-
+        if (collision.gameObject.tag == "Wall")
+        {
+            ResetSnake();
+        }
+        if (collision.gameObject.tag == "Body")
+        {
+            ResetSnake();
+        }
     }
 }
