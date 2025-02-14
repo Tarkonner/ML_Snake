@@ -1,26 +1,4 @@
 {
-    "SnakeAgent": {
-        "checkpoints": [
-            {
-                "steps": 177,
-                "file_path": "results\\NewSnakeWithTarget\\SnakeAgent\\SnakeAgent-177.onnx",
-                "reward": 0.0,
-                "creation_time": 1739526758.5793564,
-                "auxillary_file_paths": [
-                    "results\\NewSnakeWithTarget\\SnakeAgent\\SnakeAgent-177.pt"
-                ]
-            }
-        ],
-        "final_checkpoint": {
-            "steps": 177,
-            "file_path": "results\\NewSnakeWithTarget\\SnakeAgent.onnx",
-            "reward": 0.0,
-            "creation_time": 1739526758.5793564,
-            "auxillary_file_paths": [
-                "results\\NewSnakeWithTarget\\SnakeAgent\\SnakeAgent-177.pt"
-            ]
-        }
-    },
     "metadata": {
         "stats_format_version": "0.3.0",
         "mlagents_version": "1.1.0",
