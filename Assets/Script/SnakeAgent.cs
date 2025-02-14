@@ -45,7 +45,7 @@ public class SnakeAgent : Agent
 
     public override void OnEpisodeBegin()
     {
-        Debug.Log("OnEpisodeBegin");
+        //Debug.Log("OnEpisodeBegin");
         MaxStep = 1000;
     }
 
@@ -120,7 +120,6 @@ public class SnakeAgent : Agent
 
             // Update UI text
             StateManager.Instance.academyInfoText.text = 
-                $"Agent: {gameObject.name}\n" +
                 $"Episode: {episode}\n" +
                 $"Steps: {steps}\n" +
                 $"Reward: {currentReward:F2}";

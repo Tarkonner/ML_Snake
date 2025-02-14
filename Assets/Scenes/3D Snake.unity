@@ -1613,11 +1613,11 @@ PrefabInstance:
       objectReference: {fileID: 2603193171156403207, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
     - target: {fileID: 2234609031462090516, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
       propertyPath: enviormentSize.x
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2234609031462090516, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
       propertyPath: enviormentSize.y
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2234609031462090516, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
       propertyPath: centrumSpawnOffset.x
@@ -1626,6 +1626,10 @@ PrefabInstance:
     - target: {fileID: 2234609031462090516, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
       propertyPath: centrumSpawnOffset.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2234609031462090516, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
+      propertyPath: numberOfFoodInEnviorment
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5010434914573024936, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
       propertyPath: m_LocalPosition.x
