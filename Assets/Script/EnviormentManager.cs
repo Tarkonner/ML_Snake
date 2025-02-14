@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 using System.Collections.Generic;
-=======
 using System;
 using System.Collections;
->>>>>>> MTB_TestOnAndersBranch
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -24,9 +21,9 @@ public class EnviormentManager : MonoBehaviour
     [Header("Food")]
     [SerializeField] GameObject foodPrefab;
     [SerializeField] int numberOfFoodInEnviorment = 2;
-
-
     private List<GameObject> holdFood = new List<GameObject>();
+
+
     private GameObject holdAgent;
     private GameObject holdTarget;
     
@@ -102,7 +99,6 @@ public class EnviormentManager : MonoBehaviour
 
     public void MoveAllFood()
     {
-<<<<<<< HEAD
         foreach (GameObject go in holdFood)
             go.transform.localPosition = GetFreeSpace();
     }
@@ -138,14 +134,13 @@ public class EnviormentManager : MonoBehaviour
         {
             holdAgent.GetComponentInChildren<SnakeMovement>().Dying += SpawnAgent;
             holdAgent.GetComponentInChildren<SnakeMovement>().Dying += MoveAllFood;
-=======
-        holdFood.transform.localPosition = GetFreeSpace();
+        }
     }
     
     public void MoveAgent()
     {
         holdAgent.transform.localPosition = GetFreeSpace();
-        MoveFood();
+        MoveAllFood();
         holdAgent.GetComponentInChildren<SnakeMovement>().StartGame();
 
         // Clear the target on reset
@@ -154,7 +149,6 @@ public class EnviormentManager : MonoBehaviour
             Debug.Log("Clearing target on reset...");
             Destroy(holdTarget);
             holdTarget = null;
->>>>>>> MTB_TestOnAndersBranch
         }
     }
 
