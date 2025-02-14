@@ -106,7 +106,7 @@ public class SnakeAgent : Agent
         if (other.gameObject.CompareTag("Body"))
         {
             Debug.Log("Collided with body! Penalizing agent.");
-            AddReward(-0.01f); // Give a penalty of -0.01
+            AddReward(-0.005f); // Give a penalty of -0.01
         }
     }
     
