@@ -14,9 +14,9 @@ public class PlayerInput : MonoBehaviour
     void Update()
     {
         Vector3 direction = new Vector3(
-            Input.GetAxis("Horizontal"),
+            Input.GetAxisRaw("Horizontal"),
             0,
-            Input.GetAxis("Vertical"));
+            Input.GetAxisRaw("Vertical"));
 
         snakeMovement.SetMoveDirection(direction);
     }

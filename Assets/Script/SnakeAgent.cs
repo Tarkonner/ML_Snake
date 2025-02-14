@@ -44,10 +44,14 @@ public class SnakeAgent : Agent
         FindFirstObjectByType<EnviormentManager>().GetComponent<Renderer>().material.color = Color.gray;
     }
 
+
+    public override void Initialize()
+    {
+        base.Initialize();
+        Time.timeScale = 1;
+    }
     public override void CollectObservations(VectorSensor sensor)
     {
-        //Debug.Log(sensor.ObservationSize());
-
         sensor.AddObservation(this.transform.localPosition);
         sensor.AddObservation(transform.rotation);
     }

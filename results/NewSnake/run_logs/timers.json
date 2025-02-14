@@ -2,6 +2,78 @@
     "name": "root",
     "gauges": {
         "SnakeAgent.Policy.Entropy.mean": {
+<<<<<<< HEAD
+            "value": 1.405662178993225,
+            "min": 1.405662178993225,
+            "max": 1.435383677482605,
+            "count": 49
+        },
+        "SnakeAgent.Policy.Entropy.sum": {
+            "value": 1378.95458984375,
+            "min": 826.781005859375,
+            "max": 1653.56201171875,
+            "count": 49
+        },
+        "SnakeAgent.Environment.EpisodeLength.mean": {
+            "value": 68.85,
+            "min": 25.11111111111111,
+            "max": 109.0,
+            "count": 49
+        },
+        "SnakeAgent.Environment.EpisodeLength.sum": {
+            "value": 1377.0,
+            "min": 226.0,
+            "max": 1377.0,
+            "count": 49
+        },
+        "SnakeAgent.Step.mean": {
+            "value": 275949.0,
+            "min": 227936.0,
+            "max": 275949.0,
+            "count": 49
+        },
+        "SnakeAgent.Step.sum": {
+            "value": 275949.0,
+            "min": 227936.0,
+            "max": 275949.0,
+            "count": 49
+        },
+        "SnakeAgent.Policy.ExtrinsicValueEstimate.mean": {
+            "value": 0.18239906430244446,
+            "min": 0.06571852415800095,
+            "max": 0.26571202278137207,
+            "count": 49
+        },
+        "SnakeAgent.Policy.ExtrinsicValueEstimate.sum": {
+            "value": 4.74237585067749,
+            "min": 0.6975647211074829,
+            "max": 6.37708854675293,
+            "count": 49
+        },
+        "SnakeAgent.Environment.CumulativeReward.mean": {
+            "value": 0.15789473684210525,
+            "min": 0.0,
+            "max": 1.0,
+            "count": 49
+        },
+        "SnakeAgent.Environment.CumulativeReward.sum": {
+            "value": 3.0,
+            "min": 0.0,
+            "max": 12.0,
+            "count": 49
+        },
+        "SnakeAgent.Policy.ExtrinsicReward.mean": {
+            "value": 0.15789473684210525,
+            "min": 0.0,
+            "max": 1.0,
+            "count": 49
+        },
+        "SnakeAgent.Policy.ExtrinsicReward.sum": {
+            "value": 3.0,
+            "min": 0.0,
+            "max": 12.0,
+            "count": 49
+=======
             "value": 1.222110629081726,
             "min": 1.222110390663147,
             "max": 1.222110629081726,
@@ -72,30 +144,146 @@
             "min": 1.0,
             "max": 35.0,
             "count": 7
+>>>>>>> MTB_TestOnAndersBranch
         },
         "SnakeAgent.IsTraining.mean": {
             "value": 1.0,
             "min": 1.0,
             "max": 1.0,
+<<<<<<< HEAD
+            "count": 49
+=======
             "count": 7
+>>>>>>> MTB_TestOnAndersBranch
         },
         "SnakeAgent.IsTraining.sum": {
             "value": 1.0,
             "min": 1.0,
             "max": 1.0,
+<<<<<<< HEAD
+            "count": 49
+        },
+        "SnakeAgent.Losses.PolicyLoss.mean": {
+            "value": 0.09731303503115972,
+            "min": 0.09342210112450024,
+            "max": 0.10887378635816276,
+            "count": 7
+        },
+        "SnakeAgent.Losses.PolicyLoss.sum": {
+            "value": 0.09731303503115972,
+            "min": 0.09342210112450024,
+            "max": 0.10887378635816276,
+            "count": 7
+        },
+        "SnakeAgent.Losses.ValueLoss.mean": {
+            "value": 0.055247642304748296,
+            "min": 0.0293468380253762,
+            "max": 0.055247642304748296,
+            "count": 7
+        },
+        "SnakeAgent.Losses.ValueLoss.sum": {
+            "value": 0.055247642304748296,
+            "min": 0.0293468380253762,
+            "max": 0.055247642304748296,
+            "count": 7
+        },
+        "SnakeAgent.Policy.LearningRate.mean": {
+            "value": 0.0001364358545214,
+            "min": 0.0001364358545214,
+            "max": 0.0001595742468086,
+            "count": 7
+        },
+        "SnakeAgent.Policy.LearningRate.sum": {
+            "value": 0.0001364358545214,
+            "min": 0.0001364358545214,
+            "max": 0.0001595742468086,
+            "count": 7
+        },
+        "SnakeAgent.Policy.Epsilon.mean": {
+            "value": 0.14547860000000004,
+            "min": 0.14547860000000004,
+            "max": 0.15319140000000003,
+            "count": 7
+        },
+        "SnakeAgent.Policy.Epsilon.sum": {
+            "value": 0.14547860000000004,
+            "min": 0.14547860000000004,
+            "max": 0.15319140000000003,
+            "count": 7
+        },
+        "SnakeAgent.Policy.Beta.mean": {
+            "value": 0.0005000000000000001,
+            "min": 0.0005000000000000001,
+            "max": 0.0005000000000000001,
+            "count": 7
+        },
+        "SnakeAgent.Policy.Beta.sum": {
+            "value": 0.0005000000000000001,
+            "min": 0.0005000000000000001,
+            "max": 0.0005000000000000001,
+=======
+>>>>>>> MTB_TestOnAndersBranch
             "count": 7
         }
     },
     "metadata": {
         "timer_format_version": "0.1.0",
+<<<<<<< HEAD
+        "start_time_seconds": "1739523474",
+        "python_version": "3.10.12 | packaged by Anaconda, Inc. | (main, Jul  5 2023, 19:01:18) [MSC v.1916 64 bit (AMD64)]",
+        "command_line_arguments": "C:\\Users\\Anders\\miniconda3\\envs\\mlagents\\Scripts\\mlagents-learn config/SnakeAgent.yaml --run-id=NewSnake --resume",
+=======
         "start_time_seconds": "1739521019",
         "python_version": "3.10.12 | packaged by Anaconda, Inc. | (main, Jul  5 2023, 19:01:18) [MSC v.1916 64 bit (AMD64)]",
         "command_line_arguments": "C:\\Users\\thorb\\Anaconda3\\envs\\mlagents\\Scripts\\mlagents-learn config/SnakeAgent.yaml --run-id=NewSnake --resume",
+>>>>>>> MTB_TestOnAndersBranch
         "mlagents_version": "1.1.0",
         "mlagents_envs_version": "1.1.0",
         "communication_protocol_version": "1.5.0",
         "pytorch_version": "2.2.2+cu121",
         "numpy_version": "1.23.5",
+<<<<<<< HEAD
+        "end_time_seconds": "1739524079"
+    },
+    "total": 605.0677742999997,
+    "count": 1,
+    "self": 0.037457399999766494,
+    "children": {
+        "run_training.setup": {
+            "total": 0.16856019999977434,
+            "count": 1,
+            "self": 0.16856019999977434
+        },
+        "TrainerController.start_learning": {
+            "total": 604.8617567000001,
+            "count": 1,
+            "self": 0.1765421999866703,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 15.793730500000038,
+                    "count": 1,
+                    "self": 15.793730500000038
+                },
+                "TrainerController.advance": {
+                    "total": 587.9562615000132,
+                    "count": 5962,
+                    "self": 0.18039680003357716,
+                    "children": {
+                        "env_step": {
+                            "total": 527.5275103999829,
+                            "count": 5962,
+                            "self": 499.1438105999773,
+                            "children": {
+                                "SubprocessEnvManager._take_step": {
+                                    "total": 28.228299400015203,
+                                    "count": 5962,
+                                    "self": 0.56190110002035,
+                                    "children": {
+                                        "TorchPolicy.evaluate": {
+                                            "total": 27.666398299994853,
+                                            "count": 5495,
+                                            "self": 27.666398299994853
+=======
         "end_time_seconds": "1739523534"
     },
     "total": 2514.9428061,
@@ -136,10 +324,52 @@
                                             "total": 33.80250769999202,
                                             "count": 6631,
                                             "self": 33.80250769999202
+>>>>>>> MTB_TestOnAndersBranch
                                         }
                                     }
                                 },
                                 "workers": {
+<<<<<<< HEAD
+                                    "total": 0.15540039999041255,
+                                    "count": 5961,
+                                    "self": 0.0,
+                                    "children": {
+                                        "worker_root": {
+                                            "total": 525.4631203999761,
+                                            "count": 5961,
+                                            "is_parallel": true,
+                                            "self": 103.30260849999786,
+                                            "children": {
+                                                "steps_from_proto": {
+                                                    "total": 0.050768000000061875,
+                                                    "count": 1,
+                                                    "is_parallel": true,
+                                                    "self": 0.00023839999994379468,
+                                                    "children": {
+                                                        "_process_maybe_compressed_observation": {
+                                                            "total": 0.047748699999829114,
+                                                            "count": 2,
+                                                            "is_parallel": true,
+                                                            "self": 0.00017220000017914572,
+                                                            "children": {
+                                                                "_observation_to_np_array": {
+                                                                    "total": 0.04757649999964997,
+                                                                    "count": 9,
+                                                                    "is_parallel": true,
+                                                                    "self": 0.0002329999992980447,
+                                                                    "children": {
+                                                                        "process_pixels": {
+                                                                            "total": 0.047343500000351924,
+                                                                            "count": 9,
+                                                                            "is_parallel": true,
+                                                                            "self": 0.003050200000870973,
+                                                                            "children": {
+                                                                                "image_decompress": {
+                                                                                    "total": 0.04429329999948095,
+                                                                                    "count": 9,
+                                                                                    "is_parallel": true,
+                                                                                    "self": 0.04429329999948095
+=======
                                     "total": 0.1621862999941186,
                                     "count": 7063,
                                     "self": 0.0,
@@ -179,6 +409,7 @@
                                                                                     "count": 2,
                                                                                     "is_parallel": true,
                                                                                     "self": 0.052174899999954505
+>>>>>>> MTB_TestOnAndersBranch
                                                                                 }
                                                                             }
                                                                         }
@@ -187,14 +418,69 @@
                                                             }
                                                         },
                                                         "_process_rank_one_or_two_observation": {
+<<<<<<< HEAD
+                                                            "total": 0.002780900000288966,
+                                                            "count": 2,
+                                                            "is_parallel": true,
+                                                            "self": 0.002780900000288966
+=======
                                                             "total": 0.0015357000002040877,
                                                             "count": 4,
                                                             "is_parallel": true,
                                                             "self": 0.0015357000002040877
+>>>>>>> MTB_TestOnAndersBranch
                                                         }
                                                     }
                                                 },
                                                 "UnityEnvironment.step": {
+<<<<<<< HEAD
+                                                    "total": 422.1097438999782,
+                                                    "count": 5961,
+                                                    "is_parallel": true,
+                                                    "self": 1.2707356999449075,
+                                                    "children": {
+                                                        "UnityEnvironment._generate_step_input": {
+                                                            "total": 1.9967134000044098,
+                                                            "count": 5961,
+                                                            "is_parallel": true,
+                                                            "self": 1.9967134000044098
+                                                        },
+                                                        "communicator.exchange": {
+                                                            "total": 401.97658510002157,
+                                                            "count": 5961,
+                                                            "is_parallel": true,
+                                                            "self": 401.97658510002157
+                                                        },
+                                                        "steps_from_proto": {
+                                                            "total": 16.8657097000073,
+                                                            "count": 5961,
+                                                            "is_parallel": true,
+                                                            "self": 1.0802697000135595,
+                                                            "children": {
+                                                                "_process_maybe_compressed_observation": {
+                                                                    "total": 14.812034899993705,
+                                                                    "count": 11922,
+                                                                    "is_parallel": true,
+                                                                    "self": 1.020060399997874,
+                                                                    "children": {
+                                                                        "_observation_to_np_array": {
+                                                                            "total": 13.791974499995831,
+                                                                            "count": 50116,
+                                                                            "is_parallel": true,
+                                                                            "self": 1.2805325999393062,
+                                                                            "children": {
+                                                                                "process_pixels": {
+                                                                                    "total": 12.511441900056525,
+                                                                                    "count": 50116,
+                                                                                    "is_parallel": true,
+                                                                                    "self": 5.22535450008445,
+                                                                                    "children": {
+                                                                                        "image_decompress": {
+                                                                                            "total": 7.286087399972075,
+                                                                                            "count": 50116,
+                                                                                            "is_parallel": true,
+                                                                                            "self": 7.286087399972075
+=======
                                                     "total": 360.4200686999825,
                                                     "count": 7063,
                                                     "is_parallel": true,
@@ -241,6 +527,7 @@
                                                                                             "count": 7145,
                                                                                             "is_parallel": true,
                                                                                             "self": 1.2638763999902949
+>>>>>>> MTB_TestOnAndersBranch
                                                                                         }
                                                                                     }
                                                                                 }
@@ -249,10 +536,17 @@
                                                                     }
                                                                 },
                                                                 "_process_rank_one_or_two_observation": {
+<<<<<<< HEAD
+                                                                    "total": 0.9734051000000363,
+                                                                    "count": 11922,
+                                                                    "is_parallel": true,
+                                                                    "self": 0.9734051000000363
+=======
                                                                     "total": 0.596597600030691,
                                                                     "count": 14126,
                                                                     "is_parallel": true,
                                                                     "self": 0.596597600030691
+>>>>>>> MTB_TestOnAndersBranch
                                                                 }
                                                             }
                                                         }
@@ -265,6 +559,26 @@
                             }
                         },
                         "trainer_advance": {
+<<<<<<< HEAD
+                            "total": 60.24835429999666,
+                            "count": 5961,
+                            "self": 0.22587959999464147,
+                            "children": {
+                                "process_trajectory": {
+                                    "total": 11.000046700001349,
+                                    "count": 5961,
+                                    "self": 11.000046700001349
+                                },
+                                "_update_policy": {
+                                    "total": 49.02242800000067,
+                                    "count": 7,
+                                    "self": 7.581694799996967,
+                                    "children": {
+                                        "TorchPPOOptimizer.update": {
+                                            "total": 41.440733200003706,
+                                            "count": 2100,
+                                            "self": 41.440733200003706
+=======
                             "total": 11.709852200016485,
                             "count": 7063,
                             "self": 0.2111010000467104,
@@ -283,6 +597,7 @@
                                             "total": 5.954631200001586,
                                             "count": 300,
                                             "self": 5.954631200001586
+>>>>>>> MTB_TestOnAndersBranch
                                         }
                                     }
                                 }
@@ -290,6 +605,17 @@
                         }
                     }
                 },
+<<<<<<< HEAD
+                "TrainerController._save_models": {
+                    "total": 0.9352225000002363,
+                    "count": 1,
+                    "self": 0.07773829999996451,
+                    "children": {
+                        "RLTrainer._checkpoint": {
+                            "total": 0.8574842000002718,
+                            "count": 1,
+                            "self": 0.8574842000002718
+=======
                 "trainer_threads": {
                     "total": 7.200000254670158e-06,
                     "count": 1,
@@ -304,6 +630,7 @@
                             "total": 0.6894181000006938,
                             "count": 1,
                             "self": 0.6894181000006938
+>>>>>>> MTB_TestOnAndersBranch
                         }
                     }
                 }
