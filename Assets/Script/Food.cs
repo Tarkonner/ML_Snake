@@ -9,6 +9,7 @@ public class Food : MonoBehaviour
 
     private void Awake()
     {
+        enviormentManager = GetComponentInParent<EnviormentManager>();
         isEaten = false; // Reset flag when food is respawned
     }
 
@@ -16,7 +17,6 @@ public class Food : MonoBehaviour
     {
         isEaten = true;
         Eaten();
-        enviormentManager = GetComponentInParent<EnviormentManager>();
     }
 
     public void Eaten()

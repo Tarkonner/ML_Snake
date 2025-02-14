@@ -115,8 +115,8 @@ public class SnakeAgent : Agent
         if (StateManager.Instance.academyInfoText != null)
         {
             int episode = Academy.Instance.EpisodeCount;
-            int steps = Academy.Instance.TotalStepCount;
-            int currentSteps = Academy.Instance.StepCount;
+            //int steps = Academy.Instance.TotalStepCount;
+            int steps = Academy.Instance.StepCount;
             float currentReward = GetCumulativeReward();
 
             // Update UI text
