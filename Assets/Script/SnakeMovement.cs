@@ -97,6 +97,7 @@ public class SnakeMovement : MonoBehaviour
         // Instantiate body instance and
         // add it to the list
         GameObject body = Instantiate(bodyPrefab, transform.parent);
+        
         if (bodyParts.Count != 0)
         {
             Transform previesBody = bodyParts[bodyParts.Count - 1].transform; //Get previus body
@@ -106,6 +107,8 @@ public class SnakeMovement : MonoBehaviour
         {
             //Get head
             body.transform.localPosition = -transform.forward * desiredDistance;
+            
+            body.GetComponent<BoxCollider>().enabled = false;
         }
 
         bodyParts.Add(body);

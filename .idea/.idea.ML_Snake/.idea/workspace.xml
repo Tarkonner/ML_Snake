@@ -5,9 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70c17c93-c167-49b7-bd35-1353d05256f8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Script/EnviormentManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/EnviormentManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Food.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Food.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ML_Snake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ML_Snake/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ML-Agents/Timers/3D Snake_timers.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ML-Agents/Timers/3D Snake_timers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/3D Snake.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/3D Snake.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/SnakeAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/SnakeAgent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/SnakeMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/SnakeMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/NewSnakeWithTarget/SnakeAgent.onnx" beforeDir="false" afterPath="$PROJECT_DIR$/results/NewSnakeWithTarget/SnakeAgent.onnx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/NewSnakeWithTarget/SnakeAgent/checkpoint.pt" beforeDir="false" afterPath="$PROJECT_DIR$/results/NewSnakeWithTarget/SnakeAgent/checkpoint.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/NewSnakeWithTarget/SnakeAgent/events.out.tfevents.1739538262.Legion.3340.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/NewSnakeWithTarget/run_logs/timers.json" beforeDir="false" afterPath="$PROJECT_DIR$/results/NewSnakeWithTarget/run_logs/timers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/NewSnakeWithTarget/run_logs/training_status.json" beforeDir="false" afterPath="$PROJECT_DIR$/results/NewSnakeWithTarget/run_logs/training_status.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

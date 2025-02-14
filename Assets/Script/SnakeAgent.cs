@@ -1,4 +1,3 @@
-
 using System;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
@@ -46,7 +45,8 @@ public class SnakeAgent : Agent
 
     public override void OnEpisodeBegin()
     {
-      
+        Debug.Log("OnEpisodeBegin");
+        MaxStep = 1000;
     }
 
     public override void CollectObservations(VectorSensor sensor)
