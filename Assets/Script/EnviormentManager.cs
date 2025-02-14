@@ -32,9 +32,20 @@ public class EnviormentManager : MonoBehaviour
     
     private Renderer groundRenderer;
 
+    //Action reset
+    public Action ResetAction;
+
+
     private void Awake()
     {
-        groundRenderer = ground.GetComponent<Renderer>(); 
+        groundRenderer = ground.GetComponent<Renderer>();
+
+        ResetAction += ResetEnviorment;
+    }
+
+    private void OnDisable()
+    {
+        ResetAction -= ResetEnviorment;
     }
 
     void Start()
@@ -76,12 +87,15 @@ public class EnviormentManager : MonoBehaviour
             GameObject food = Instantiate(foodPrefab, transform);
             holdFood.Add(food);
             food.transform.localPosition = GetFreeSpace();
-            food.GetComponent<Food>().Setup(this);
         }
-
-
     }
     
+    public void ResetEnviorment()
+    {
+        SpawnAgent();
+        MoveAllFood();
+    }
+
     void SpawnTarget()
     {
         Debug.Log("Spawning Special Target");
@@ -103,24 +117,12 @@ public class EnviormentManager : MonoBehaviour
     public void MoveFood(GameObject targetFood) => targetFood.transform.localPosition = GetFreeSpace();
 
 
-    //public void MoveAgent()
-    //{
-    //    //Spawn in centrum
-    //    holdAgent.transform.localPosition = new Vector3(
-    //            Random.Range(-centrumSpawnOffset.x, centrumSpawnOffset.x),
-    //            0,
-    //            Random.Range(-centrumSpawnOffset.y, centrumSpawnOffset.y));
-
-    //    MoveAllFood();
-    //    SnakeMovement sm = holdAgent.GetComponentInChildren<SnakeMovement>();
-    //    sm.StartGame();
-    //    sm.SetMoveDirection(Vector3.forward);
-    //}
     public void SpawnAgent()
     {
         //Agent
         if (holdAgent != null)
             Destroy(holdAgent);
+
         holdAgent = Instantiate(agentPrefab, transform);
         holdAgent.transform.localPosition = new Vector3(
                 Random.Range(-centrumSpawnOffset.x, centrumSpawnOffset.x),
@@ -134,20 +136,7 @@ public class EnviormentManager : MonoBehaviour
         }
     }
     
-    public void MoveAgent()
-    {
-        holdAgent.transform.localPosition = GetFreeSpace();
-        MoveAllFood();
-        holdAgent.GetComponentInChildren<SnakeMovement>().StartGame();
-
-        // Clear the target on reset
-        if (holdTarget != null)
-        {
-            Debug.Log("Clearing target on reset...");
-            Destroy(holdTarget);
-            holdTarget = null;
-        }
-    }
+ 
 
     public Vector3 GetFreeSpace()
     {
@@ -197,7 +186,7 @@ public class EnviormentManager : MonoBehaviour
     }
 
 
-    private void ChangeFloorColor(Color color)
+    public void ChangeFloorColor(Color color)
     {
         if (groundRenderer != null)
         {

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class SnakeMovement : MonoBehaviour
 {
+    private EnviormentManager enviormentManager;
+
     Rigidbody rb;
 
     [Header("Movement")]
@@ -32,13 +34,10 @@ public class SnakeMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        enviormentManager = GetComponentInParent<EnviormentManager>();
+
         rb = GetComponent<Rigidbody>();
 
-        StartGame();
-    }
-
-    public void StartGame()
-    {
         for (int i = 0; i < startBodySize; i++)
             GrowSnake();
     }
@@ -57,12 +56,9 @@ public class SnakeMovement : MonoBehaviour
             if(rotationValue < 0) 
                 rotationValue = 0;
         }        
-        Vector3 currentDirection = GetVectorFromYAxis(transform.eulerAngles.y);
+        Vector3 currentDirection = MathTool.GetVectorFromYAxis(transform.eulerAngles.y);
         Vector3 smoothMovement = Vector3.Slerp(desiredDirection, currentDirection, rotationValue);
-        rb.MoveRotation(Quaternion.Euler(0, GetAngelIn3D(smoothMovement), 0));
-
-        // Define the desired distance between segments.
-
+        rb.MoveRotation(Quaternion.Euler(0, MathTool.GetAngelIn3D(smoothMovement), 0));
 
         // Loop over each segment.
         for (int i = 0; i < bodyParts.Count; i++)
@@ -86,15 +82,14 @@ public class SnakeMovement : MonoBehaviour
             }
 
             //Rotate forward last previels element
-            follower.transform.eulerAngles = new Vector3(0, GetAngelIn3D(-offset), 0);
+            follower.transform.eulerAngles = new Vector3(0, MathTool.GetAngelIn3D(-offset), 0);
         }
-        
         // Fell off platform
         if (transform.localPosition.y < -1f)
         {
             Debug.Log("Snake fell off the platform! Penalizing agent.");
-            FindFirstObjectByType<EnviormentManager>().OnFailure(); // Call blinking effect
-            Dying?.Invoke();
+            enviormentManager.OnFailure(); // Call blinking effect
+            SnakeDies();
         }
     }
 
@@ -105,12 +100,12 @@ public class SnakeMovement : MonoBehaviour
         GameObject body = Instantiate(bodyPrefab, transform.parent);
         if (bodyParts.Count != 0)
         {
-            Transform previesBody = bodyParts[bodyParts.Count - 1].transform;
-            //Position
+            Transform previesBody = bodyParts[bodyParts.Count - 1].transform; //Get previus body
             body.transform.localPosition = previesBody.transform.localPosition - (previesBody.forward * desiredDistance);
         }
         else
         {
+            //Get head
             body.transform.localPosition = -transform.forward * desiredDistance;
         }
 
@@ -137,17 +132,12 @@ public class SnakeMovement : MonoBehaviour
 
         desiredDirection = direction;
     }
-
-    // Rotate on the y-axis
-    float GetAngelIn3D(Vector3 direction)
+ 
+    private void SnakeDies()
     {
-        return Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-    }
-
-    Vector3 GetVectorFromYAxis(float angle)
-    {
-        float radian = angle * Mathf.Deg2Rad; // Convert degrees to radians
-        return new Vector3(Mathf.Sin(radian), 0, Mathf.Cos(radian));
+        //Call envts
+        Dying?.Invoke();
+        enviormentManager.ResetAction?.Invoke();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -163,13 +153,10 @@ public class SnakeMovement : MonoBehaviour
                 GrowSnake();
             }
         }
-
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            Dying?.Invoke();
-        }
-
-        // If snake collides with target and has more than TargetBodySize segments
+        if (collision.gameObject.tag == "Wall" ||
+            collision.gameObject.tag == "Body")
+            SnakeDies();
+        // if snake collides with target and has more than 10 segments
         else if (collision.gameObject.CompareTag("Target") && bodyParts.Count >= TargetBodySize)
         {
             Debug.Log("Target hit");

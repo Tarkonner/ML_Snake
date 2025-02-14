@@ -7,15 +7,18 @@ using UnityEngine;
 
 public class SnakeAgent : Agent
 {
+    private EnviormentManager enviormentManager;
     private SnakeMovement snakeMovement;
 
-    public Action CallEnding;
 
     [SerializeField] int winScore = 20;
 
     private void Awake()
     {
         snakeMovement = GetComponent<SnakeMovement>();
+        enviormentManager = GetComponentInParent<EnviormentManager>();
+
+        //Evnets
         snakeMovement.EatenFood += EatReward;
         snakeMovement.Dying += ApplyPenalty;
         snakeMovement.OnTargetReached += TargetReward; 
@@ -30,13 +33,12 @@ public class SnakeAgent : Agent
             snakeMovement.OnTargetReached -= TargetReward;
         }
     }
-
     
     private void ApplyPenalty()
     {
         //Debug.Log("Applying penalty for falling off!");
         AddReward(-3.0f); // Give a penalty of -3
-        FindFirstObjectByType<EnviormentManager>().OnFailure(); // Trigger floor blinking red
+        enviormentManager.OnFailure(); // Trigger floor blinking red
         EndEpisode(); // End the episode after penalty
     }
 
@@ -49,9 +51,7 @@ public class SnakeAgent : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        //Debug.Log(sensor.ObservationSize());
-
-        sensor.AddObservation(this.transform.localPosition);
+        sensor.AddObservation(transform.localPosition);
         sensor.AddObservation(transform.rotation);
     }
 
@@ -79,7 +79,7 @@ public class SnakeAgent : Agent
     {
         Debug.Log("Target reached! Rewarding agent.");
         AddReward(5.0f); // Give 5 points
-        FindFirstObjectByType<EnviormentManager>().OnSuccess();
+        enviormentManager.OnSuccess();
         Ending(); // End episode
     }
 
@@ -88,7 +88,7 @@ public class SnakeAgent : Agent
     {
         Debug.Log("Ending");
 
-        CallEnding?.Invoke();
+        enviormentManager.ResetAction?.Invoke();
         EndEpisode();
     }
 
