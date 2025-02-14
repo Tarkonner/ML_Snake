@@ -164,10 +164,6 @@ public class SnakeMovement : MonoBehaviour
         {
             Dying?.Invoke(); 
         }
-        if (collision.gameObject.tag == "Body")
-        {
-            Dying?.Invoke();
-        }
         // if snake collides with target and has more than 10 segments
         else if (collision.gameObject.CompareTag("Target") && bodyParts.Count >= TargetBodySize)
         {

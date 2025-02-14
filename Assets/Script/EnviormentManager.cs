@@ -16,10 +16,13 @@ public class EnviormentManager : MonoBehaviour
     [SerializeField] GameObject wallPrefab;
     [SerializeField] GameObject ground;
     [SerializeField] float yOffset = -.2f;
+    
     [Header("Agent")]
     [SerializeField] GameObject agentPrefab;
+    
     [Header("Food")]
     [SerializeField] GameObject foodPrefab;
+    
     private List<GameObject> holdFood = new List<GameObject>();
     [SerializeField] int numberOfFoodInEnviorment = 2;
     [SerializeField] GameObject targetPrefab;
@@ -57,16 +60,16 @@ public class EnviormentManager : MonoBehaviour
         wall.transform.localScale = new Vector3(enviormentSize.x + 2, 1, 1);
 
         //Agent
-        SpawnAgent();
-        //holdAgent = Instantiate(agentPrefab, transform);
-        //holdAgent.transform.localPosition = GetFreeSpace();
+        //SpawnAgent();
+        holdAgent = Instantiate(agentPrefab, transform);
+        holdAgent.transform.localPosition = GetFreeSpace();
         
-        //SnakeMovement snakeMovement = holdAgent.GetComponentInChildren<SnakeMovement>();
-        //if (snakeMovement != null)
-        //{
-        //    snakeMovement.Dying += MoveAgent;
-        //    snakeMovement.OnReachedTargetSize += SpawnTarget; // Subscribe to event
-        //}
+        SnakeMovement snakeMovement = holdAgent.GetComponentInChildren<SnakeMovement>();
+        if (snakeMovement != null)
+        {
+            snakeMovement.Dying += MoveAgent;
+            snakeMovement.OnReachedTargetSize += SpawnTarget; // Subscribe to event
+        }
 
         //Food
         for (int i = 0; i < numberOfFoodInEnviorment; i++)
