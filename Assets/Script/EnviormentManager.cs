@@ -45,21 +45,7 @@ public class EnviormentManager : MonoBehaviour
         wall.transform.localScale = new Vector3(enviormentSize.x + 2, 1, 1);
 
         //Agent
-        holdAgent = Instantiate(agentPrefab, transform);
-        holdAgent.transform.localPosition = new Vector3(
-                Random.Range(-centrumSpawnOffset.x, centrumSpawnOffset.x),
-                0,
-                Random.Range(-centrumSpawnOffset.y, centrumSpawnOffset.y));
-
-        if (holdAgent.GetComponentInChildren<SnakeMovement>())
-        {
-            holdAgent.GetComponentInChildren<SnakeMovement>().Dying += MoveAgent;
-        }
-
-        if (holdAgent.GetComponentInChildren<SnakeAgent>())
-        {
-            holdAgent.GetComponentInChildren<SnakeAgent>().CallEnding += MoveAllFood;
-        }
+        SpawnAgent();
 
         //Food
         for (int i = 0; i < numberOfFoodInEnviorment; i++)
@@ -82,20 +68,36 @@ public class EnviormentManager : MonoBehaviour
     public void MoveFood(GameObject targetFood) => targetFood.transform.localPosition = GetFreeSpace();
 
 
-    public void MoveAgent()
+    //public void MoveAgent()
+    //{
+    //    //Spawn in centrum
+    //    holdAgent.transform.localPosition = new Vector3(
+    //            Random.Range(-centrumSpawnOffset.x, centrumSpawnOffset.x),
+    //            0,
+    //            Random.Range(-centrumSpawnOffset.y, centrumSpawnOffset.y));
+
+    //    MoveAllFood();
+    //    SnakeMovement sm = holdAgent.GetComponentInChildren<SnakeMovement>();
+    //    sm.StartGame();
+    //    sm.SetMoveDirection(Vector3.forward);
+    //}
+    public void SpawnAgent()
     {
-        //Spawn in centrum
+        //Agent
+        if (holdAgent != null)
+            Destroy(holdAgent);
+        holdAgent = Instantiate(agentPrefab, transform);
         holdAgent.transform.localPosition = new Vector3(
                 Random.Range(-centrumSpawnOffset.x, centrumSpawnOffset.x),
                 0,
                 Random.Range(-centrumSpawnOffset.y, centrumSpawnOffset.y));
 
-        MoveAllFood();
-        SnakeMovement sm = holdAgent.GetComponentInChildren<SnakeMovement>();
-        sm.StartGame();
-        sm.SetMoveDirection(Vector3.forward);
+        if (holdAgent.GetComponentInChildren<SnakeMovement>())
+        {
+            holdAgent.GetComponentInChildren<SnakeMovement>().Dying += SpawnAgent;
+            holdAgent.GetComponentInChildren<SnakeMovement>().Dying += MoveAllFood;
+        }
     }
-
 
     public Vector3 GetFreeSpace()
     {

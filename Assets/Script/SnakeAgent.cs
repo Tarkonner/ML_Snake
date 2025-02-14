@@ -28,9 +28,15 @@ public class SnakeAgent : Agent
 
     public override void OnEpisodeBegin()
     {
-        transform.localPosition = Vector3.zero;
+
     }
 
+
+    public override void Initialize()
+    {
+        base.Initialize();
+        Time.timeScale = 1;
+    }
     public override void CollectObservations(VectorSensor sensor)
     {
         //Debug.Log(sensor.ObservationSize());
@@ -52,7 +58,7 @@ public class SnakeAgent : Agent
     private void EatReward()
     {
         Debug.Log("Reward");
-        SetReward(1.0f);
+        AddReward(1.0f);
 
         if (GetCumulativeReward() > winScore)
             Ending();

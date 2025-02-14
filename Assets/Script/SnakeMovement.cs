@@ -16,13 +16,14 @@ public class SnakeMovement : MonoBehaviour
     [Header("Body")]
     [SerializeField] GameObject bodyPrefab;
     private List<GameObject> bodyParts = new List<GameObject>();
-    List<Vector3> segmentVelocity = new List<Vector3>();
-    [SerializeField] float targetDistance = 1.5f;
-    [SerializeField] float smoothSpeed = 5;
+    [SerializeField] float desiredDistance = 1.0f;
+    [SerializeField] float followSpeed = 5f;
     [SerializeField] int startBodySize = 3;
 
     public Action Dying;
     public Action EatenFood;
+
+    public Vector3 velTest;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -56,8 +57,7 @@ public class SnakeMovement : MonoBehaviour
         rb.MoveRotation(Quaternion.Euler(0, GetAngelIn3D(smoothMovement), 0));
 
         // Define the desired distance between segments.
-        float desiredDistance = 1.0f;
-        float followSpeed = 5f;
+
 
         // Loop over each segment.
         for (int i = 0; i < bodyParts.Count; i++)
@@ -79,7 +79,12 @@ public class SnakeMovement : MonoBehaviour
                 // Smoothly move the follower towards the target position.
                 follower.position = Vector3.MoveTowards(follower.position, targetPos, followSpeed * Time.deltaTime);
             }
+
+            //Rotate forward last previels element
+            follower.transform.eulerAngles = new Vector3(0, GetAngelIn3D(-offset), 0);
         }
+
+        velTest = rb.linearVelocity;
     }
 
     private void GrowSnake()
@@ -91,35 +96,27 @@ public class SnakeMovement : MonoBehaviour
         {
             Transform previesBody = bodyParts[bodyParts.Count - 1].transform;
             //Position
-            body.transform.localPosition = previesBody.localPosition - previesBody.forward * targetDistance;
+            body.transform.localPosition = previesBody.transform.localPosition - (previesBody.forward * desiredDistance);
         }
         else
-            body.transform.localPosition = -transform.forward * targetDistance;
+            body.transform.localPosition = -transform.forward * desiredDistance;
         bodyParts.Add(body);
-        segmentVelocity.Add(Vector3.zero);
     }
 
-    public void ResetSnake()
-    {
-        for (int i = bodyParts.Count - 1; i >= 0; i--)
-        {
-            Destroy(bodyParts[i]);
-        }
-        bodyParts.Clear();
-
-        Dying?.Invoke();
-    }
     public void SetMoveDirection(Vector3 direction)
     {
         if (direction == Vector3.zero)
             return;
-        if (Vector3.Dot(direction.normalized, desiredDirection) < -0.9f)
+
+        direction = direction.normalized;
+
+        if (Vector3.Dot(direction, desiredDirection) < -0.9f)
             return;
 
         if (direction.normalized != desiredDirection.normalized)
             rotationValue = 1;
 
-        desiredDirection = direction.normalized;
+        desiredDirection = direction;
     }
 
     // Rotate on the y-axis
@@ -144,11 +141,11 @@ public class SnakeMovement : MonoBehaviour
         }
         if (collision.gameObject.tag == "Wall")
         {
-            ResetSnake();
+            Dying?.Invoke(); 
         }
         if (collision.gameObject.tag == "Body")
         {
-            ResetSnake();
+            Dying?.Invoke();
         }
     }
 }
