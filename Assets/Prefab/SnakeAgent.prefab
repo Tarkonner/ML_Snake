@@ -221,7 +221,7 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 1000
-  winScore: 5
+  winScore: 20
 --- !u!114 &6676187475054730374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,16 +235,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 100
-  rotationSpeed: 0.01
+  rotationSpeed: 0.1
   bodyPrefab: {fileID: 6555164450744074074, guid: 53dec15c75b518145acd262d27a7f4ed, type: 3}
-  desiredDistance: 1
-  followSpeed: 5
+  targetDistance: 0.8
+  smoothSpeed: 10
   startBodySize: 3
-<<<<<<< HEAD
-  velTest: {x: 0, y: 0, z: 0}
-=======
   TargetBodySize: 4
->>>>>>> MTB_TestOnAndersBranch
 --- !u!114 &6954146446796350118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,7 +277,6 @@ MonoBehaviour:
   - Food
   - Target
   - Body
-  - Wall
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -291,7 +286,6 @@ MonoBehaviour:
   - {r: 1, g: 0.028334636, b: 0, a: 1}
   - {r: 1, g: 0.86353207, b: 0, a: 1}
   - {r: 0.12315726, g: 1, b: 0, a: 1}
-  - {r: 0, g: 0.88174534, b: 1, a: 1}
   m_GizmoYOffset: 0
   m_ShowGizmos: 1
   m_CompressionType: 1
@@ -324,7 +318,7 @@ Transform:
   m_GameObject: {fileID: 8473877637833376028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalPosition: {x: 0.518, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
