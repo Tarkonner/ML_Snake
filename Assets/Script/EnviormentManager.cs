@@ -1,3 +1,4 @@
+
 using System.Collections.Generic;
 using System;
 using System.Collections;
@@ -9,20 +10,19 @@ public class EnviormentManager : MonoBehaviour
     [SerializeField] Vector2 enviormentSize = new Vector3(10, 10);
     public Vector2 enviormentRadius => enviormentSize / 2;
 
-    [SerializeField] GameObject targetPrefab;
+    [SerializeField] Vector2 centrumSpawnOffset = new Vector2(2, 2);
 
     [Header("Enviorment")]
     [SerializeField] GameObject wallPrefab;
     [SerializeField] GameObject ground;
-    [SerializeField] Vector2 centrumSpawnOffset = new Vector2(2, 2);
     [SerializeField] float yOffset = -.2f;
     [Header("Agent")]
     [SerializeField] GameObject agentPrefab;
     [Header("Food")]
     [SerializeField] GameObject foodPrefab;
-    [SerializeField] int numberOfFoodInEnviorment = 2;
     private List<GameObject> holdFood = new List<GameObject>();
-
+    [SerializeField] int numberOfFoodInEnviorment = 2;
+    [SerializeField] GameObject targetPrefab;
 
     private GameObject holdAgent;
     private GameObject holdTarget;
@@ -66,11 +66,6 @@ public class EnviormentManager : MonoBehaviour
         //{
         //    snakeMovement.Dying += MoveAgent;
         //    snakeMovement.OnReachedTargetSize += SpawnTarget; // Subscribe to event
-        //}
-
-        //if (holdAgent.GetComponentInChildren<SnakeAgent>())
-        //{
-        //    holdAgent.GetComponentInChildren<SnakeAgent>().CallEnding += MoveFood;
         //}
 
         //Food

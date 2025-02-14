@@ -87,9 +87,8 @@ public class SnakeMovement : MonoBehaviour
             //Rotate forward last previels element
             follower.transform.eulerAngles = new Vector3(0, GetAngelIn3D(-offset), 0);
         }
-
         // Fell off platform
-        if (transform.localPosition.y < -0.25f)
+        if (transform.localPosition.y < -1f)
         {
             Debug.Log("Snake fell off the platform! Penalizing agent.");
             FindFirstObjectByType<EnviormentManager>().OnFailure(); // Call blinking effect
@@ -160,6 +159,7 @@ public class SnakeMovement : MonoBehaviour
             collision.gameObject.GetComponent<Food>().Eaten();
             GrowSnake();
         }
+
         if (collision.gameObject.tag == "Wall")
         {
             Dying?.Invoke(); 
@@ -172,7 +172,7 @@ public class SnakeMovement : MonoBehaviour
         else if (collision.gameObject.CompareTag("Target") && bodyParts.Count >= TargetBodySize)
         {
             Debug.Log("Target hit");
-            OnTargetReached?.Invoke();         
+            OnTargetReached?.Invoke();
         }
     }
 }

@@ -41,17 +41,13 @@ public class SnakeAgent : Agent
     public override void OnEpisodeBegin()
     {
         transform.localPosition = Vector3.zero;
-        FindFirstObjectByType<EnviormentManager>().GetComponent<Renderer>().material.color = Color.gray;
+        //FindFirstObjectByType<EnviormentManager>().GetComponent<Renderer>().material.color = Color.gray;
     }
 
-
-    public override void Initialize()
-    {
-        base.Initialize();
-        Time.timeScale = 1;
-    }
     public override void CollectObservations(VectorSensor sensor)
     {
+        //Debug.Log(sensor.ObservationSize());
+
         sensor.AddObservation(this.transform.localPosition);
         sensor.AddObservation(transform.rotation);
     }

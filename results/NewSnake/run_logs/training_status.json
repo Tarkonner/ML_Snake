@@ -2,50 +2,6 @@
     "SnakeAgent": {
         "checkpoints": [
             {
-<<<<<<< HEAD
-                "steps": 197944,
-                "file_path": "results\\NewSnake\\SnakeAgent\\SnakeAgent-197944.onnx",
-                "reward": 0.017977528089887642,
-                "creation_time": 1739465754.7709937,
-                "auxillary_file_paths": [
-                    "results\\NewSnake\\SnakeAgent\\SnakeAgent-197944.pt"
-                ]
-            },
-            {
-                "steps": 199721,
-                "file_path": "results\\NewSnake\\SnakeAgent\\SnakeAgent-199721.onnx",
-                "reward": 0.020833333333333332,
-                "creation_time": 1739466029.1633973,
-                "auxillary_file_paths": [
-                    "results\\NewSnake\\SnakeAgent\\SnakeAgent-199721.pt"
-                ]
-            },
-            {
-                "steps": 201847,
-                "file_path": "results\\NewSnake\\SnakeAgent\\SnakeAgent-201847.onnx",
-                "reward": 0.019138755980861243,
-                "creation_time": 1739466230.6395662,
-                "auxillary_file_paths": [
-                    "results\\NewSnake\\SnakeAgent\\SnakeAgent-201847.pt"
-                ]
-            },
-            {
-                "steps": 227637,
-                "file_path": "results\\NewSnake\\SnakeAgent\\SnakeAgent-227637.onnx",
-                "reward": null,
-                "creation_time": 1739522109.3437884,
-                "auxillary_file_paths": [
-                    "results\\NewSnake\\SnakeAgent\\SnakeAgent-227637.pt"
-                ]
-            },
-            {
-                "steps": 276870,
-                "file_path": "results\\NewSnake\\SnakeAgent\\SnakeAgent-276870.onnx",
-                "reward": 0.3684210526315789,
-                "creation_time": 1739524079.5403132,
-                "auxillary_file_paths": [
-                    "results\\NewSnake\\SnakeAgent\\SnakeAgent-276870.pt"
-=======
                 "steps": 500004,
                 "file_path": "results\\NewSnake\\SnakeAgent\\SnakeAgent-500004.onnx",
                 "reward": null,
@@ -88,26 +44,16 @@
                 "creation_time": 1739523534.2682784,
                 "auxillary_file_paths": [
                     "results\\NewSnake\\SnakeAgent\\SnakeAgent-588493.pt"
->>>>>>> MTB_TestOnAndersBranch
                 ]
             }
         ],
         "final_checkpoint": {
-<<<<<<< HEAD
-            "steps": 276870,
-            "file_path": "results\\NewSnake\\SnakeAgent.onnx",
-            "reward": 0.3684210526315789,
-            "creation_time": 1739524079.5403132,
-            "auxillary_file_paths": [
-                "results\\NewSnake\\SnakeAgent\\SnakeAgent-276870.pt"
-=======
             "steps": 588493,
             "file_path": "results\\NewSnake\\SnakeAgent.onnx",
             "reward": 0.36363636363636365,
             "creation_time": 1739523534.2682784,
             "auxillary_file_paths": [
                 "results\\NewSnake\\SnakeAgent\\SnakeAgent-588493.pt"
->>>>>>> MTB_TestOnAndersBranch
             ]
         }
     },
