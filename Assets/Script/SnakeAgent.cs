@@ -11,7 +11,7 @@ public class SnakeAgent : Agent
 
     public Action CallEnding;
 
-    [SerializeField] int winScore = 4;
+    [SerializeField] int winScore = 20;
 
     private void Awake()
     {

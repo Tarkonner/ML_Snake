@@ -221,7 +221,7 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 1000
-  winScore: 5
+  winScore: 20
 --- !u!114 &6676187475054730374
 MonoBehaviour:
   m_ObjectHideFlags: 0
