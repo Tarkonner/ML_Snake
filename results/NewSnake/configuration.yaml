@@ -1,6 +1,6 @@
 default_settings: null
 behaviors:
-  RollerBall:
+  SnakeAgent:
     trainer_type: ppo
     hyperparameters:
       batch_size: 64
@@ -38,7 +38,7 @@ behaviors:
     init_path: null
     keep_checkpoints: 5
     even_checkpoints: false
-    max_steps: 500000
+    max_steps: 1000000
     time_horizon: 64
     summary_freq: 1000
     threaded: false
@@ -69,7 +69,7 @@ checkpoint_settings:
   run_id: NewSnake
   initialize_from: null
   load_model: false
-  resume: false
+  resume: true
   force: false
   train_model: false
   inference: false
