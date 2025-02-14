@@ -2,22 +2,22 @@
     "SnakeAgent": {
         "checkpoints": [
             {
-                "steps": 668,
-                "file_path": "results\\NewSnakeWithTarget\\SnakeAgent\\SnakeAgent-668.onnx",
-                "reward": -0.7874999972991645,
-                "creation_time": 1739540845.2486844,
+                "steps": 1200,
+                "file_path": "results\\NewSnakeWithTarget\\SnakeAgent\\SnakeAgent-1200.onnx",
+                "reward": 0.46500000124797225,
+                "creation_time": 1739541059.4750662,
                 "auxillary_file_paths": [
-                    "results\\NewSnakeWithTarget\\SnakeAgent\\SnakeAgent-668.pt"
+                    "results\\NewSnakeWithTarget\\SnakeAgent\\SnakeAgent-1200.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 668,
+            "steps": 1200,
             "file_path": "results\\NewSnakeWithTarget\\SnakeAgent.onnx",
-            "reward": -0.7874999972991645,
-            "creation_time": 1739540845.2486844,
+            "reward": 0.46500000124797225,
+            "creation_time": 1739541059.4750662,
             "auxillary_file_paths": [
-                "results\\NewSnakeWithTarget\\SnakeAgent\\SnakeAgent-668.pt"
+                "results\\NewSnakeWithTarget\\SnakeAgent\\SnakeAgent-1200.pt"
             ]
         }
     },
