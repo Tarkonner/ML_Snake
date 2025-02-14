@@ -44,7 +44,8 @@ public class SnakeMovement : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {        
+    {  
+        
         //Movement
         Vector3 calSpeed = desiredDirection * movementSpeed * Time.deltaTime;
         rb.linearVelocity = new Vector3(calSpeed.x, rb.linearVelocity.y, calSpeed.z);
@@ -148,27 +149,31 @@ public class SnakeMovement : MonoBehaviour
         return new Vector3(Mathf.Sin(radian), 0, Mathf.Cos(radian));
     }
 
- 
-
     private void OnCollisionEnter(Collision collision)
     {
-        // if snake collides with food
+        // If snake collides with food
         if (collision.gameObject.CompareTag("Food"))
         {
-            EatenFood?.Invoke();
-            collision.gameObject.GetComponent<Food>().Eaten();
-            GrowSnake();
+            Food food = collision.gameObject.GetComponent<Food>();
+            if (food != null && !food.IsEaten)
+            {
+                food.MarkAsEaten(); // Prevents multiple triggers
+                EatenFood?.Invoke();
+                GrowSnake();
+            }
         }
 
-        if (collision.gameObject.tag == "Wall")
+        if (collision.gameObject.CompareTag("Wall"))
         {
-            Dying?.Invoke(); 
+            Dying?.Invoke();
         }
-        // if snake collides with target and has more than 10 segments
+
+        // If snake collides with target and has more than TargetBodySize segments
         else if (collision.gameObject.CompareTag("Target") && bodyParts.Count >= TargetBodySize)
         {
             Debug.Log("Target hit");
             OnTargetReached?.Invoke();
         }
     }
+
 }

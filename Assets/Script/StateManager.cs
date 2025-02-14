@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -21,6 +22,8 @@ public class StateManager : MonoBehaviour
     // Reference to the dedicated ESC button (assign via Inspector)
     public GameObject escButton;
 
+    public TextMeshProUGUI academyInfoText;
+    
     public GameState currentState;
 
     // This flag indicates if the game has been started at least once.

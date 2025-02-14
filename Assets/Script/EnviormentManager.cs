@@ -60,9 +60,8 @@ public class EnviormentManager : MonoBehaviour
         wall.transform.localScale = new Vector3(enviormentSize.x + 2, 1, 1);
 
         //Agent
-        //SpawnAgent();
-        holdAgent = Instantiate(agentPrefab, transform);
-        holdAgent.transform.localPosition = GetFreeSpace();
+        SpawnAgent();
+ 
         
         SnakeMovement snakeMovement = holdAgent.GetComponentInChildren<SnakeMovement>();
         if (snakeMovement != null)

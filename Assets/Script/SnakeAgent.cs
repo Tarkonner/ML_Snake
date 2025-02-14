@@ -23,10 +23,14 @@ public class SnakeAgent : Agent
 
     private void OnDisable()
     {
-        snakeMovement.EatenFood -= EatReward;
-        snakeMovement.Dying -= ApplyPenalty;
-        snakeMovement.OnTargetReached -= TargetReward; 
+        if (snakeMovement != null)
+        {
+            snakeMovement.EatenFood -= EatReward;
+            snakeMovement.Dying -= ApplyPenalty;
+            snakeMovement.OnTargetReached -= TargetReward;
+        }
     }
+
     
     private void ApplyPenalty()
     {
@@ -40,8 +44,7 @@ public class SnakeAgent : Agent
 
     public override void OnEpisodeBegin()
     {
-        transform.localPosition = Vector3.zero;
-        //FindFirstObjectByType<EnviormentManager>().GetComponent<Renderer>().material.color = Color.gray;
+      
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -96,4 +99,33 @@ public class SnakeAgent : Agent
         continuousActionsOut[0] = Input.GetAxis("Horizontal");
         continuousActionsOut[1] = Input.GetAxis("Vertical");
     }
+    
+    // if collide with body, add small penalty eacvh frame in contact
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Body"))
+        {
+            Debug.Log("Collided with body! Penalizing agent.");
+            AddReward(-0.01f); // Give a penalty of -0.01
+        }
+    }
+    
+    private void Update()
+    {
+        if (StateManager.Instance.academyInfoText != null)
+        {
+            int episode = Academy.Instance.EpisodeCount;
+            int steps = Academy.Instance.TotalStepCount;
+            int currentSteps = Academy.Instance.StepCount;
+            float currentReward = GetCumulativeReward();
+
+            // Update UI text
+            StateManager.Instance.academyInfoText.text = 
+                $"Episode: {episode}\n" +
+                $"Steps: {steps}\n" +
+                //$"Current Steps: {currentSteps}\n" +
+                $"Reward: {currentReward:F2}";
+        }
+    }
+
 }

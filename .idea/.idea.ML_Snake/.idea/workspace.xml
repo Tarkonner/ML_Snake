@@ -7,13 +7,17 @@
     <list default="true" id="70c17c93-c167-49b7-bd35-1353d05256f8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ML_Snake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ML_Snake/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ML-Agents/Timers/3D Snake_timers.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ML-Agents/Timers/3D Snake_timers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/SnakeAgent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/SnakeAgent.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/3D Snake.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/3D Snake.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/EnviormentManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/EnviormentManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Food.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Food.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/SnakeAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/SnakeAgent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/SnakeMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/SnakeMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/StateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/StateManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results/NewSnakeWithTarget/SnakeAgent.onnx" beforeDir="false" afterPath="$PROJECT_DIR$/results/NewSnakeWithTarget/SnakeAgent.onnx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results/NewSnakeWithTarget/SnakeAgent/checkpoint.pt" beforeDir="false" afterPath="$PROJECT_DIR$/results/NewSnakeWithTarget/SnakeAgent/checkpoint.pt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/NewSnakeWithTarget/SnakeAgent/events.out.tfevents.1739526683.Legion.29516.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/NewSnakeWithTarget/SnakeAgent/events.out.tfevents.1739532449.Legion.7404.0" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/results/NewSnakeWithTarget/configuration.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/results/NewSnakeWithTarget/configuration.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results/NewSnakeWithTarget/run_logs/timers.json" beforeDir="false" afterPath="$PROJECT_DIR$/results/NewSnakeWithTarget/run_logs/timers.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results/NewSnakeWithTarget/run_logs/training_status.json" beforeDir="false" afterPath="$PROJECT_DIR$/results/NewSnakeWithTarget/run_logs/training_status.json" afterDir="false" />
