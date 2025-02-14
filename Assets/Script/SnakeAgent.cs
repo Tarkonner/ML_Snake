@@ -34,7 +34,7 @@ public class SnakeAgent : Agent
     
     private void ApplyPenalty()
     {
-        Debug.Log("Applying penalty for falling off!");
+        //Debug.Log("Applying penalty for falling off!");
         AddReward(-3.0f); // Give a penalty of -3
         FindFirstObjectByType<EnviormentManager>().OnFailure(); // Trigger floor blinking red
         EndEpisode(); // End the episode after penalty

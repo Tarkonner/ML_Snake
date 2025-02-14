@@ -88,6 +88,7 @@ public class SnakeMovement : MonoBehaviour
             //Rotate forward last previels element
             follower.transform.eulerAngles = new Vector3(0, GetAngelIn3D(-offset), 0);
         }
+        
         // Fell off platform
         if (transform.localPosition.y < -1f)
         {
