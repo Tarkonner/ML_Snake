@@ -20,10 +20,14 @@ public class SnakeMovement : MonoBehaviour
     [SerializeField] float followSpeed = 5f;
     [SerializeField] int startBodySize = 3;
 
+    [Header("Enviroment")]
+    [SerializeField]
+    private int TargetBodySize = 4;
+
     public Action Dying;
     public Action EatenFood;
-
-    public Vector3 velTest;
+    public Action OnReachedTargetSize;
+    public Action OnTargetReached;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -83,8 +87,13 @@ public class SnakeMovement : MonoBehaviour
             //Rotate forward last previels element
             follower.transform.eulerAngles = new Vector3(0, GetAngelIn3D(-offset), 0);
         }
-
-        velTest = rb.linearVelocity;
+        // Fell off platform
+        if (transform.localPosition.y < -1f)
+        {
+            Debug.Log("Snake fell off the platform! Penalizing agent.");
+            FindFirstObjectByType<EnviormentManager>().OnFailure(); // Call blinking effect
+            Dying?.Invoke();
+        }
     }
 
     private void GrowSnake()
@@ -99,8 +108,16 @@ public class SnakeMovement : MonoBehaviour
             body.transform.localPosition = previesBody.transform.localPosition - (previesBody.forward * desiredDistance);
         }
         else
+        {
             body.transform.localPosition = -transform.forward * desiredDistance;
+        }
+
         bodyParts.Add(body);
+        
+        if (bodyParts.Count == TargetBodySize)  // Check if snake has 10 segments
+        {
+            OnReachedTargetSize?.Invoke(); // Invoke event to spawn target
+        }
     }
 
     public void SetMoveDirection(Vector3 direction)
@@ -131,14 +148,18 @@ public class SnakeMovement : MonoBehaviour
         return new Vector3(Mathf.Sin(radian), 0, Mathf.Cos(radian));
     }
 
+ 
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Food")
+        // if snake collides with food
+        if (collision.gameObject.CompareTag("Food"))
         {
             EatenFood?.Invoke();
             collision.gameObject.GetComponent<Food>().Eaten();
             GrowSnake();
         }
+
         if (collision.gameObject.tag == "Wall")
         {
             Dying?.Invoke(); 
@@ -146,6 +167,12 @@ public class SnakeMovement : MonoBehaviour
         if (collision.gameObject.tag == "Body")
         {
             Dying?.Invoke();
+        }
+        // if snake collides with target and has more than 10 segments
+        else if (collision.gameObject.CompareTag("Target") && bodyParts.Count >= TargetBodySize)
+        {
+            Debug.Log("Target hit");
+            OnTargetReached?.Invoke();
         }
     }
 }
