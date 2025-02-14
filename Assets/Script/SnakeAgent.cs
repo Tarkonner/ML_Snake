@@ -114,16 +114,15 @@ public class SnakeAgent : Agent
     {
         if (StateManager.Instance.academyInfoText != null)
         {
-            int episode = Academy.Instance.EpisodeCount;
-            //int steps = Academy.Instance.TotalStepCount;
-            int steps = Academy.Instance.StepCount;
-            float currentReward = GetCumulativeReward();
+            int episode = this.CompletedEpisodes;  // Get the number of completed episodes **for this agent**
+            int steps = this.StepCount;            // Get steps taken by **this agent**
+            float currentReward = GetCumulativeReward(); // Correct cumulative reward
 
             // Update UI text
             StateManager.Instance.academyInfoText.text = 
+                $"Agent: {gameObject.name}\n" +
                 $"Episode: {episode}\n" +
                 $"Steps: {steps}\n" +
-                //$"Current Steps: {currentSteps}\n" +
                 $"Reward: {currentReward:F2}";
         }
     }
