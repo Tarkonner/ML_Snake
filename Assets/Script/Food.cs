@@ -5,9 +5,9 @@ public class Food : MonoBehaviour
 {
     EnviormentManager enviormentManager;
 
-    public void Setup(EnviormentManager enviorment)
+    private void Awake()
     {
-        enviormentManager = enviorment;
+        enviormentManager = GetComponentInParent<EnviormentManager>();
     }
 
     public void Eaten()
