@@ -113,8 +113,27 @@ public class EnviormentManager : MonoBehaviour
             go.transform.localPosition = GetFreeSpace();
     }
 
-    public void MoveFood(GameObject targetFood) => targetFood.transform.localPosition = GetFreeSpace();
+    public void MoveFood(GameObject targetFood)
+    {
+        Vector3 newPosition = GetFreeSpace();
+       // Debug.Log($"Moving food {targetFood.name} to new position: {newPosition}");
 
+        if (targetFood != null)
+        {
+            targetFood.transform.localPosition = newPosition;
+
+            Food foodComponent = targetFood.GetComponent<Food>();
+            if (foodComponent != null)
+            {
+                foodComponent.ResetFoodState(); // Reset the food state
+                //Debug.Log("Food state reset.");
+            }
+        }
+        else
+        {
+            Debug.LogError("MoveFood() called with a null food object!");
+        }
+    }
 
     public void SpawnAgent()
     {

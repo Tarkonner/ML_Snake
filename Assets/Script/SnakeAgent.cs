@@ -68,7 +68,7 @@ public class SnakeAgent : Agent
     private void EatReward()
     {
         MaxStep += 1000;
-        Debug.Log("Reward");
+        //Debug.Log("Reward");
         AddReward(1.0f);
 
         if (GetCumulativeReward() > winScore)

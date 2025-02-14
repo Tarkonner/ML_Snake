@@ -23,4 +23,10 @@ public class Food : MonoBehaviour
     {
         enviormentManager.MoveFood(gameObject);
     }
+    
+    public void ResetFoodState()
+    {
+        isEaten = false; // Allow it to be eaten again
+    }
+
 }

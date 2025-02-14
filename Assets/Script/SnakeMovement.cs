@@ -144,18 +144,19 @@ public class SnakeMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        // If snake collides with food
         if (collision.gameObject.CompareTag("Food"))
         {
             Food food = collision.gameObject.GetComponent<Food>();
             if (food != null && !food.IsEaten)
             {
+                Debug.Log("Food");
                 food.MarkAsEaten(); // Prevents multiple triggers
                 EatenFood?.Invoke();
                 GrowSnake();
             }
         }
-        else if (collision.gameObject.tag == "Wall")
+        
+        if (collision.gameObject.tag == "Wall")
         {
             SnakeDies();
         }
