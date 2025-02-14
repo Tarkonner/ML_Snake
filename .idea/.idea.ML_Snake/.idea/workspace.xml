@@ -5,28 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70c17c93-c167-49b7-bd35-1353d05256f8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Script/MathTool.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Script/MathTool.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/NewSnake/SnakeAgent/SnakeAgent-594898.onnx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/NewSnake/SnakeAgent/SnakeAgent-594898.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/NewSnake/SnakeAgent/SnakeAgent-595861.onnx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/NewSnake/SnakeAgent/SnakeAgent-595861.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/NewSnake/SnakeAgent/SnakeAgent-597047.onnx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/NewSnake/SnakeAgent/SnakeAgent-597047.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/NewSnake/SnakeAgent/events.out.tfevents.1739533368.LAPTOP-QUO64C2V.15604.0" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/NewSnake/SnakeAgent/events.out.tfevents.1739536617.LAPTOP-QUO64C2V.22336.0" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/NewSnake/SnakeAgent/events.out.tfevents.1739536840.LAPTOP-QUO64C2V.6784.0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ML-Agents/Timers/MainScene_timers.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ML-Agents/Timers/MainScene_timers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/SnakeAgent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/SnakeAgent.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/EnviormentManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/EnviormentManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/Food.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Food.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/SnakeAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/SnakeAgent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/SnakeMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/SnakeMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/NewSnake/SnakeAgent.onnx" beforeDir="false" afterPath="$PROJECT_DIR$/results/NewSnake/SnakeAgent.onnx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/NewSnake/SnakeAgent/checkpoint.pt" beforeDir="false" afterPath="$PROJECT_DIR$/results/NewSnake/SnakeAgent/checkpoint.pt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/NewSnake/run_logs/timers.json" beforeDir="false" afterPath="$PROJECT_DIR$/results/NewSnake/run_logs/timers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/NewSnake/run_logs/training_status.json" beforeDir="false" afterPath="$PROJECT_DIR$/results/NewSnake/run_logs/training_status.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +56,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Merging AnderInd",
+    "git-widget-placeholder": "AnderInd",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",

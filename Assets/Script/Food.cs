@@ -9,7 +9,6 @@ public class Food : MonoBehaviour
 
     private void Awake()
     {
-        enviormentManager = enviorment;
         isEaten = false; // Reset flag when food is respawned
     }
 

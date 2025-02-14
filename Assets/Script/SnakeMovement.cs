@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class SnakeMovement : MonoBehaviour
@@ -153,9 +152,11 @@ public class SnakeMovement : MonoBehaviour
                 GrowSnake();
             }
         }
-        if (collision.gameObject.tag == "Wall" ||
-            collision.gameObject.tag == "Body")
+        else if (collision.gameObject.tag == "Wall")
+        {
             SnakeDies();
+        }
+        
         // if snake collides with target and has more than 10 segments
         else if (collision.gameObject.CompareTag("Target") && bodyParts.Count >= TargetBodySize)
         {
@@ -163,5 +164,4 @@ public class SnakeMovement : MonoBehaviour
             OnTargetReached?.Invoke();
         }
     }
-
 }

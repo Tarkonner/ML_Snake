@@ -72,12 +72,11 @@ public class EnviormentManager : MonoBehaviour
 
         //Agent
         SpawnAgent();
- 
         
         SnakeMovement snakeMovement = holdAgent.GetComponentInChildren<SnakeMovement>();
         if (snakeMovement != null)
         {
-            snakeMovement.Dying += MoveAgent;
+            //snakeMovement.Dying += MoveAgent;
             snakeMovement.OnReachedTargetSize += SpawnTarget; // Subscribe to event
         }
 
