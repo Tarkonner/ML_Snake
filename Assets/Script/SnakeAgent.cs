@@ -112,18 +112,20 @@ public class SnakeAgent : Agent
     
     private void Update()
     {
-        if (StateManager.Instance.academyInfoText != null)
+        if (!StateManager.Instance.academyInfoText)
         {
-            int episode = this.CompletedEpisodes;  // Get the number of completed episodes **for this agent**
-            int steps = this.StepCount;            // Get steps taken by **this agent**
-            float currentReward = GetCumulativeReward(); // Correct cumulative reward
-
-            // Update UI text
-            StateManager.Instance.academyInfoText.text = 
-                $"Episode: {episode}\n" +
-                $"Steps: {steps}\n" +
-                $"Reward: {currentReward:F2}";
+            return;
         }
-    }
 
+        int episode = this.CompletedEpisodes;  // Get the number of completed episodes **for this agent**
+        int steps = this.StepCount;            // Get steps taken by **this agent**
+        int maxSteps = this.MaxStep;           // Get the maximum number of steps per episode
+        float currentReward = GetCumulativeReward(); // Correct cumulative reward
+
+        // Update UI text
+        StateManager.Instance.academyInfoText.text = 
+            $"Episode: {episode}\n" +
+            $"Steps: {steps}/{maxSteps}\n" +   // Display steps out of maxSteps
+            $"Reward: {currentReward:F2}";
+    }
 }
