@@ -240,6 +240,7 @@ MonoBehaviour:
   targetDistance: 0.8
   smoothSpeed: 10
   startBodySize: 3
+  TargetBodySize: 4
 --- !u!114 &6954146446796350118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,6 +275,7 @@ MonoBehaviour:
   m_AgentGameObject: {fileID: 2603193171156403207}
   m_DetectableTags:
   - Food
+  - Target
   - Body
   m_ColliderMask:
     serializedVersion: 2
@@ -282,6 +284,7 @@ MonoBehaviour:
   m_InitialColliderBufferSize: 4
   m_DebugColors:
   - {r: 1, g: 0.028334636, b: 0, a: 1}
+  - {r: 1, g: 0.86353207, b: 0, a: 1}
   - {r: 0.12315726, g: 1, b: 0, a: 1}
   m_GizmoYOffset: 0
   m_ShowGizmos: 1

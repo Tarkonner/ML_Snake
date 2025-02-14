@@ -21,8 +21,14 @@ public class SnakeMovement : MonoBehaviour
     [SerializeField] float smoothSpeed = 5;
     [SerializeField] int startBodySize = 3;
 
+    [Header("Enviroment")]
+    [SerializeField]
+    private int TargetBodySize = 4;
+
     public Action Dying;
     public Action EatenFood;
+    public Action OnReachedTargetSize;
+    public Action OnTargetReached;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -86,10 +92,12 @@ public class SnakeMovement : MonoBehaviour
             bodyParts[i].transform.eulerAngles = new Vector3(0, GetAngelIn3D(direction), 0);
         }
 
-        //Fall of platform
         // Fell off platform
         if (transform.localPosition.y < -0.1f)
         {
+            Debug.Log("Snake fell off the platform! Penalizing agent.");
+            FindFirstObjectByType<EnviormentManager>().OnFailure(); // Call blinking effect
+            Dying?.Invoke();
             ResetSnake();
         }
     }
@@ -106,9 +114,17 @@ public class SnakeMovement : MonoBehaviour
             body.transform.localPosition = previesBody.localPosition - previesBody.forward * targetDistance;
         }
         else
+        {
             body.transform.localPosition = -transform.forward * targetDistance;
+        }
+
         bodyParts.Add(body);
         segmentVelocity.Add(Vector3.zero);
+        
+        if (bodyParts.Count == TargetBodySize)  // Check if snake has 10 segments
+        {
+            OnReachedTargetSize?.Invoke(); // Invoke event to spawn target
+        }
     }
 
     public void ResetSnake()
@@ -146,14 +162,23 @@ public class SnakeMovement : MonoBehaviour
         return new Vector3(Mathf.Sin(radian), 0, Mathf.Cos(radian));
     }
 
+ 
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Food")
+        // if snake collides with food
+        if (collision.gameObject.CompareTag("Food"))
         {
             EatenFood?.Invoke();
             collision.gameObject.GetComponent<Food>().Eaten();
             GrowSnake();
         }
-
+        
+        // if snake collides with target and has more than 10 segments
+        else if (collision.gameObject.CompareTag("Target") && bodyParts.Count >= TargetBodySize)
+        {
+            Debug.Log("Target hit");
+            OnTargetReached?.Invoke();            
+        }
     }
 }

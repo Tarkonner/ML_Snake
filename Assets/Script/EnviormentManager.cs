@@ -1,4 +1,7 @@
+using System;
+using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnviormentManager : MonoBehaviour
 {
@@ -8,9 +11,18 @@ public class EnviormentManager : MonoBehaviour
     [SerializeField] GameObject ground;
     [SerializeField] GameObject agentPrefab;
     [SerializeField] GameObject foodPrefab;
+    [SerializeField] GameObject targetPrefab;
 
     private GameObject holdFood;
     private GameObject holdAgent;
+    private GameObject holdTarget;
+    
+    private Renderer groundRenderer;
+
+    private void Awake()
+    {
+        groundRenderer = ground.GetComponent<Renderer>(); 
+    }
 
     void Start()
     {
@@ -19,9 +31,12 @@ public class EnviormentManager : MonoBehaviour
         //Agent
         holdAgent = Instantiate(agentPrefab, transform);
         holdAgent.transform.localPosition = GetFreeSpace();
-        if (holdAgent.GetComponentInChildren<SnakeMovement>())
+        
+        SnakeMovement snakeMovement = holdAgent.GetComponentInChildren<SnakeMovement>();
+        if (snakeMovement != null)
         {
-            holdAgent.GetComponentInChildren<SnakeMovement>().Dying += MoveAgent;
+            snakeMovement.Dying += MoveAgent;
+            snakeMovement.OnReachedTargetSize += SpawnTarget; // Subscribe to event
         }
 
         if (holdAgent.GetComponentInChildren<SnakeAgent>())
@@ -34,18 +49,38 @@ public class EnviormentManager : MonoBehaviour
         holdFood.transform.localPosition = GetFreeSpace();
         holdFood.GetComponent<Food>().Setup(this);
     }
+    
+    void SpawnTarget()
+    {
+        Debug.Log("Spawning Special Target");
+
+        if (holdTarget == null) // If target doesn't exist, create it
+        {
+            holdTarget = Instantiate(targetPrefab, transform);
+        }
+
+        holdTarget.transform.localPosition = GetFreeSpace();
+    }
 
     public void MoveFood()
     {
         holdFood.transform.localPosition = GetFreeSpace();
     }
+    
     public void MoveAgent()
     {
         holdAgent.transform.localPosition = GetFreeSpace();
         MoveFood();
         holdAgent.GetComponentInChildren<SnakeMovement>().StartGame();
-    }
 
+        // Clear the target on reset
+        if (holdTarget != null)
+        {
+            Debug.Log("Clearing target on reset...");
+            Destroy(holdTarget);
+            holdTarget = null;
+        }
+    }
 
     public Vector3 GetFreeSpace()
     {
@@ -66,5 +101,40 @@ public class EnviormentManager : MonoBehaviour
         }
 
         return Vector3.zero;
+    }
+    
+    public void OnSuccess()
+    {
+        StartCoroutine(BlinkFloor(Color.green)); // Blink green on success
+    }
+
+    public void OnFailure()
+    {
+        StartCoroutine(BlinkFloor(Color.red)); // Blink red on failure
+    }
+
+    private IEnumerator BlinkFloor(Color color)
+    {
+        if (groundRenderer == null)
+            yield break;
+
+        for (int i = 0; i < 3; i++) // Blink 3 times
+        {
+            groundRenderer.material.color = color;
+            yield return new WaitForSeconds(0.2f); // Wait 0.3 sec
+            groundRenderer.material.color = Color.gray; // Reset to default
+            yield return new WaitForSeconds(0.2f);
+        }
+        
+        groundRenderer.material.color = Color.gray; // Reset to default
+    }
+
+
+    private void ChangeFloorColor(Color color)
+    {
+        if (groundRenderer != null)
+        {
+            groundRenderer.material.color = color;
+        }
     }
 }
