@@ -1,16 +1,23 @@
+<<<<<<< HEAD
 using System.Collections.Generic;
+=======
+using System;
+using System.Collections;
+>>>>>>> MTB_TestOnAndersBranch
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnviormentManager : MonoBehaviour
 {
     [SerializeField] Vector2 enviormentSize = new Vector3(10, 10);
     public Vector2 enviormentRadius => enviormentSize / 2;
 
-    [SerializeField] Vector2 centrumSpawnOffset = new Vector2(2, 2);
+    [SerializeField] GameObject targetPrefab;
 
     [Header("Enviorment")]
     [SerializeField] GameObject wallPrefab;
     [SerializeField] GameObject ground;
+    [SerializeField] Vector2 centrumSpawnOffset = new Vector2(2, 2);
     [SerializeField] float yOffset = -.2f;
     [Header("Agent")]
     [SerializeField] GameObject agentPrefab;
@@ -21,6 +28,14 @@ public class EnviormentManager : MonoBehaviour
 
     private List<GameObject> holdFood = new List<GameObject>();
     private GameObject holdAgent;
+    private GameObject holdTarget;
+    
+    private Renderer groundRenderer;
+
+    private void Awake()
+    {
+        groundRenderer = ground.GetComponent<Renderer>(); 
+    }
 
     void Start()
     {
@@ -46,6 +61,20 @@ public class EnviormentManager : MonoBehaviour
 
         //Agent
         SpawnAgent();
+        //holdAgent = Instantiate(agentPrefab, transform);
+        //holdAgent.transform.localPosition = GetFreeSpace();
+        
+        //SnakeMovement snakeMovement = holdAgent.GetComponentInChildren<SnakeMovement>();
+        //if (snakeMovement != null)
+        //{
+        //    snakeMovement.Dying += MoveAgent;
+        //    snakeMovement.OnReachedTargetSize += SpawnTarget; // Subscribe to event
+        //}
+
+        //if (holdAgent.GetComponentInChildren<SnakeAgent>())
+        //{
+        //    holdAgent.GetComponentInChildren<SnakeAgent>().CallEnding += MoveFood;
+        //}
 
         //Food
         for (int i = 0; i < numberOfFoodInEnviorment; i++)
@@ -58,9 +87,22 @@ public class EnviormentManager : MonoBehaviour
 
 
     }
+    
+    void SpawnTarget()
+    {
+        Debug.Log("Spawning Special Target");
+
+        if (holdTarget == null) // If target doesn't exist, create it
+        {
+            holdTarget = Instantiate(targetPrefab, transform);
+        }
+
+        holdTarget.transform.localPosition = GetFreeSpace();
+    }
 
     public void MoveAllFood()
     {
+<<<<<<< HEAD
         foreach (GameObject go in holdFood)
             go.transform.localPosition = GetFreeSpace();
     }
@@ -96,6 +138,23 @@ public class EnviormentManager : MonoBehaviour
         {
             holdAgent.GetComponentInChildren<SnakeMovement>().Dying += SpawnAgent;
             holdAgent.GetComponentInChildren<SnakeMovement>().Dying += MoveAllFood;
+=======
+        holdFood.transform.localPosition = GetFreeSpace();
+    }
+    
+    public void MoveAgent()
+    {
+        holdAgent.transform.localPosition = GetFreeSpace();
+        MoveFood();
+        holdAgent.GetComponentInChildren<SnakeMovement>().StartGame();
+
+        // Clear the target on reset
+        if (holdTarget != null)
+        {
+            Debug.Log("Clearing target on reset...");
+            Destroy(holdTarget);
+            holdTarget = null;
+>>>>>>> MTB_TestOnAndersBranch
         }
     }
 
@@ -118,5 +177,40 @@ public class EnviormentManager : MonoBehaviour
         }
 
         return Vector3.zero;
+    }
+    
+    public void OnSuccess()
+    {
+        StartCoroutine(BlinkFloor(Color.green)); // Blink green on success
+    }
+
+    public void OnFailure()
+    {
+        StartCoroutine(BlinkFloor(Color.red)); // Blink red on failure
+    }
+
+    private IEnumerator BlinkFloor(Color color)
+    {
+        if (groundRenderer == null)
+            yield break;
+
+        for (int i = 0; i < 3; i++) // Blink 3 times
+        {
+            groundRenderer.material.color = color;
+            yield return new WaitForSeconds(0.2f); // Wait 0.3 sec
+            groundRenderer.material.color = Color.gray; // Reset to default
+            yield return new WaitForSeconds(0.2f);
+        }
+        
+        groundRenderer.material.color = Color.gray; // Reset to default
+    }
+
+
+    private void ChangeFloorColor(Color color)
+    {
+        if (groundRenderer != null)
+        {
+            groundRenderer.material.color = color;
+        }
     }
 }

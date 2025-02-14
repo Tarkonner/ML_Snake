@@ -5,9 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70c17c93-c167-49b7-bd35-1353d05256f8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ML_Snake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ML_Snake/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ML-Agents/Timers/3D Snake_timers.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ML-Agents/Timers/3D Snake_timers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/PlayerSnake Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/PlayerSnake Variant.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Material/Red.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Material/Red.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/SnakeAgent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/SnakeAgent.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/3D Snake.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/3D Snake.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/EnviormentManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/EnviormentManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/SnakeAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/SnakeAgent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/SnakeMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/SnakeMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/NewSnake/SnakeAgent.onnx" beforeDir="false" afterPath="$PROJECT_DIR$/results/NewSnake/SnakeAgent.onnx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/NewSnake/SnakeAgent/SnakeAgent-500004.onnx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/NewSnake/SnakeAgent/SnakeAgent-500004.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/NewSnake/SnakeAgent/checkpoint.pt" beforeDir="false" afterPath="$PROJECT_DIR$/results/NewSnake/SnakeAgent/checkpoint.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/NewSnake/run_logs/timers.json" beforeDir="false" afterPath="$PROJECT_DIR$/results/NewSnake/run_logs/timers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/NewSnake/run_logs/training_status.json" beforeDir="false" afterPath="$PROJECT_DIR$/results/NewSnake/run_logs/training_status.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +46,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ml-agents@2b4ded88494d/Runtime/Agent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ml-agents@2b4ded88494d/Runtime/Sensors/BoxOverlapChecker.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../TEST_ML_Snake/Assets/Scripts/Spawner.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../TEST_Unity_ML/Assets/Scripts/RollerAgent.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -120,6 +134,7 @@
       <workItem from="1739440106014" duration="322000" />
       <workItem from="1739441304470" duration="225000" />
       <workItem from="1739442038960" duration="166000" />
+      <workItem from="1739521477492" duration="4205000" />
     </task>
     <servers />
   </component>

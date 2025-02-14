@@ -240,7 +240,11 @@ MonoBehaviour:
   desiredDistance: 1
   followSpeed: 5
   startBodySize: 3
+<<<<<<< HEAD
   velTest: {x: 0, y: 0, z: 0}
+=======
+  TargetBodySize: 4
+>>>>>>> MTB_TestOnAndersBranch
 --- !u!114 &6954146446796350118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,6 +279,7 @@ MonoBehaviour:
   m_AgentGameObject: {fileID: 2603193171156403207}
   m_DetectableTags:
   - Food
+  - Target
   - Body
   - Wall
   m_ColliderMask:
@@ -284,6 +289,7 @@ MonoBehaviour:
   m_InitialColliderBufferSize: 4
   m_DebugColors:
   - {r: 1, g: 0.028334636, b: 0, a: 1}
+  - {r: 1, g: 0.86353207, b: 0, a: 1}
   - {r: 0.12315726, g: 1, b: 0, a: 1}
   - {r: 0, g: 0.88174534, b: 1, a: 1}
   m_GizmoYOffset: 0
