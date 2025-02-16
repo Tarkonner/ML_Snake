@@ -137,7 +137,7 @@ public class EnviormentManager : MonoBehaviour
         }
     }
 
-  
+
 
     public void SpawnAgent()
     {
@@ -160,9 +160,16 @@ public class EnviormentManager : MonoBehaviour
             if (snakeMovement != null)
             {
                 Transform snakeHead = snakeMovement.transform;
-                holdGun = Instantiate(gunPrefab, snakeHead.position, snakeHead.rotation);
-                holdGun.transform.SetParent(snakeHead);
-                holdGun.transform.localPosition = new Vector3(0, 0.5f, 0);
+                // Instantiate the gun at the snake head's position but with an independent rotation.
+                holdGun = Instantiate(gunPrefab, snakeHead.position, Quaternion.identity);
+
+                // Assign the target for the GunPositionFollower so the gun follows the snake's head position.
+                GunPositionFollower follower = holdGun.GetComponent<GunPositionFollower>();
+                if (follower != null)
+                {
+                    follower.target = snakeHead;
+                    follower.offset = new Vector3(0, 0.5f, 0);
+                }
             }
             else
             {
@@ -176,6 +183,7 @@ public class EnviormentManager : MonoBehaviour
             holdAgent.GetComponentInChildren<SnakeMovement>().Dying += MoveAllFood;
         }
     }
+
 
 
 

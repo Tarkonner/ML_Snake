@@ -27,9 +27,14 @@ public class GunAgent : Agent
 
     private BehaviorParameters behaviorParameters;
 
+    // This property will store the desired rotation computed in Update.
+    public Quaternion DesiredRotation { get; private set; }
+
     public override void Initialize()
     {
         behaviorParameters = GetComponent<BehaviorParameters>();
+        // Initialize DesiredRotation to the current rotation.
+        DesiredRotation = transform.rotation;
     }
 
     public override void OnEpisodeBegin()
@@ -47,19 +52,22 @@ public class GunAgent : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        // For ML training: Observe the cooldown status.
+        // Observation 1: Normalized cooldown status.
         float cooldownNormalized = Mathf.Clamp01((lastShotTime + cooldownDuration - Time.time) / cooldownDuration);
         sensor.AddObservation(cooldownNormalized);
+
+        // (Additional enemy observations can be added here if needed.)
     }
 
     public override void OnActionReceived(ActionBuffers actionBuffers)
     {
-        // For ML-controlled behavior
+        // For ML-controlled behavior.
         if (behaviorParameters.BehaviorType != BehaviorType.HeuristicOnly)
         {
             // Use ML actions for rotation.
             float rotationInput = actionBuffers.ContinuousActions[0];
-            transform.Rotate(Vector3.up, rotationInput * rotationSpeed * Time.deltaTime);
+            // Update DesiredRotation based on ML input.
+            DesiredRotation = Quaternion.AngleAxis(rotationInput * rotationSpeed * Time.deltaTime, Vector3.up) * DesiredRotation;
 
             int shootAction = actionBuffers.DiscreteActions[0];
             if (shootAction == 1 && Time.time >= lastShotTime + cooldownDuration)
@@ -76,25 +84,23 @@ public class GunAgent : Agent
         // Fill these buffers even if we don't use them directly.
         var continuousActionsOut = actionsOut.ContinuousActions;
         if (continuousActionsOut.Length > 0)
-        {
             continuousActionsOut[0] = 0f;
-        }
         var discreteActionsOut = actionsOut.DiscreteActions;
         if (discreteActionsOut.Length > 0)
-        {
             discreteActionsOut[0] = 0;
-        }
     }
 
     void Update()
     {
-        // Only handle manual input if in Heuristic mode.
+        // In heuristic mode, update the desired rotation based on the mouse position.
         if (behaviorParameters.BehaviorType == BehaviorType.HeuristicOnly)
         {
-            // Aim directly at the mouse cursor.
             Vector3 mouseWorldPos = GetMouseWorldPosition();
             Vector3 direction = (mouseWorldPos - transform.position).normalized;
-            transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
+            if (direction != Vector3.zero)
+            {
+                DesiredRotation = Quaternion.LookRotation(direction, Vector3.up);
+            }
 
             // Only set bulletWaiting if Space is pressed AND the cooldown is ready.
             if (Input.GetKeyDown(KeyCode.Space) && Time.time >= lastShotTime + cooldownDuration)
@@ -152,25 +158,5 @@ public class GunAgent : Agent
             return ray.GetPoint(distance);
         }
         return transform.position;
-    }
-
-    /// <summary>
-    /// Finds the closest enemy in the scene based on the "Enemy" tag.
-    /// </summary>
-    GameObject FindClosestEnemy()
-    {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        GameObject closest = null;
-        float minDistance = Mathf.Infinity;
-        foreach (GameObject enemy in enemies)
-        {
-            float distance = Vector3.Distance(transform.position, enemy.transform.position);
-            if (distance < minDistance)
-            {
-                minDistance = distance;
-                closest = enemy;
-            }
-        }
-        return closest;
     }
 }
