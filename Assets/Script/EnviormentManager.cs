@@ -19,7 +19,8 @@ public class EnviormentManager : MonoBehaviour
     
     [Header("Agent")]
     [SerializeField] GameObject agentPrefab;
-    
+    [SerializeField] GameObject gunPrefab;
+
     [Header("Food")]
     [SerializeField] GameObject foodPrefab;
     
@@ -29,7 +30,8 @@ public class EnviormentManager : MonoBehaviour
 
     private GameObject holdAgent;
     private GameObject holdTarget;
-    
+    private GameObject holdGun;
+
     private Renderer groundRenderer;
 
     //Action reset
@@ -135,17 +137,38 @@ public class EnviormentManager : MonoBehaviour
         }
     }
 
+  
+
     public void SpawnAgent()
     {
-        //Agent
+        // Destroy the previous agent and gun if they exist.
         if (holdAgent != null)
             Destroy(holdAgent);
+        if (holdGun != null)
+            Destroy(holdGun);
 
         holdAgent = Instantiate(agentPrefab, transform);
         holdAgent.transform.localPosition = new Vector3(
-                Random.Range(-centrumSpawnOffset.x, centrumSpawnOffset.x),
-                0,
-                Random.Range(-centrumSpawnOffset.y, centrumSpawnOffset.y));
+            Random.Range(-centrumSpawnOffset.x, centrumSpawnOffset.x),
+            0,
+            Random.Range(-centrumSpawnOffset.y, centrumSpawnOffset.y));
+
+        if (gunPrefab != null)
+        {
+            // Assuming the SnakeMovement component is attached to the snake's head.
+            SnakeMovement snakeMovement = holdAgent.GetComponentInChildren<SnakeMovement>();
+            if (snakeMovement != null)
+            {
+                Transform snakeHead = snakeMovement.transform;
+                holdGun = Instantiate(gunPrefab, snakeHead.position, snakeHead.rotation);
+                holdGun.transform.SetParent(snakeHead);
+                holdGun.transform.localPosition = new Vector3(0, 0.5f, 0);
+            }
+            else
+            {
+                Debug.LogWarning("SnakeMovement component not found on spawned agent. Gun not attached.");
+            }
+        }
 
         if (holdAgent.GetComponentInChildren<SnakeMovement>())
         {
@@ -153,8 +176,8 @@ public class EnviormentManager : MonoBehaviour
             holdAgent.GetComponentInChildren<SnakeMovement>().Dying += MoveAllFood;
         }
     }
-    
- 
+
+
 
     public Vector3 GetFreeSpace()
     {

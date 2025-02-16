@@ -8,6 +8,8 @@ TagManager:
   - Food
   - Body
   - Target
+  - Enemy
+  - Bullet
   layers:
   - Default
   - TransparentFX
