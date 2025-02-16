@@ -2,22 +2,22 @@
     "SnakeAgent": {
         "checkpoints": [
             {
-                "steps": 4018,
-                "file_path": "results\\Arctic\\SnakeAgent\\SnakeAgent-4018.onnx",
-                "reward": 0.25925925925925924,
-                "creation_time": 1739445038.4084253,
+                "steps": 1475,
+                "file_path": "results\\Arctic\\SnakeAgent\\SnakeAgent-1475.onnx",
+                "reward": -1.6050000101593989,
+                "creation_time": 1739701613.8082716,
                 "auxillary_file_paths": [
-                    "results\\Arctic\\SnakeAgent\\SnakeAgent-4018.pt"
+                    "results\\Arctic\\SnakeAgent\\SnakeAgent-1475.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 4018,
+            "steps": 1475,
             "file_path": "results\\Arctic\\SnakeAgent.onnx",
-            "reward": 0.25925925925925924,
-            "creation_time": 1739445038.4084253,
+            "reward": -1.6050000101593989,
+            "creation_time": 1739701613.8082716,
             "auxillary_file_paths": [
-                "results\\Arctic\\SnakeAgent\\SnakeAgent-4018.pt"
+                "results\\Arctic\\SnakeAgent\\SnakeAgent-1475.pt"
             ]
         }
     },

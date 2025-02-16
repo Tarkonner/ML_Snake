@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 6047604305795834283}
   - component: {fileID: 3441526697696250193}
   - component: {fileID: -2209275265752007090}
+  - component: {fileID: 7427489068348478619}
+  - component: {fileID: 2090904392744662843}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -115,7 +117,7 @@ MonoBehaviour:
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
   m_BehaviorType: 1
-  m_BehaviorName: GunBehaviour
+  m_BehaviorName: GunAgent
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
@@ -139,7 +141,7 @@ MonoBehaviour:
   MaxStep: 1000
   projectilePrefab: {fileID: 3459226482120009080, guid: 20801c43147abee4d8b242febfcf386d, type: 3}
   projectileForce: 15
-  cooldownDuration: 0.01
+  cooldownDuration: 1
   rotationSpeed: 180
 --- !u!114 &-2209275265752007090
 MonoBehaviour:
@@ -156,6 +158,49 @@ MonoBehaviour:
   DecisionPeriod: 5
   DecisionStep: 0
   TakeActionsBetweenDecisions: 1
+--- !u!114 &7427489068348478619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8492620280233336362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SensorName: GunVision
+  m_DetectableTags:
+  - Enemy
+  m_RaysPerDirection: 12
+  m_MaxRayDegrees: 84
+  m_SphereCastRadius: 3.3
+  m_RayLength: 211
+  m_RayLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967291
+  m_ObservationStacks: 1
+  m_AlternatingRayOrder: 1
+  m_UseBatchedRaycasts: 0
+  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
+  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
+  m_StartVerticalOffset: 0
+  m_EndVerticalOffset: 0
+--- !u!114 &2090904392744662843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8492620280233336362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 600cb863e428c9f49a6bace5df9aa4fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  offset: {x: 0, y: 0.5, z: 0}
 --- !u!1 &8493019991800138228
 GameObject:
   m_ObjectHideFlags: 0
