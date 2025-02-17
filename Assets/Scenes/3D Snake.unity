@@ -1617,11 +1617,11 @@ PrefabInstance:
       objectReference: {fileID: 2603193171156403207, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
     - target: {fileID: 2234609031462090516, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
       propertyPath: enviormentSize.x
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2234609031462090516, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
       propertyPath: enviormentSize.y
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2234609031462090516, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
       propertyPath: targetDummyManager

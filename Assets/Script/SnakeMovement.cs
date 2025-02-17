@@ -91,6 +91,25 @@ public class SnakeMovement : MonoBehaviour
             SnakeDies();
         }
     }
+    
+    public void ResetSnake()
+    {
+        // Destroy all existing body parts.
+        for (int i = 0; i < bodyParts.Count; i++)
+        {
+            if (bodyParts[i] != null)
+                Destroy(bodyParts[i]);
+        }
+        // Clear the list.
+        bodyParts.Clear();
+    
+        // Recreate the snake with the starting body size.
+        for (int i = 0; i < startBodySize; i++)
+        {
+            GrowSnake();
+        }
+    }
+
 
     private void GrowSnake()
     {
