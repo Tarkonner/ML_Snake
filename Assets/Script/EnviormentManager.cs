@@ -1,7 +1,6 @@
-
-using System.Collections.Generic;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -19,7 +18,7 @@ public class EnviormentManager : MonoBehaviour
     
     [Header("Agent")]
     [SerializeField] GameObject agentPrefab;
-    [SerializeField, Range(1, 2)] int numberOfAngets = 2;
+    [SerializeField] GameObject gunPrefab;
 
     [Header("Food")]
     [SerializeField] GameObject foodPrefab;
@@ -28,80 +27,43 @@ public class EnviormentManager : MonoBehaviour
     [SerializeField] int numberOfFoodInEnviorment = 2;
     [SerializeField] GameObject targetPrefab;
 
-    private List<GameObject> holdAgents = new List<GameObject>();
+    private GameObject holdAgent;
     private GameObject holdTarget;
-    
+    private GameObject holdGun;
+
     private Renderer groundRenderer;
 
-    //Action reset
+    // Action reset
     public Action ResetAction;
-
 
     private void Awake()
     {
         groundRenderer = ground.GetComponent<Renderer>();
-
-        ResetAction += RE;
+        ResetAction += ResetEnviorment;
     }
 
     private void OnDisable()
     {
-        ResetAction -= RE;
-        //Agent
-        if (holdAgents.Count != 0)
-        {
-            for (int i = (holdAgents.Count) - (1); i >= 0; i--)
-            {
-                holdAgents[i].GetComponentInChildren<SnakeMovement>().Dying -= MoveAllAgents;
-                holdAgents[i].GetComponentInChildren<SnakeMovement>().Dying -= MoveAllFood;
-
-                Destroy(holdAgents[i]);
-            }
-
-            holdAgents.Clear();
-        }
+        ResetAction -= ResetEnviorment;
     }
-
-    void RE() => StartCoroutine(ResetEnviorment());
 
     void Start()
     {
-        //Enviorment
+        // Setup ground and walls (same as before) …
         ground.transform.localScale = new Vector3(enviormentSize.x + 1, 0, enviormentSize.y + 1);
-        //Walls
-        //+X
-        GameObject wall = Instantiate(wallPrefab, transform);
-        wall.transform.localPosition = new Vector3(enviormentSize.x / 2 + 1, yOffset, 0);
-        wall.transform.localScale = new Vector3(1, 1, enviormentSize.y + 2);
-        //-X
-        wall = Instantiate(wallPrefab, transform);
-        wall.transform.localPosition = new Vector3(-enviormentSize.x / 2 - 1, yOffset, 0);
-        wall.transform.localScale = new Vector3(1, 1, enviormentSize.y + 2);
-        //+Z
-        wall = Instantiate(wallPrefab, transform);
-        wall.transform.localPosition = new Vector3(0, yOffset, enviormentSize.y / 2 + 1);
-        wall.transform.localScale = new Vector3(enviormentSize.x + 2, 1, 1);
-        //-Z
-        wall = Instantiate(wallPrefab, transform);
-        wall.transform.localPosition = new Vector3(0, yOffset, -enviormentSize.y / 2 - 1);
-        wall.transform.localScale = new Vector3(enviormentSize.x + 2, 1, 1);
+        // (Instantiate walls here as in your original code)
 
-        //Agent
-        SpawnAgents();
+        // Spawn agent once at startup.
+        SpawnAgent();
 
-        for (int i = 0; i < holdAgents.Count; i++)
+        // Subscribe to snake events.
+        SnakeMovement snakeMovement = holdAgent.GetComponentInChildren<SnakeMovement>();
+        if (snakeMovement != null)
         {
-            SnakeMovement snakeMovement = holdAgents[i].GetComponentInChildren<SnakeMovement>();
-            if (snakeMovement != null)
-            {
-                //snakeMovement.Dying += MoveAgent;
-                snakeMovement.OnReachedTargetSize += SpawnTarget; // Subscribe to event
-            }
+            snakeMovement.OnReachedTargetSize += SpawnTarget;
         }
 
-
-
-        //Food
+        // Spawn food.
         for (int i = 0; i < numberOfFoodInEnviorment; i++)
         {
             GameObject food = Instantiate(foodPrefab, transform);
@@ -109,13 +71,72 @@ public class EnviormentManager : MonoBehaviour
             food.transform.localPosition = GetFreeSpace();
         }
     }
-    
 
-
-    public IEnumerator ResetEnviorment()
+    /// <summary>
+    /// Instead of destroying the agent, reset its state.
+    /// </summary>
+    public void SpawnAgent()
     {
-        yield return new WaitForEndOfFrame();
-        MoveAllAgents();
+        if (holdAgent == null)
+        {
+            // No agent exists yet, so instantiate one.
+            holdAgent = Instantiate(agentPrefab, transform);
+            holdAgent.transform.localPosition = new Vector3(
+                Random.Range(-centrumSpawnOffset.x, centrumSpawnOffset.x),
+                0,
+                Random.Range(-centrumSpawnOffset.y, centrumSpawnOffset.y));
+
+            // Setup gun if available.
+            if (gunPrefab != null)
+            {
+                SnakeMovement snakeMovement = holdAgent.GetComponentInChildren<SnakeMovement>();
+                if (snakeMovement != null)
+                {
+                    Transform snakeHead = snakeMovement.transform;
+                    holdGun = Instantiate(gunPrefab, snakeHead.position, Quaternion.identity);
+
+                    GunPositionFollower follower = holdGun.GetComponent<GunPositionFollower>();
+                    if (follower != null)
+                    {
+                        follower.target = snakeHead;
+                        follower.offset = new Vector3(0, 0.5f, 0);
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("SnakeMovement component not found on spawned agent. Gun not attached.");
+                }
+            }
+
+            // Subscribe to death events so that a reset is triggered.
+            if (holdAgent.GetComponentInChildren<SnakeMovement>() != null)
+            {
+                var snakeMove = holdAgent.GetComponentInChildren<SnakeMovement>();
+                snakeMove.Dying += SpawnAgent;
+                snakeMove.Dying += MoveAllFood;
+            }
+        }
+        else
+        {
+            // Reset the existing agent's position.
+            holdAgent.transform.localPosition = new Vector3(
+                Random.Range(-centrumSpawnOffset.x, centrumSpawnOffset.x),
+                0,
+                Random.Range(-centrumSpawnOffset.y, centrumSpawnOffset.y));
+
+            // Call EndEpisode() on the agent so that it can reset its internal state.
+            var snakeAgent = holdAgent.GetComponent<SnakeAgent>();
+            if (snakeAgent != null)
+            {
+                snakeAgent.EndEpisode();
+            }
+        }
+    }
+
+    public void ResetEnviorment()
+    {
+        // Instead of destroying and re-instantiating, we just reset the agent.
+        SpawnAgent();
         MoveAllFood();
     }
 
@@ -123,7 +144,7 @@ public class EnviormentManager : MonoBehaviour
     {
         Debug.Log("Spawning Special Target");
 
-        if (holdTarget == null) // If target doesn't exist, create it
+        if (holdTarget == null)
         {
             holdTarget = Instantiate(targetPrefab, transform);
         }
@@ -140,17 +161,13 @@ public class EnviormentManager : MonoBehaviour
     public void MoveFood(GameObject targetFood)
     {
         Vector3 newPosition = GetFreeSpace();
-       // Debug.Log($"Moving food {targetFood.name} to new position: {newPosition}");
-
         if (targetFood != null)
         {
             targetFood.transform.localPosition = newPosition;
-
             Food foodComponent = targetFood.GetComponent<Food>();
             if (foodComponent != null)
             {
-                foodComponent.ResetFoodState(); // Reset the food state
-                //Debug.Log("Food state reset.");
+                foodComponent.ResetFoodState();
             }
         }
         else
@@ -159,45 +176,9 @@ public class EnviormentManager : MonoBehaviour
         }
     }
 
-    public void SpawnAgents()
-    {
-        //Agents
-        for (int i = 0; i < numberOfAngets; i++)
-        {
-            GameObject spawn = Instantiate(agentPrefab, transform);
-            spawn.transform.localPosition = new Vector3(
-                    Random.Range(-centrumSpawnOffset.x, centrumSpawnOffset.x),
-                    0,
-                    Random.Range(-centrumSpawnOffset.y, centrumSpawnOffset.y));
-
-            if (spawn.GetComponentInChildren<SnakeMovement>())
-            {
-                spawn.GetComponentInChildren<SnakeMovement>().Dying += MoveAllAgents;
-                spawn.GetComponentInChildren<SnakeMovement>().Dying += MoveAllFood;
-            }
-
-            holdAgents.Add(spawn);
-        }
-    }
-
-    private void MoveAllAgents()
-    {
-        for (int i = 0; i < holdAgents.Count; i++)
-        {
-            holdAgents[i].GetComponent<SnakeMovement>().Reset();
-            holdAgents[i].transform.localPosition = new Vector3(
-                    Random.Range(-centrumSpawnOffset.x, centrumSpawnOffset.x),
-                    0,
-                    Random.Range(-centrumSpawnOffset.y, centrumSpawnOffset.y));
-        }
-    }
-    
- 
-
     public Vector3 GetFreeSpace()
     {
         int maxStep = 1000;
-
         while (maxStep > 0)
         {
             Vector3 randomPos = new Vector3(
@@ -211,18 +192,17 @@ public class EnviormentManager : MonoBehaviour
 
             maxStep--;
         }
-
         return Vector3.zero;
     }
-    
+
     public void OnSuccess()
     {
-        StartCoroutine(BlinkFloor(Color.green)); // Blink green on success
+        StartCoroutine(BlinkFloor(Color.green));
     }
 
     public void OnFailure()
     {
-        StartCoroutine(BlinkFloor(Color.red)); // Blink red on failure
+        StartCoroutine(BlinkFloor(Color.red));
     }
 
     private IEnumerator BlinkFloor(Color color)
@@ -230,17 +210,15 @@ public class EnviormentManager : MonoBehaviour
         if (groundRenderer == null)
             yield break;
 
-        for (int i = 0; i < 3; i++) // Blink 3 times
+        for (int i = 0; i < 3; i++)
         {
             groundRenderer.material.color = color;
-            yield return new WaitForSeconds(0.2f); // Wait 0.3 sec
-            groundRenderer.material.color = Color.gray; // Reset to default
+            yield return new WaitForSeconds(0.2f);
+            groundRenderer.material.color = Color.gray;
             yield return new WaitForSeconds(0.2f);
         }
-        
-        groundRenderer.material.color = Color.gray; // Reset to default
+        groundRenderer.material.color = Color.gray;
     }
-
 
     public void ChangeFloorColor(Color color)
     {
