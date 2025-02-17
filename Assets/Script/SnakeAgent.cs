@@ -66,6 +66,8 @@ public class SnakeAgent : Agent
         lastFoodPosition = enviormentManager.GetFreeSpace();
         previousDistanceToFood = float.MaxValue;
         foodCollected = 0; // Reset food counter
+        
+        enviormentManager.MoveAllFood();
     }
 
 
@@ -86,31 +88,28 @@ public class SnakeAgent : Agent
         controlSignal.z = actionBuffers.ContinuousActions[1];
         snakeMovement.SetMoveDirection(controlSignal);
 
-        AddReward(-0.001f);  
+        //AddReward(-0.001f);  
 
-        float currentDistance = Vector3.Distance(transform.localPosition, lastFoodPosition);
-        if (currentDistance < previousDistanceToFood)
-        {
-            AddReward(0.01f); // Positive reward for getting closer
-        }
-        else
-        {
-            AddReward(-0.01f); // Penalty for moving away
-        }
-        
-        previousDistanceToFood = currentDistance;
+        // float currentDistance = Vector3.Distance(transform.localPosition, lastFoodPosition);
+        // if (currentDistance < previousDistanceToFood)
+        // {
+        //     AddReward(0.01f); // Positive reward for getting closer
+        // }
+        // else
+        // {
+        //     AddReward(-0.01f); // Penalty for moving away
+        // // }
+        //
+        // previousDistanceToFood = currentDistance;
     }
 
     private void EatReward()
     {
-        MaxStep += 1000;
+        MaxStep += 1500;
         lastFoodPosition = enviormentManager.GetFreeSpace(); 
         AddReward(1.0f);
     
         foodCollected++; // Increase food count
-    
-        if (GetCumulativeReward() > winScore)
-            Ending();
     }
 
     

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.MLAgents;
 using UnityEngine;
 
 public class SnakeMovement : MonoBehaviour
@@ -168,7 +169,7 @@ public class SnakeMovement : MonoBehaviour
             Food food = collision.gameObject.GetComponent<Food>();
             if (food != null && !food.IsEaten)
             {
-                Debug.Log("Food");
+                //Debug.Log($"Food");
                 food.MarkAsEaten(); // Prevents multiple triggers
                 EatenFood?.Invoke();
                 GrowSnake();

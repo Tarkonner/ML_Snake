@@ -18,15 +18,24 @@
                 "auxillary_file_paths": [
                     "results\\MTB_SnakeGunNewYaml\\SnakeAgent\\SnakeAgent-71733.pt"
                 ]
+            },
+            {
+                "steps": 220440,
+                "file_path": "results\\MTB_SnakeGunNewYaml\\SnakeAgent\\SnakeAgent-220440.onnx",
+                "reward": -1.1338888253602717,
+                "creation_time": 1739792605.2660785,
+                "auxillary_file_paths": [
+                    "results\\MTB_SnakeGunNewYaml\\SnakeAgent\\SnakeAgent-220440.pt"
+                ]
             }
         ],
         "final_checkpoint": {
-            "steps": 71733,
+            "steps": 220440,
             "file_path": "results\\MTB_SnakeGunNewYaml\\SnakeAgent.onnx",
-            "reward": -2.909805457452441,
-            "creation_time": 1739785748.1405592,
+            "reward": -1.1338888253602717,
+            "creation_time": 1739792605.2660785,
             "auxillary_file_paths": [
-                "results\\MTB_SnakeGunNewYaml\\SnakeAgent\\SnakeAgent-71733.pt"
+                "results\\MTB_SnakeGunNewYaml\\SnakeAgent\\SnakeAgent-220440.pt"
             ]
         }
     },
