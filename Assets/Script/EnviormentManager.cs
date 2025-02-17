@@ -22,9 +22,9 @@ public class EnviormentManager : MonoBehaviour
 
     [Header("Food")]
     [SerializeField] GameObject foodPrefab;
-    
     private List<GameObject> holdFood = new List<GameObject>();
     [SerializeField] int numberOfFoodInEnviorment = 2;
+
     [SerializeField] GameObject targetPrefab;
 
     private GameObject holdAgent;
@@ -49,9 +49,26 @@ public class EnviormentManager : MonoBehaviour
 
     void Start()
     {
-        // Setup ground and walls (same as before) …
+        //Enviorment
         ground.transform.localScale = new Vector3(enviormentSize.x + 1, 0, enviormentSize.y + 1);
-        // (Instantiate walls here as in your original code)
+        
+        //Walls
+        //+X
+        GameObject wall = Instantiate(wallPrefab, transform);
+        wall.transform.localPosition = new Vector3(enviormentSize.x / 2 + 1, yOffset, 0);
+        wall.transform.localScale = new Vector3(1, 1, enviormentSize.y + 2);
+        //-X
+        wall = Instantiate(wallPrefab, transform);
+        wall.transform.localPosition = new Vector3(-enviormentSize.x / 2 - 1, yOffset, 0);
+        wall.transform.localScale = new Vector3(1, 1, enviormentSize.y + 2);
+        //+Z
+        wall = Instantiate(wallPrefab, transform);
+        wall.transform.localPosition = new Vector3(0, yOffset, enviormentSize.y / 2 + 1);
+        wall.transform.localScale = new Vector3(enviormentSize.x + 2, 1, 1);
+        //-Z
+        wall = Instantiate(wallPrefab, transform);
+        wall.transform.localPosition = new Vector3(0, yOffset, -enviormentSize.y / 2 - 1);
+        wall.transform.localScale = new Vector3(enviormentSize.x + 2, 1, 1);
 
         // Spawn agent once at startup.
         SpawnAgent();

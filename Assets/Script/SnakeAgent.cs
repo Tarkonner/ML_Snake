@@ -9,8 +9,8 @@ public class SnakeAgent : Agent
     private EnviormentManager enviormentManager;
     private SnakeMovement snakeMovement;
     
-    private Vector3 lastFoodPosition;
-    private float previousDistanceToFood = float.MaxValue;
+    //private Vector3 lastFoodPosition;
+    //private float previousDistanceToFood = float.MaxValue;
     
     private Rigidbody rb;
     private int foodCollected;
@@ -63,8 +63,8 @@ public class SnakeAgent : Agent
     
         // Reset internal variables.
         MaxStep = 1000; 
-        lastFoodPosition = enviormentManager.GetFreeSpace();
-        previousDistanceToFood = float.MaxValue;
+        //lastFoodPosition = enviormentManager.GetFreeSpace();
+        //previousDistanceToFood = float.MaxValue;
         foodCollected = 0; // Reset food counter
     }
 
@@ -88,23 +88,23 @@ public class SnakeAgent : Agent
 
         AddReward(-0.001f);  
 
-        float currentDistance = Vector3.Distance(transform.localPosition, lastFoodPosition);
-        if (currentDistance < previousDistanceToFood)
-        {
-            AddReward(0.01f); // Positive reward for getting closer
-        }
-        else
-        {
-            AddReward(-0.01f); // Penalty for moving away
-        }
+        //float currentDistance = Vector3.Distance(transform.localPosition, lastFoodPosition);
+        //if (currentDistance < previousDistanceToFood)
+        //{
+        //    AddReward(0.01f); // Positive reward for getting closer
+        //}
+        //else
+        //{
+        //    AddReward(-0.01f); // Penalty for moving away
+        //}
         
-        previousDistanceToFood = currentDistance;
+        //previousDistanceToFood = currentDistance;
     }
 
     private void EatReward()
     {
         MaxStep += 1000;
-        lastFoodPosition = enviormentManager.GetFreeSpace(); 
+        //lastFoodPosition = enviormentManager.GetFreeSpace(); 
         AddReward(1.0f);
     
         foodCollected++; // Increase food count

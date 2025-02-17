@@ -1,0 +1,29 @@
+{
+    "SnakeAgent": {
+        "checkpoints": [
+            {
+                "steps": 245962,
+                "file_path": "results\\ManyFoods\\SnakeAgent\\SnakeAgent-245962.onnx",
+                "reward": null,
+                "creation_time": 1739796233.3458595,
+                "auxillary_file_paths": [
+                    "results\\ManyFoods\\SnakeAgent\\SnakeAgent-245962.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 245962,
+            "file_path": "results\\ManyFoods\\SnakeAgent.onnx",
+            "reward": null,
+            "creation_time": 1739796233.3458595,
+            "auxillary_file_paths": [
+                "results\\ManyFoods\\SnakeAgent\\SnakeAgent-245962.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}
