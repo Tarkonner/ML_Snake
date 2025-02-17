@@ -50,17 +50,24 @@ public class SnakeAgent : Agent
 
     public override void OnEpisodeBegin()
     {
-        // Reset the snake's position and clear any velocities
+        // Reset the snake's position and clear any velocities.
         transform.localPosition = Vector3.zero;
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
-
-        // Reset other episode-related variables
+    
+        // Reset the snake's length by clearing and rebuilding its body parts.
+        if (snakeMovement != null)
+        {
+            snakeMovement.ResetSnake();
+        }
+    
+        // Reset internal variables.
         MaxStep = 1000; 
         lastFoodPosition = enviormentManager.GetFreeSpace();
         previousDistanceToFood = float.MaxValue;
         foodCollected = 0; // Reset food counter
     }
+
 
 
 
