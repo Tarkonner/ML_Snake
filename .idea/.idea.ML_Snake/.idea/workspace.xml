@@ -7,12 +7,16 @@
     <list default="true" id="70c17c93-c167-49b7-bd35-1353d05256f8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ML_Snake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ML_Snake/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ML-Agents/Timers/3D Snake_timers.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ML-Agents/Timers/3D Snake_timers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Projectile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Projectile.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefab/SnakeAgent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/SnakeAgent.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/3D Snake.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/3D Snake.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/EnviormentManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/EnviormentManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/SnakeAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/SnakeAgent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/SnakeAgent.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Config/SnakeAgent.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/MTB_SnakeGunNewYaml/SnakeAgent.onnx" beforeDir="false" afterPath="$PROJECT_DIR$/results/MTB_SnakeGunNewYaml/SnakeAgent.onnx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/MTB_SnakeGunNewYaml/SnakeAgent/checkpoint.pt" beforeDir="false" afterPath="$PROJECT_DIR$/results/MTB_SnakeGunNewYaml/SnakeAgent/checkpoint.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/MTB_SnakeGunNewYaml/SnakeAgent/events.out.tfevents.1739782471.Legion.1984.0" beforeDir="false" afterPath="$PROJECT_DIR$/results/MTB_SnakeGunNewYaml/SnakeAgent/events.out.tfevents.1739782471.Legion.1984.0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/MTB_SnakeGunNewYaml/configuration.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/results/MTB_SnakeGunNewYaml/configuration.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/MTB_SnakeGunNewYaml/run_logs/timers.json" beforeDir="false" afterPath="$PROJECT_DIR$/results/MTB_SnakeGunNewYaml/run_logs/timers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/MTB_SnakeGunNewYaml/run_logs/training_status.json" beforeDir="false" afterPath="$PROJECT_DIR$/results/MTB_SnakeGunNewYaml/run_logs/training_status.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +140,7 @@
       <workItem from="1739442038960" duration="166000" />
       <workItem from="1739521477492" duration="5474000" />
       <workItem from="1739711118236" duration="3082000" />
-      <workItem from="1739780416956" duration="1802000" />
+      <workItem from="1739780416956" duration="4560000" />
     </task>
     <servers />
   </component>

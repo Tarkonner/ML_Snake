@@ -13,6 +13,7 @@ public class SnakeAgent : Agent
     private float previousDistanceToFood = float.MaxValue;
     
     private Rigidbody rb;
+    private int foodCollected;
 
 
     [SerializeField] int winScore = 20;
@@ -49,10 +50,18 @@ public class SnakeAgent : Agent
 
     public override void OnEpisodeBegin()
     {
+        // Reset the snake's position and clear any velocities
+        transform.localPosition = Vector3.zero;
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+
+        // Reset other episode-related variables
         MaxStep = 1000; 
         lastFoodPosition = enviormentManager.GetFreeSpace();
         previousDistanceToFood = float.MaxValue;
+        foodCollected = 0; // Reset food counter
     }
+
 
 
     public override void CollectObservations(VectorSensor sensor)
@@ -89,12 +98,14 @@ public class SnakeAgent : Agent
     {
         MaxStep += 1000;
         lastFoodPosition = enviormentManager.GetFreeSpace(); 
-        //Debug.Log("Reward");
         AddReward(1.0f);
-
+    
+        foodCollected++; // Increase food count
+    
         if (GetCumulativeReward() > winScore)
             Ending();
     }
+
     
     private void TargetReward()
     {
@@ -147,7 +158,9 @@ public class SnakeAgent : Agent
         // Update UI text
         StateManager.Instance.academyInfoText.text = 
             $"Episode: {episode}\n" +
-            $"Steps: {steps}/{maxSteps}\n" +   // Display steps out of maxSteps
+            $"Steps: {steps}/{maxSteps}\n" +   
+            $"Food Collected: {foodCollected}\n" +  // New Debugging Info
             $"Reward: {currentReward:F2}";
+
     }
 }
