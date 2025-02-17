@@ -10,6 +10,8 @@ public class EnviormentManager : MonoBehaviour
     [SerializeField] Vector2 enviormentSize = new Vector3(10, 10);
     public Vector2 enviormentRadius => enviormentSize / 2;
 
+    public TargetDummyManager targetDummyManager;
+
     [SerializeField] Vector2 centrumSpawnOffset = new Vector2(2, 2);
 
     [Header("Enviorment")]
@@ -95,6 +97,7 @@ public class EnviormentManager : MonoBehaviour
     {
         SpawnAgent();
         MoveAllFood();
+        
     }
 
     void SpawnTarget()
