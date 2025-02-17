@@ -16,29 +16,28 @@ public class TargetDummyManager : MonoBehaviour
     private void Start()
     {
         // Spawn the target dummy automatically at startup.
-        ResetTargetDummy();
+        //ResetTargetDummy();
     }
 
     /// <summary>
     /// Spawns or repositions the target dummy.
-    /// This method is called both on new episodes and when the dummy is hit.
+    /// Called on startup, when the dummy is hit, or on episode reset.
     /// </summary>
     public void ResetTargetDummy()
     {
         if (currentTargetDummy == null)
         {
             currentTargetDummy = Instantiate(targetDummyPrefab, transform);
-            // Make sure the dummy is tagged as "Enemy" if your bullet reward uses that tag.
+            // Ensure the dummy is tagged as "Enemy" (if needed)
             currentTargetDummy.tag = "Enemy";
 
-            // Also assign the manager reference to the dummy.
             TargetDummy dummyScript = currentTargetDummy.GetComponent<TargetDummy>();
             if (dummyScript != null)
             {
                 dummyScript.manager = this;
             }
         }
-        // Reposition the existing dummy to a new free spot.
+        // Reposition the existing dummy.
         currentTargetDummy.transform.position = GetFreeSpace();
     }
 

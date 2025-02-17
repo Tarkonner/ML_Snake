@@ -2,22 +2,22 @@
     "GunAgent": {
         "checkpoints": [
             {
-                "steps": 0,
-                "file_path": "results\\Gun1\\GunAgent\\GunAgent-0.onnx",
-                "reward": null,
-                "creation_time": 1739704388.8052185,
+                "steps": 3127,
+                "file_path": "results\\Gun1\\GunAgent\\GunAgent-3127.onnx",
+                "reward": 273.67133713290093,
+                "creation_time": 1739794094.6285553,
                 "auxillary_file_paths": [
-                    "results\\Gun1\\GunAgent\\GunAgent-0.pt"
+                    "results\\Gun1\\GunAgent\\GunAgent-3127.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 0,
+            "steps": 3127,
             "file_path": "results\\Gun1\\GunAgent.onnx",
-            "reward": null,
-            "creation_time": 1739704388.8052185,
+            "reward": 273.67133713290093,
+            "creation_time": 1739794094.6285553,
             "auxillary_file_paths": [
-                "results\\Gun1\\GunAgent\\GunAgent-0.pt"
+                "results\\Gun1\\GunAgent\\GunAgent-3127.pt"
             ]
         }
     },

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -2209275265752007090}
   - component: {fileID: 7427489068348478619}
   - component: {fileID: 2090904392744662843}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gun
   m_TagString: BlueTeam
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ MonoBehaviour:
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
-  m_BehaviorType: 1
+  m_BehaviorType: 0
   m_BehaviorName: GunAgent
   TeamId: 0
   m_UseChildSensors: 1
@@ -141,7 +141,7 @@ MonoBehaviour:
   MaxStep: 1000
   projectilePrefab: {fileID: 3459226482120009080, guid: 20801c43147abee4d8b242febfcf386d, type: 3}
   projectileForce: 20
-  cooldownDuration: 0.1
+  cooldownDuration: 0.5
   rotationSpeed: 180
 --- !u!114 &-2209275265752007090
 MonoBehaviour:
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_RayLength: 211
   m_RayLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967291
+    m_Bits: 4294967131
   m_ObservationStacks: 1
   m_AlternatingRayOrder: 1
   m_UseBatchedRaycasts: 0
@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 2564412780768974028}
   - component: {fileID: 5211538579017870382}
   - component: {fileID: 5793303834327965520}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gun
   m_TagString: BlueTeam
   m_Icon: {fileID: 0}

@@ -140,7 +140,7 @@ public class EnviormentManager : MonoBehaviour
         // Instead of destroying and re-instantiating, we just reset the agent.
         SpawnAgent();
         MoveAllFood();
-        
+        targetDummyManager.ResetTargetDummy();
     }
 
     void SpawnTarget()

@@ -15,6 +15,7 @@ public class SnakeAgent : Agent
     private Rigidbody rb;
     private int foodCollected;
 
+    public TargetDummyManager targetDummyManager;
 
     [SerializeField] int winScore = 20;
 
@@ -66,6 +67,9 @@ public class SnakeAgent : Agent
         lastFoodPosition = enviormentManager.GetFreeSpace();
         previousDistanceToFood = float.MaxValue;
         foodCollected = 0; // Reset food counter
+
+        enviormentManager.MoveAllFood();
+        targetDummyManager.ResetTargetDummy();
     }
 
 

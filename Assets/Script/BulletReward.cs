@@ -22,7 +22,7 @@ public class BulletReward : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Bullet collided with: " + collision.gameObject.name);
+        //Debug.Log("Bullet collided with: " + collision.gameObject.name);
 
         // Process the collision only if we haven't registered a hit yet.
         if (!hasRegisteredHit)
