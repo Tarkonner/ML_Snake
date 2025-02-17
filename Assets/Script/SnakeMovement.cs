@@ -41,6 +41,19 @@ public class SnakeMovement : MonoBehaviour
             GrowSnake();
     }
 
+    public void Reset()
+    {
+        for (int i = (bodyParts.Count) - (1); i >= 0; i--)
+        {
+            Destroy(bodyParts[i]);
+        }
+        bodyParts.Clear();
+        transform.localPosition = Vector3.zero;
+        for (int i = 0; i < startBodySize; i++)
+            GrowSnake();
+    }
+
+
     private void FixedUpdate()
     {  
         
@@ -149,7 +162,6 @@ public class SnakeMovement : MonoBehaviour
             Food food = collision.gameObject.GetComponent<Food>();
             if (food != null && !food.IsEaten)
             {
-                Debug.Log("Food");
                 food.MarkAsEaten(); // Prevents multiple triggers
                 EatenFood?.Invoke();
                 GrowSnake();

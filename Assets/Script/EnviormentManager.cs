@@ -19,7 +19,8 @@ public class EnviormentManager : MonoBehaviour
     
     [Header("Agent")]
     [SerializeField] GameObject agentPrefab;
-    
+    [SerializeField, Range(1, 2)] int numberOfAngets = 2;
+
     [Header("Food")]
     [SerializeField] GameObject foodPrefab;
     
@@ -27,7 +28,7 @@ public class EnviormentManager : MonoBehaviour
     [SerializeField] int numberOfFoodInEnviorment = 2;
     [SerializeField] GameObject targetPrefab;
 
-    private GameObject holdAgent;
+    private List<GameObject> holdAgents = new List<GameObject>();
     private GameObject holdTarget;
     
     private Renderer groundRenderer;
@@ -40,13 +41,28 @@ public class EnviormentManager : MonoBehaviour
     {
         groundRenderer = ground.GetComponent<Renderer>();
 
-        ResetAction += ResetEnviorment;
+        ResetAction += RE;
     }
 
     private void OnDisable()
     {
-        ResetAction -= ResetEnviorment;
+        ResetAction -= RE;
+        //Agent
+        if (holdAgents.Count != 0)
+        {
+            for (int i = (holdAgents.Count) - (1); i >= 0; i--)
+            {
+                holdAgents[i].GetComponentInChildren<SnakeMovement>().Dying -= MoveAllAgents;
+                holdAgents[i].GetComponentInChildren<SnakeMovement>().Dying -= MoveAllFood;
+
+                Destroy(holdAgents[i]);
+            }
+
+            holdAgents.Clear();
+        }
     }
+
+    void RE() => StartCoroutine(ResetEnviorment());
 
     void Start()
     {
@@ -71,14 +87,19 @@ public class EnviormentManager : MonoBehaviour
         wall.transform.localScale = new Vector3(enviormentSize.x + 2, 1, 1);
 
         //Agent
-        SpawnAgent();
-        
-        SnakeMovement snakeMovement = holdAgent.GetComponentInChildren<SnakeMovement>();
-        if (snakeMovement != null)
+        SpawnAgents();
+
+        for (int i = 0; i < holdAgents.Count; i++)
         {
-            //snakeMovement.Dying += MoveAgent;
-            snakeMovement.OnReachedTargetSize += SpawnTarget; // Subscribe to event
+            SnakeMovement snakeMovement = holdAgents[i].GetComponentInChildren<SnakeMovement>();
+            if (snakeMovement != null)
+            {
+                //snakeMovement.Dying += MoveAgent;
+                snakeMovement.OnReachedTargetSize += SpawnTarget; // Subscribe to event
+            }
         }
+
+
 
         //Food
         for (int i = 0; i < numberOfFoodInEnviorment; i++)
@@ -89,9 +110,12 @@ public class EnviormentManager : MonoBehaviour
         }
     }
     
-    public void ResetEnviorment()
+
+
+    public IEnumerator ResetEnviorment()
     {
-        SpawnAgent();
+        yield return new WaitForEndOfFrame();
+        MoveAllAgents();
         MoveAllFood();
     }
 
@@ -135,22 +159,36 @@ public class EnviormentManager : MonoBehaviour
         }
     }
 
-    public void SpawnAgent()
+    public void SpawnAgents()
     {
-        //Agent
-        if (holdAgent != null)
-            Destroy(holdAgent);
-
-        holdAgent = Instantiate(agentPrefab, transform);
-        holdAgent.transform.localPosition = new Vector3(
-                Random.Range(-centrumSpawnOffset.x, centrumSpawnOffset.x),
-                0,
-                Random.Range(-centrumSpawnOffset.y, centrumSpawnOffset.y));
-
-        if (holdAgent.GetComponentInChildren<SnakeMovement>())
+        //Agents
+        for (int i = 0; i < numberOfAngets; i++)
         {
-            holdAgent.GetComponentInChildren<SnakeMovement>().Dying += SpawnAgent;
-            holdAgent.GetComponentInChildren<SnakeMovement>().Dying += MoveAllFood;
+            GameObject spawn = Instantiate(agentPrefab, transform);
+            spawn.transform.localPosition = new Vector3(
+                    Random.Range(-centrumSpawnOffset.x, centrumSpawnOffset.x),
+                    0,
+                    Random.Range(-centrumSpawnOffset.y, centrumSpawnOffset.y));
+
+            if (spawn.GetComponentInChildren<SnakeMovement>())
+            {
+                spawn.GetComponentInChildren<SnakeMovement>().Dying += MoveAllAgents;
+                spawn.GetComponentInChildren<SnakeMovement>().Dying += MoveAllFood;
+            }
+
+            holdAgents.Add(spawn);
+        }
+    }
+
+    private void MoveAllAgents()
+    {
+        for (int i = 0; i < holdAgents.Count; i++)
+        {
+            holdAgents[i].GetComponent<SnakeMovement>().Reset();
+            holdAgents[i].transform.localPosition = new Vector3(
+                    Random.Range(-centrumSpawnOffset.x, centrumSpawnOffset.x),
+                    0,
+                    Random.Range(-centrumSpawnOffset.y, centrumSpawnOffset.y));
         }
     }
     

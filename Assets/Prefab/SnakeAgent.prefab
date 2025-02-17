@@ -196,9 +196,9 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: 1712fa57fdc58ad47a6c5e1fa66064c9, type: 3}
   m_InferenceDevice: 0
-  m_BehaviorType: 0
+  m_BehaviorType: 1
   m_BehaviorName: SnakeAgent
   TeamId: 0
   m_UseChildSensors: 1
@@ -222,6 +222,9 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 1000
   winScore: 20
+  minDistanceToMove: 5
+  moveCheckInterval: 2
+  eatCheckInterval: 10
 --- !u!114 &6676187475054730374
 MonoBehaviour:
   m_ObjectHideFlags: 0

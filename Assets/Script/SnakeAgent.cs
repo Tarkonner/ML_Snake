@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
@@ -12,6 +13,16 @@ public class SnakeAgent : Agent
 
     [SerializeField] int winScore = 20;
 
+    [Header("Not move penalty")]
+    [SerializeField] float minDistanceToMove = 1;
+    [SerializeField] float moveCheckInterval = 2;
+    private Vector3 lastCheckedPosition;
+
+    [Header("Not Eaten penalty")]
+    bool haveEaten = false;
+    [SerializeField] float eatCheckInterval = 10;
+
+
     private void Awake()
     {
         snakeMovement = GetComponent<SnakeMovement>();
@@ -21,6 +32,11 @@ public class SnakeAgent : Agent
         snakeMovement.EatenFood += EatReward;
         snakeMovement.Dying += ApplyPenalty;
         snakeMovement.OnTargetReached += TargetReward; 
+
+        lastCheckedPosition = transform.localPosition;
+
+        StartCoroutine(PeneltiesMovement());
+        StartCoroutine(NotEatPenelty());
     }
 
     private void OnDisable()
@@ -67,6 +83,8 @@ public class SnakeAgent : Agent
 
     private void EatReward()
     {
+        haveEaten = true;
+
         MaxStep += 1000;
         //Debug.Log("Reward");
         AddReward(1.0f);
@@ -86,12 +104,31 @@ public class SnakeAgent : Agent
 
     void Ending()
     {
-        Debug.Log("Ending");
+        StopAllCoroutines();
 
         enviormentManager.ResetAction?.Invoke();
         EndEpisode();
     }
 
+
+    IEnumerator PeneltiesMovement()
+    {
+        yield return new WaitForSeconds(eatCheckInterval);
+        float dis = Vector3.Distance(transform.localPosition, lastCheckedPosition);
+        if(dis < minDistanceToMove)
+            AddReward(-.5f);
+        lastCheckedPosition = transform.localPosition;
+        StartCoroutine(PeneltiesMovement());
+    }
+
+    IEnumerator NotEatPenelty()
+    {
+        if (!haveEaten)
+            AddReward(-.5f);
+        haveEaten = false;
+        yield return new WaitForSeconds(eatCheckInterval);
+        StartCoroutine(NotEatPenelty());
+    }
 
     public override void Heuristic(in ActionBuffers actionsOut)
     {
@@ -105,8 +142,7 @@ public class SnakeAgent : Agent
     {
         if (other.gameObject.CompareTag("Body"))
         {
-            Debug.Log("Collided with body! Penalizing agent.");
-            AddReward(-0.005f); // Give a penalty of -0.01
+            AddReward(-0.0001f); // Give a penalty of -0.01
         }
     }
     

@@ -1,0 +1,65 @@
+{
+    "SnakeAgent": {
+        "checkpoints": [
+            {
+                "steps": 40269,
+                "file_path": "results\\lowTouchPenelty\\SnakeAgent\\SnakeAgent-40269.onnx",
+                "reward": -2.0012001244322164,
+                "creation_time": 1739782935.8296201,
+                "auxillary_file_paths": [
+                    "results\\lowTouchPenelty\\SnakeAgent\\SnakeAgent-40269.pt"
+                ]
+            },
+            {
+                "steps": 73270,
+                "file_path": "results\\lowTouchPenelty\\SnakeAgent\\SnakeAgent-73270.onnx",
+                "reward": -1.0001999999949476,
+                "creation_time": 1739783833.2736502,
+                "auxillary_file_paths": [
+                    "results\\lowTouchPenelty\\SnakeAgent\\SnakeAgent-73270.pt"
+                ]
+            },
+            {
+                "steps": 82202,
+                "file_path": "results\\lowTouchPenelty\\SnakeAgent\\SnakeAgent-82202.onnx",
+                "reward": -1.7869357693135888,
+                "creation_time": 1739784024.2369637,
+                "auxillary_file_paths": [
+                    "results\\lowTouchPenelty\\SnakeAgent\\SnakeAgent-82202.pt"
+                ]
+            },
+            {
+                "steps": 87132,
+                "file_path": "results\\lowTouchPenelty\\SnakeAgent\\SnakeAgent-87132.onnx",
+                "reward": -1.6670066766101324,
+                "creation_time": 1739784269.4766355,
+                "auxillary_file_paths": [
+                    "results\\lowTouchPenelty\\SnakeAgent\\SnakeAgent-87132.pt"
+                ]
+            },
+            {
+                "steps": 107831,
+                "file_path": "results\\lowTouchPenelty\\SnakeAgent\\SnakeAgent-107831.onnx",
+                "reward": null,
+                "creation_time": 1739784879.253198,
+                "auxillary_file_paths": [
+                    "results\\lowTouchPenelty\\SnakeAgent\\SnakeAgent-107831.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 107831,
+            "file_path": "results\\lowTouchPenelty\\SnakeAgent.onnx",
+            "reward": null,
+            "creation_time": 1739784879.253198,
+            "auxillary_file_paths": [
+                "results\\lowTouchPenelty\\SnakeAgent\\SnakeAgent-107831.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}
