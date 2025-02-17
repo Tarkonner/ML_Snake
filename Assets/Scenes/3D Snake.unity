@@ -1608,37 +1608,9 @@ PrefabInstance:
       value: Enviorment
       objectReference: {fileID: 0}
     - target: {fileID: 2234609031462090516, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
-      propertyPath: gunPrefab
-      value: 
-      objectReference: {fileID: 8492620280233336362, guid: f4231182d74ecb54895de431d460ee1f, type: 3}
-    - target: {fileID: 2234609031462090516, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
-      propertyPath: agentPrefab
-      value: 
-      objectReference: {fileID: 2603193171156403207, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
-    - target: {fileID: 2234609031462090516, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
-      propertyPath: enviormentSize.x
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2234609031462090516, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
-      propertyPath: enviormentSize.y
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2234609031462090516, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
       propertyPath: targetDummyManager
       value: 
-      objectReference: {fileID: 1655039898}
-    - target: {fileID: 2234609031462090516, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
-      propertyPath: centrumSpawnOffset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2234609031462090516, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
-      propertyPath: centrumSpawnOffset.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2234609031462090516, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
-      propertyPath: numberOfFoodInEnviorment
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2162603556298904361, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
     - target: {fileID: 5010434914573024936, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1682,10 +1654,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1415600777556534610, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1655039898}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
 --- !u!1 &1430614097
 GameObject:
@@ -2171,27 +2140,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1594927391}
   m_CullTransparentMesh: 1
---- !u!1 &1655039895 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1415600777556534610, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
-  m_PrefabInstance: {fileID: 1403691354}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1655039898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1655039895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa1bb92f50e2be44995d6289cc2d0d19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetDummyPrefab: {fileID: 9192268292913501817, guid: 7832d158902ca6646bc82450825824dd, type: 3}
-  environmentSize: {x: 10, y: 10}
-  yOffset: 0
-  maxStep: 1000
 --- !u!1 &1748327623
 GameObject:
   m_ObjectHideFlags: 0

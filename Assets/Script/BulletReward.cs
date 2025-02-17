@@ -1,5 +1,4 @@
 using UnityEngine;
-using Unity.MLAgents;
 
 public class BulletReward : MonoBehaviour
 {
@@ -9,29 +8,38 @@ public class BulletReward : MonoBehaviour
     [HideInInspector]
     public GunAgent agent;
 
-    // This flag indicates whether the bullet is still lethal.
-    private bool isLethal = true;
+    // This flag indicates whether this bullet has already registered a hit.
+    // Make sure this is NOT declared as static.
+    private bool hasRegisteredHit = false;
+
+    public bool HasRegisteredHit { get { return hasRegisteredHit; } }
+
+    // If you're pooling bullets, this ensures the flag is reset every time the bullet is reused.
+    private void OnEnable()
+    {
+        hasRegisteredHit = false;
+    }
 
     void OnCollisionEnter(Collision collision)
     {
-        // If the bullet is no longer lethal, ignore further collisions.
-        if (!isLethal)
-            return;
+        Debug.Log("Bullet collided with: " + collision.gameObject.name);
 
-        // If the bullet hits an enemy, award the reward.
-        if (collision.gameObject.CompareTag("Enemy"))
+        // Process the collision only if we haven't registered a hit yet.
+        if (!hasRegisteredHit)
         {
-            if (agent != null)
+            // Check if the collision is with an enemy.
+            if (collision.gameObject.CompareTag("Enemy"))
             {
                 Debug.Log("Enemy Hit!");
-                agent.AddReward(rewardOnHit);
+                if (agent != null)
+                {
+                    agent.AddReward(rewardOnHit);
+                }
+                hasRegisteredHit = true;
             }
         }
 
-        // Mark the bullet as non-lethal after the initial collision.
-        isLethal = false;
-
-        // Instead of destroying immediately, delay destruction by 2 seconds.
-        Destroy(gameObject, 5f);
+        // Schedule destruction after 2 seconds.
+        Destroy(gameObject, 2f);
     }
 }

@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 2090904392744662843}
   m_Layer: 0
   m_Name: Gun
-  m_TagString: Untagged
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,7 +141,7 @@ MonoBehaviour:
   MaxStep: 1000
   projectilePrefab: {fileID: 3459226482120009080, guid: 20801c43147abee4d8b242febfcf386d, type: 3}
   projectileForce: 20
-  cooldownDuration: 1
+  cooldownDuration: 0.1
   rotationSpeed: 180
 --- !u!114 &-2209275265752007090
 MonoBehaviour:
@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 5793303834327965520}
   m_Layer: 0
   m_Name: Gun
-  m_TagString: Untagged
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
