@@ -128,7 +128,7 @@ public class SnakeMovement : MonoBehaviour
             //Get head
             body.transform.localPosition = -transform.forward * desiredDistance;
             
-            body.GetComponent<BoxCollider>().enabled = false;
+            body.GetComponent<SphereCollider>().enabled = false;
         }
 
         bodyParts.Add(body);

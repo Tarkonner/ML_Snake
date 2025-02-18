@@ -89,26 +89,29 @@ public class SnakeAgent : Agent
         snakeMovement.SetMoveDirection(controlSignal);
 
         //AddReward(-0.001f);  
+        
+        // float progressPenalty = -0.0005f * (StepCount / (float)MaxStep);
+        // AddReward(progressPenalty);
+        
+        float distanceToFood = Vector3.Distance(transform.localPosition, lastFoodPosition);
+        if (distanceToFood < previousDistanceToFood)
+            AddReward(0.001f);  // Beløn for at nærme sig maden
+        previousDistanceToFood = distanceToFood;
 
-        // float currentDistance = Vector3.Distance(transform.localPosition, lastFoodPosition);
-        // if (currentDistance < previousDistanceToFood)
-        // {
-        //     AddReward(0.01f); // Positive reward for getting closer
-        // }
-        // else
-        // {
-        //     AddReward(-0.01f); // Penalty for moving away
-        // // }
-        //
-        // previousDistanceToFood = currentDistance;
     }
 
     private void EatReward()
     {
-        MaxStep += 1500;
-        lastFoodPosition = enviormentManager.GetFreeSpace(); 
-        AddReward(1.0f);
-    
+        Debug.Log("Food eaten! Rewarding agent.");
+        if (StepCount < 500) 
+        {
+            MaxStep += 1000; 
+        }
+
+        float efficiencyBonus = 2.0f - (StepCount / (float)MaxStep) * 1.5f;
+        AddReward(1.0f + Mathf.Clamp(efficiencyBonus, 0.1f, 1.5f));
+            
+        lastFoodPosition = enviormentManager.GetFreeSpace();
         foodCollected++; // Increase food count
     }
 

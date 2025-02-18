@@ -86,7 +86,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BASE_COLOR_WEIGHT: 1
+    - _BASE_COLOR_WEIGHT: 0.714
     - _BUMP_MAP_STRENGTH: 0.3
     - _EMISSION_WEIGHT: 1
     - _EnableExternalAlpha: 0
@@ -99,7 +99,7 @@ Material:
     - _TRANSPARENCY: 0
     - _ZWrite: 0
     m_Colors:
-    - _BASE_COLOR: {r: 0.035848916, g: 1, b: 0.53331274, a: 1}
+    - _BASE_COLOR: {r: 0.59985375, g: 1, b: 0.035294116, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EMISSION_COLOR: {r: 0, g: 0, b: 0, a: 0}
     - _REFLECTIONS_COLOR: {r: 1, g: 1, b: 1, a: 1}
