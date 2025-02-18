@@ -35,8 +35,15 @@ public class BulletReward : MonoBehaviour
                 {
                     agent.AddReward(rewardOnHit);
                 }
+                
                 hasRegisteredHit = true;
             }
+            else
+            {
+                agent.AddReward((rewardOnHit/4)*-1);
+            }
+
+
         }
 
         // Schedule destruction after 2 seconds.

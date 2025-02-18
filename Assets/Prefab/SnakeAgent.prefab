@@ -166,7 +166,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
@@ -235,8 +235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 595259907efd82b47a4186d2b1fff64d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 0
-  rotationSpeed: 0
+  movementSpeed: 200
+  rotationSpeed: 0.1
   bodyPrefab: {fileID: 6555164450744074074, guid: 53dec15c75b518145acd262d27a7f4ed, type: 3}
   desiredDistance: 1
   followSpeed: 5
@@ -391,7 +391,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
