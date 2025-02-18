@@ -42,7 +42,7 @@ public class SnakeAgent : Agent
     
     public override void OnEpisodeBegin()
     {
-        MaxStep = 1500; 
+        MaxStep = 500; 
         transform.localPosition = Vector3.zero;
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
@@ -69,17 +69,17 @@ public class SnakeAgent : Agent
         snakeMovement.SetMoveDirection(controlSignal);
 
         // Step Penalty: Prevent wandering aimlessly
-        AddReward(-0.0005f);
+        AddReward(-0.005f);
 
         // Add a small reward for decreasing distance to food
         float currentDistance = Vector3.Distance(transform.localPosition, lastFoodPosition);
         if (currentDistance < previousDistanceToFood)
         {
-            AddReward(0.0003f);
+            AddReward(0.003f);
         }
         else
         {
-            AddReward(-0.0003f);
+            AddReward(-0.003f);
         }
         previousDistanceToFood = currentDistance;
     }
@@ -142,7 +142,7 @@ public class SnakeAgent : Agent
     
     private void ApplyPenalty()
     {
-        AddReward(-3.0f);
+        AddReward(-10.0f);
         enviormentManager.OnFailure();
         EndEpisode();
     }

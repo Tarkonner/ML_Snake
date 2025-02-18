@@ -172,7 +172,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 1
 --- !u!114 &3331848926571576303
 MonoBehaviour:
@@ -234,12 +234,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 595259907efd82b47a4186d2b1fff64d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 200
-  rotationSpeed: 0.1
+  movementSpeed: 250
+  rotationSpeed: 1
+  snakeHeadDiameter: 1
+  turningSpeed: 45
   bodyPrefab: {fileID: 8590049770274324334, guid: 4c0e0eecdc02a1e4ea13880a4ffb0bb4, type: 3}
   desiredDistance: 1
-  followSpeed: 5
-  startBodySize: 3
+  followSpeed: 200
+  startBodySize: 2
   TargetBodySize: 20
 --- !u!114 &6954146446796350118
 MonoBehaviour:
@@ -270,7 +272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SensorName: GridSensor
   m_CellScale: {x: 1, y: 0.01, z: 1}
-  m_GridSize: {x: 20, y: 1, z: 20}
+  m_GridSize: {x: 40, y: 1, z: 40}
   m_RotateWithAgent: 0
   m_AgentGameObject: {fileID: 2603193171156403207}
   m_DetectableTags:
@@ -308,7 +310,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &938952473120245990
 Transform:
   m_ObjectHideFlags: 0
