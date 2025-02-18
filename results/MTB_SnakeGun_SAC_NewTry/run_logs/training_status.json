@@ -1,0 +1,29 @@
+{
+    "SnakeAgent": {
+        "checkpoints": [
+            {
+                "steps": 213581,
+                "file_path": "results\\MTB_SnakeGun_SAC_NewTry\\SnakeAgent\\SnakeAgent-213581.onnx",
+                "reward": null,
+                "creation_time": 1739894852.9873333,
+                "auxillary_file_paths": [
+                    "results\\MTB_SnakeGun_SAC_NewTry\\SnakeAgent\\SnakeAgent-213581.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 213581,
+            "file_path": "results\\MTB_SnakeGun_SAC_NewTry\\SnakeAgent.onnx",
+            "reward": null,
+            "creation_time": 1739894852.9873333,
+            "auxillary_file_paths": [
+                "results\\MTB_SnakeGun_SAC_NewTry\\SnakeAgent\\SnakeAgent-213581.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}
