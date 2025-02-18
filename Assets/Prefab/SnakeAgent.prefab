@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 9107171386302636810}
   - component: {fileID: 6676187475054730374}
   - component: {fileID: 6954146446796350118}
-  - component: {fileID: 2781160808090891500}
+  - component: {fileID: 6873189682387491924}
   m_Layer: 7
   m_Name: Head
   m_TagString: BlueTeam
@@ -257,7 +257,7 @@ MonoBehaviour:
   DecisionPeriod: 5
   DecisionStep: 0
   TakeActionsBetweenDecisions: 1
---- !u!114 &2781160808090891500
+--- !u!114 &6873189682387491924
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -266,31 +266,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 4218471239017000936}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a501962d056745d1a30e99146ee39fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SensorName: GridSensor
-  m_CellScale: {x: 1, y: 0.01, z: 1}
-  m_GridSize: {x: 20, y: 1, z: 20}
-  m_RotateWithAgent: 0
-  m_AgentGameObject: {fileID: 2603193171156403207}
+  m_SensorName: RayPerceptionSensor
   m_DetectableTags:
   - Food
-  - Target
-  - Body
-  m_ColliderMask:
+  - BlueTeam
+  - RedTeam
+  - Enemy
+  m_RaysPerDirection: 24
+  m_MaxRayDegrees: 70
+  m_SphereCastRadius: 0.5
+  m_RayLength: 53
+  m_RayLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
-  m_MaxColliderBufferSize: 500
-  m_InitialColliderBufferSize: 4
-  m_DebugColors:
-  - {r: 1, g: 0.028334636, b: 0, a: 1}
-  - {r: 1, g: 0.86353207, b: 0, a: 1}
-  - {r: 0.12315726, g: 1, b: 0, a: 1}
-  m_GizmoYOffset: 0
-  m_ShowGizmos: 1
-  m_CompressionType: 1
+    m_Bits: 4294967291
   m_ObservationStacks: 1
+  m_AlternatingRayOrder: 1
+  m_UseBatchedRaycasts: 0
+  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
+  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
+  m_StartVerticalOffset: 0
+  m_EndVerticalOffset: 0
 --- !u!1 &8473877637833376028
 GameObject:
   m_ObjectHideFlags: 0
