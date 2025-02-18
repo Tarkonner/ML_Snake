@@ -41,39 +41,27 @@ public class SnakeAgent : Agent
         }
     }
     
-    private void ApplyPenalty()
-    {
-        //Debug.Log("Applying penalty for falling off!");
-        AddReward(-3.0f); // Give a penalty of -3
-        enviormentManager.OnFailure(); // Trigger floor blinking red
-        EndEpisode(); // End the episode after penalty
-    }
-
     public override void OnEpisodeBegin()
     {
-        // Reset the snake's position and clear any velocities.
+        MaxStep = 1500; 
         transform.localPosition = Vector3.zero;
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
     
-        // Reset the snake's length by clearing and rebuilding its body parts.
-        if (snakeMovement != null)
-        {
-            snakeMovement.ResetSnake();
-        }
+        snakeMovement?.ResetSnake();
     
-        // Reset internal variables.
-        MaxStep = 1000; 
+        foodCollected = 0;
         lastFoodPosition = enviormentManager.GetFreeSpace();
+<<<<<<< HEAD
         previousDistanceToFood = float.MaxValue;
         foodCollected = 0; // Reset food counter
 
         enviormentManager.MoveAllFood();
         targetDummyManager.ResetTargetDummy();
+=======
+        enviormentManager.MoveAllFood();
+>>>>>>> origin/MTB_maincheck
     }
-
-
-
 
     public override void CollectObservations(VectorSensor sensor)
     {
@@ -84,37 +72,45 @@ public class SnakeAgent : Agent
 
     public override void OnActionReceived(ActionBuffers actionBuffers)
     {
-        // Actions
         Vector3 controlSignal = Vector3.zero;
         controlSignal.x = actionBuffers.ContinuousActions[0];
         controlSignal.z = actionBuffers.ContinuousActions[1];
         snakeMovement.SetMoveDirection(controlSignal);
 
-        AddReward(-0.001f);  
+        // Step Penalty: Prevent wandering aimlessly
+        AddReward(-0.0005f);
 
+        // Add a small reward for decreasing distance to food
         float currentDistance = Vector3.Distance(transform.localPosition, lastFoodPosition);
         if (currentDistance < previousDistanceToFood)
         {
-            AddReward(0.01f); // Positive reward for getting closer
+            AddReward(0.0003f);
         }
         else
         {
-            AddReward(-0.01f); // Penalty for moving away
+            AddReward(-0.0003f);
         }
-        
         previousDistanceToFood = currentDistance;
     }
 
+
     private void EatReward()
     {
-        MaxStep += 1000;
-        lastFoodPosition = enviormentManager.GetFreeSpace(); 
-        AddReward(1.0f);
+        Debug.Log("Food eaten! Rewarding agent.");
+        float efficiencyBonus = Mathf.Clamp(1.5f - (StepCount / (float)MaxStep), 0.1f, 1.5f);
+        float streakBonus = foodCollected * 0.5f; // Encourage consecutive pickups
     
-        foodCollected++; // Increase food count
+        // Increase base food reward
+        AddReward(10.0f + efficiencyBonus + streakBonus);
     
-        if (GetCumulativeReward() > winScore)
-            Ending();
+        foodCollected++; 
+        lastFoodPosition = enviormentManager.GetFreeSpace();
+        
+        // if less then 1000 steps add more steps
+        if (MaxStep < 1000)
+        {
+            MaxStep += 500;
+        }
     }
 
     
@@ -152,7 +148,31 @@ public class SnakeAgent : Agent
     //         AddReward(-0.005f); // Give a penalty of -0.01
     //     }
     // }
+    
+    private void ApplyPenalty()
+    {
+        AddReward(-3.0f);
+        enviormentManager.OnFailure();
+        EndEpisode();
+    }
+
+    // private void OnCollisionEnter(Collision other)
+    // {
+    //     if (other.gameObject.CompareTag("Wall"))
+    //     {
+    //         Debug.Log("Collided with wall! Penalizing agent.");
+    //         AddReward(-2.0f); 
+    //         EndEpisode(); 
+    //     }
     //
+    //     if (other.gameObject.CompareTag("Body"))
+    //     {
+    //         Debug.Log("Collided with body! Penalizing agent.");
+    //         AddReward(-0.5f); 
+    //     }
+    // }
+
+    
     private void Update()
     {
         if (!StateManager.Instance.academyInfoText)

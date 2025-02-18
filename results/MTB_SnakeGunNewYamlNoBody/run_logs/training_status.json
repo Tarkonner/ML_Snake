@@ -1,0 +1,29 @@
+{
+    "SnakeAgent": {
+        "checkpoints": [
+            {
+                "steps": 76688,
+                "file_path": "results\\MTB_SnakeGunNewYamlNoBody\\SnakeAgent\\SnakeAgent-76688.onnx",
+                "reward": -1.3447606454170506,
+                "creation_time": 1739796817.0259635,
+                "auxillary_file_paths": [
+                    "results\\MTB_SnakeGunNewYamlNoBody\\SnakeAgent\\SnakeAgent-76688.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 76688,
+            "file_path": "results\\MTB_SnakeGunNewYamlNoBody\\SnakeAgent.onnx",
+            "reward": -1.3447606454170506,
+            "creation_time": 1739796817.0259635,
+            "auxillary_file_paths": [
+                "results\\MTB_SnakeGunNewYamlNoBody\\SnakeAgent\\SnakeAgent-76688.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}

@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70c17c93-c167-49b7-bd35-1353d05256f8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ML_Snake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ML_Snake/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ML-Agents/Timers/3D Snake_timers.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ML-Agents/Timers/3D Snake_timers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/SnakeAgent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/SnakeAgent.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/3D Snake.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/3D Snake.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/SnakeAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/SnakeAgent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/SnakeMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/SnakeMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/MTB_SnakeGunNewYaml/SnakeAgent/events.out.tfevents.1739785790.Legion.20788.0" beforeDir="false" afterPath="$PROJECT_DIR$/results/MTB_SnakeGunNewYaml/SnakeAgent/events.out.tfevents.1739785790.Legion.20788.0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/MTB_SnakeGun_SACYaml2/SnakeAgent/events.out.tfevents.1739875762.Legion.5432.0" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,18 +34,13 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/thorb/Unity/AI/ML_Snake/Assets/Script/EnviormentManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/thorb/Unity/AI/ML_Snake/Assets/Script/EnviormentManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/thorb/Unity/AI/ML_Snake/Assets/Script/Food.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/thorb/Unity/AI/ML_Snake/Assets/Script/Food.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/thorb/Unity/AI/ML_Snake/Assets/Script/SnakeAgent.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/thorb/Unity/AI/ML_Snake/Assets/Script/SnakeAgent.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/thorb/Unity/AI/ML_Snake/Assets/Script/SnakeMovement.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/thorb/Unity/AI/ML_Snake/Assets/Script/SnakeMovement.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@001b54a8988a/Editor/ViewSwitcher.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ml-agents@2b4ded88494d/Runtime/Agent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ml-agents@2b4ded88494d/Runtime/Sensors/BoxOverlapChecker.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ml-agents@2b4ded88494d/Runtime/Sensors/VectorSensor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../TEST_ML_Snake/Assets/Scripts/Spawner.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../TEST_Unity_ML/Assets/Scripts/RollerAgent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ml-agents/Project/Assets/ML-Agents/Examples/FoodCollector/Scripts/FoodCollectorAgent.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -131,7 +130,8 @@
       <workItem from="1739442038960" duration="166000" />
       <workItem from="1739521477492" duration="5474000" />
       <workItem from="1739711118236" duration="3082000" />
-      <workItem from="1739780416956" duration="4797000" />
+      <workItem from="1739780416956" duration="14804000" />
+      <workItem from="1739866555984" duration="9017000" />
     </task>
     <servers />
   </component>

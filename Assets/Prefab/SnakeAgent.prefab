@@ -172,7 +172,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 0
   m_CollisionDetection: 1
 --- !u!114 &3331848926571576303
 MonoBehaviour:
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 200
   rotationSpeed: 0.1
-  bodyPrefab: {fileID: 6555164450744074074, guid: 53dec15c75b518145acd262d27a7f4ed, type: 3}
+  bodyPrefab: {fileID: 8590049770274324334, guid: 4c0e0eecdc02a1e4ea13880a4ffb0bb4, type: 3}
   desiredDistance: 1
   followSpeed: 5
   startBodySize: 3
@@ -286,7 +286,7 @@ MonoBehaviour:
   m_DebugColors:
   - {r: 1, g: 0.028334636, b: 0, a: 1}
   - {r: 1, g: 0.86353207, b: 0, a: 1}
-  - {r: 0.12315726, g: 1, b: 0, a: 1}
+  - {r: 0, g: 0.41886973, b: 1, a: 1}
   m_GizmoYOffset: 0
   m_ShowGizmos: 1
   m_CompressionType: 1

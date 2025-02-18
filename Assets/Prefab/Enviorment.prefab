@@ -47,7 +47,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enviormentSize: {x: 20, y: 20}
+<<<<<<< HEAD
   targetDummyManager: {fileID: 2162603556298904361}
+=======
+>>>>>>> origin/MTB_maincheck
   centrumSpawnOffset: {x: 0, y: 0}
   wallPrefab: {fileID: 7950988272589840854, guid: bcdf5a639640e7d458937d455aa4901f, type: 3}
   ground: {fileID: 3968398566344741371}
