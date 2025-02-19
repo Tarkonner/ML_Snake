@@ -197,7 +197,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 7e20db8d537950248ac199da9523bd15, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: f57faeb26d75d5e4a89c223dedbd3103, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 2
   m_BehaviorName: SnakeAgent
