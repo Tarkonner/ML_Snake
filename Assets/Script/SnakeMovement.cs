@@ -139,6 +139,17 @@ public class SnakeMovement : MonoBehaviour
         }
     }
 
+    public void ShrinkSnake()
+    {
+        int lastIndex = bodyParts.Count - 1;
+        Destroy(bodyParts[lastIndex]);
+        bodyParts.RemoveAt(lastIndex);
+
+        if(bodyParts.Count == 0)
+            SnakeDies();
+    }
+
+
     public void SetMoveDirection(Vector3 direction)
     {
         if (direction == Vector3.zero)
@@ -169,7 +180,7 @@ public class SnakeMovement : MonoBehaviour
             Food food = collision.gameObject.GetComponent<Food>();
             if (food != null && !food.IsEaten)
             {
-                Debug.Log("Food");
+                //Debug.Log("Food");
                 food.MarkAsEaten(); // Prevents multiple triggers
                 EatenFood?.Invoke();
                 GrowSnake();

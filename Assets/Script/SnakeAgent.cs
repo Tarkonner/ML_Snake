@@ -103,7 +103,7 @@ public class SnakeAgent : Agent
         float streakBonus = foodCollected * 0.5f; // Encourage consecutive pickups
     
         // Increase base food reward
-        AddReward(10.0f + efficiencyBonus + streakBonus);
+        AddReward(1f + efficiencyBonus + streakBonus);
     
         foodCollected++; 
         
@@ -114,7 +114,6 @@ public class SnakeAgent : Agent
         }
         // Increase allowed steps when food is eaten.
         MaxStep += 1000;
-        AddReward(10.0f);
 
         foodCollected++;
 

@@ -8,9 +8,6 @@ public class EnviormentManager : MonoBehaviour
 {
     [SerializeField] Vector2 enviormentSize = new Vector3(10, 10);
     public Vector2 enviormentRadius => enviormentSize / 2;
-
-    public TargetDummyManager targetDummyManager;
-
     [SerializeField] Vector2 centrumSpawnOffset = new Vector2(2, 2);
 
     [Header("Enviorment")]
@@ -29,9 +26,6 @@ public class EnviormentManager : MonoBehaviour
     private List<GameObject> holdFood = new List<GameObject>();
     [SerializeField] int numberOfFoodInEnviorment = 2;
 
-
-    private GameObject holdTarget;
-    private GameObject holdGun;
 
     private Renderer groundRenderer;
 
@@ -153,7 +147,8 @@ public class EnviormentManager : MonoBehaviour
         if (snakeMovement != null)
         {
             Transform snakeHead = snakeMovement.transform;
-            holdGun = Instantiate(gunPrefab, snakeHead.position, Quaternion.identity);
+            GameObject holdGun = Instantiate(gunPrefab, snakeHead.position, Quaternion.identity);
+            holdGun.GetComponent<GunAgent>().ownerSnake = snake;
 
             GunPositionFollower follower = holdGun.GetComponent<GunPositionFollower>();
             if (follower != null)
@@ -174,7 +169,6 @@ public class EnviormentManager : MonoBehaviour
         // Instead of destroying and re-instantiating, we just reset the agent.
         SpawnAgent();
         MoveAllFood();
-        targetDummyManager.ResetTargetDummy();
     }
 
     public void MoveAllFood()

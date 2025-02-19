@@ -29,8 +29,12 @@ public class GunAgent : Agent
 
     private BehaviorParameters behaviorParameters;
 
+    [SerializeField] Transform bulletSpawnPoint;
+
     // This property will store the desired rotation computed in Update.
     public Quaternion DesiredRotation { get; private set; }
+
+    public GameObject ownerSnake;
 
     public override void Initialize()
     {
@@ -132,7 +136,7 @@ public class GunAgent : Agent
 
         // Spawn the projectile with a +0.5 offset in the Y axis.
         Vector3 spawnPosition = transform.position + new Vector3(0, 0.5f, 0);
-        GameObject projectile = Instantiate(projectilePrefab, spawnPosition, transform.rotation);
+        GameObject projectile = Instantiate(projectilePrefab, bulletSpawnPoint.position, transform.rotation);
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         if (rb != null)
         {
@@ -147,6 +151,7 @@ public class GunAgent : Agent
         if (bulletReward != null)
         {
             bulletReward.agent = this;
+            bulletReward.Setup(ownerSnake);
         }
     }
 

@@ -7,6 +7,7 @@ public class BulletReward : MonoBehaviour
 
     [HideInInspector]
     public GunAgent agent;
+    private GameObject snake;
 
     // This flag indicates whether this bullet has already registered a hit.
     // Make sure this is NOT declared as static.
@@ -20,6 +21,11 @@ public class BulletReward : MonoBehaviour
         hasRegisteredHit = false;
     }
 
+    public void Setup(GameObject ownerSnake)
+    {
+        snake = ownerSnake;
+    }
+
     void OnCollisionEnter(Collision collision)
     {
         //Debug.Log("Bullet collided with: " + collision.gameObject.name);
@@ -27,23 +33,23 @@ public class BulletReward : MonoBehaviour
         // Process the collision only if we haven't registered a hit yet.
         if (!hasRegisteredHit)
         {
-            // Check if the collision is with an enemy.
-            if (collision.gameObject.CompareTag("Enemy"))
+            for (int i = 0; i < collision.gameObject.transform.childCount; i++)
             {
-                Debug.Log("Enemy Hit!");
-                if (agent != null)
+                GameObject child = collision.gameObject.transform.GetChild(i).gameObject;
+                if (child.CompareTag("Enemy"))
                 {
-                    agent.AddReward(rewardOnHit);
+                    snake.GetComponentInChildren<SnakeMovement>().ShrinkSnake();
+
+                    if (agent != null)
+                    {
+                        agent.AddReward(rewardOnHit);
+                    }
+                    else
+                        agent.AddReward((rewardOnHit / 4) * -1);
                 }
-                
+
                 hasRegisteredHit = true;
             }
-            else
-            {
-                agent.AddReward((rewardOnHit/4)*-1);
-            }
-
-
         }
 
         // Schedule destruction after 2 seconds.

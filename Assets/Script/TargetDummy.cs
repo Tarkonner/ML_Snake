@@ -19,10 +19,10 @@ public class TargetDummy : MonoBehaviour
             if (!bulletsThatTriggeredReset.Contains(bulletID))
             {
                 bulletsThatTriggeredReset.Add(bulletID);
-                if (manager != null)
-                {
-                    manager.ResetTargetDummy();
-                }
+                //if (manager != null)
+                //{
+                //    manager.ResetTargetDummy();
+                //}
             }
             else
             {
