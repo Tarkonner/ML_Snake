@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 8
+    VectorObservationSize: 7
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 2
@@ -197,9 +197,9 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: f57faeb26d75d5e4a89c223dedbd3103, type: 3}
+  m_Model: {fileID: 0}
   m_InferenceDevice: 0
-  m_BehaviorType: 2
+  m_BehaviorType: 0
   m_BehaviorName: SnakeAgent
   TeamId: 0
   m_UseChildSensors: 1
@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 200
-  rotationSpeed: 100
+  rotationSpeed: 10
   bodyPrefab: {fileID: 6555164450744074074, guid: 53dec15c75b518145acd262d27a7f4ed, type: 3}
   desiredDistance: 1
   followSpeed: 5
@@ -277,6 +277,7 @@ MonoBehaviour:
   - BlueTeam
   - RedTeam
   - Enemy
+  - Wall
   m_RaysPerDirection: 24
   m_MaxRayDegrees: 70
   m_SphereCastRadius: 0.5

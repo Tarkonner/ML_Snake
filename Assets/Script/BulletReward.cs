@@ -30,7 +30,7 @@ public class BulletReward : MonoBehaviour
             // Check if the collision is with an enemy.
             if (collision.gameObject.CompareTag("Enemy"))
             {
-                Debug.Log("Enemy Hit!");
+               // Debug.Log("Enemy Hit!");
                 if (agent != null)
                 {
                     agent.AddReward(rewardOnHit);

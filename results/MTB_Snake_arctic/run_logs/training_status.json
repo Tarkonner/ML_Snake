@@ -1,0 +1,65 @@
+{
+    "SnakeAgent": {
+        "checkpoints": [
+            {
+                "steps": 221522,
+                "file_path": "results\\MTB_Snake_arctic\\SnakeAgent\\SnakeAgent-221522.onnx",
+                "reward": -8.731809083394662,
+                "creation_time": 1739979427.4491484,
+                "auxillary_file_paths": [
+                    "results\\MTB_Snake_arctic\\SnakeAgent\\SnakeAgent-221522.pt"
+                ]
+            },
+            {
+                "steps": 345164,
+                "file_path": "results\\MTB_Snake_arctic\\SnakeAgent\\SnakeAgent-345164.onnx",
+                "reward": -1.145998239517212,
+                "creation_time": 1739984978.8870292,
+                "auxillary_file_paths": [
+                    "results\\MTB_Snake_arctic\\SnakeAgent\\SnakeAgent-345164.pt"
+                ]
+            },
+            {
+                "steps": 387443,
+                "file_path": "results\\MTB_Snake_arctic\\SnakeAgent\\SnakeAgent-387443.onnx",
+                "reward": -15.275748771149665,
+                "creation_time": 1739986905.0202415,
+                "auxillary_file_paths": [
+                    "results\\MTB_Snake_arctic\\SnakeAgent\\SnakeAgent-387443.pt"
+                ]
+            },
+            {
+                "steps": 449668,
+                "file_path": "results\\MTB_Snake_arctic\\SnakeAgent\\SnakeAgent-449668.onnx",
+                "reward": 19.33084822145219,
+                "creation_time": 1739989843.688714,
+                "auxillary_file_paths": [
+                    "results\\MTB_Snake_arctic\\SnakeAgent\\SnakeAgent-449668.pt"
+                ]
+            },
+            {
+                "steps": 486337,
+                "file_path": "results\\MTB_Snake_arctic\\SnakeAgent\\SnakeAgent-486337.onnx",
+                "reward": 11.056227846865852,
+                "creation_time": 1739991583.5370076,
+                "auxillary_file_paths": [
+                    "results\\MTB_Snake_arctic\\SnakeAgent\\SnakeAgent-486337.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 486337,
+            "file_path": "results\\MTB_Snake_arctic\\SnakeAgent.onnx",
+            "reward": 11.056227846865852,
+            "creation_time": 1739991583.5370076,
+            "auxillary_file_paths": [
+                "results\\MTB_Snake_arctic\\SnakeAgent\\SnakeAgent-486337.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}

@@ -210,7 +210,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &211520640
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -722,7 +722,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &525634088
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -899,13 +899,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527251139}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 15, z: -15}
+  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
+  m_LocalPosition: {x: 0, y: 25, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
 --- !u!114 &527251143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1658,8 +1658,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enviormentPrefab: {fileID: 1415600777556534610, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
-  numberToSpawn: {x: 3, y: 5}
-  spaceBetweenEnviorment: {x: 50, y: 50}
+  numberToSpawn: {x: 2, y: 2}
+  spaceBetweenEnviorment: {x: 25, y: 25}
 --- !u!4 &1198959989
 Transform:
   m_ObjectHideFlags: 0
@@ -1692,7 +1692,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1262420847
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1829,7 +1829,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1402445139
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1931,18 +1931,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enviorment
       objectReference: {fileID: 0}
+    - target: {fileID: 1415600777556534610, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2234609031462090516, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
       propertyPath: enviormentSize.x
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2234609031462090516, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
       propertyPath: enviormentSize.y
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2234609031462090516, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
       propertyPath: targetDummyManager
       value: 
       objectReference: {fileID: 2162603556298904361, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
+    - target: {fileID: 2234609031462090516, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
+      propertyPath: numberOfFoodInEnviorment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5010434914573024936, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2974,7 +2982,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1958288112
 BoxCollider:
   m_ObjectHideFlags: 0

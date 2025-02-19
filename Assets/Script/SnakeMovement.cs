@@ -9,7 +9,7 @@ public class SnakeMovement : MonoBehaviour
     Rigidbody rb;
 
     [Header("Movement")]
-    [SerializeField] float movementSpeed = 5;
+    public float movementSpeed = 5;
     [SerializeField] float rotationSpeed = 5;
     private float rotationValue;
     private Vector3 desiredDirection = Vector3.forward;
@@ -45,6 +45,7 @@ public class SnakeMovement : MonoBehaviour
 
     private void FixedUpdate()
     {  
+        //followSpeed = movementSpeed * 1.1f;
         
         //Movement
         Vector3 calSpeed = desiredDirection * movementSpeed * Time.deltaTime;
@@ -110,6 +111,8 @@ public class SnakeMovement : MonoBehaviour
         {
             GrowSnake();
         }
+
+        //movementSpeed = 200;
     }
 
 
@@ -176,11 +179,6 @@ public class SnakeMovement : MonoBehaviour
                 EatenFood?.Invoke();
                 GrowSnake();
             }
-        }
-        
-        if (collision.gameObject.tag == "Wall")
-        {
-            SnakeDies();
         }
         
         // if snake collides with target and has more than 10 segments

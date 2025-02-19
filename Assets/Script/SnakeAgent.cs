@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class SnakeAgent : Agent
 {
+    private const int MAX_ALLOWED_STEPS = 10000;
+    
     private EnviormentManager enviormentManager;
     private SnakeMovement snakeMovement;
 
@@ -46,13 +48,6 @@ public class SnakeAgent : Agent
         }
     }
 
-    private void ApplyPenalty()
-    {
-        AddReward(-1.0f);
-        enviormentManager.OnFailure();
-        EndEpisode();
-    }
-
     public override void OnEpisodeBegin()
     {
         // Reset the snake's position and movement
@@ -60,7 +55,7 @@ public class SnakeAgent : Agent
         // Let the SnakeMovement script handle resetting the snake body
         snakeMovement.ResetSnake();
 
-        MaxStep = 1000;
+        MaxStep = 500;
         lastFoodPosition = enviormentManager.GetFreeSpace();
         previousDistanceToFood = float.MaxValue;
         foodCollected = 0;
@@ -74,8 +69,8 @@ public class SnakeAgent : Agent
         // Observe the snake's position and rotation.
         sensor.AddObservation(transform.localPosition);
         sensor.AddObservation(transform.rotation);
-        // Optionally, observe the current forward speed or movementSpeed from SnakeMovement.
-        //sensor.AddObservation(snakeMovement == null ? 0 : snakeMovement.movementSpeed);
+        
+        //sensor.AddObservation(snakeMovement.movementSpeed);
     }
 
     public override void OnActionReceived(ActionBuffers actionBuffers)
@@ -108,18 +103,18 @@ public class SnakeAgent : Agent
         previousDistanceToFood = currentDistance;
     }
 
+
     private void EatReward()
     {
-        // Increase allowed steps when food is eaten.
-        MaxStep += 1000;
+        // Increase allowed steps when food is eaten, but cap at MAX_ALLOWED_STEPS.
+        MaxStep = Mathf.Min(MaxStep + 250, MAX_ALLOWED_STEPS);
+
         lastFoodPosition = enviormentManager.GetFreeSpace();
-        AddReward(10.0f);
-
+        AddReward(5.0f);
         foodCollected++;
-
-        if (GetCumulativeReward() > winScore)
-            Ending();
+        //snakeMovement.movementSpeed += 25;
     }
+
 
     private void TargetReward()
     {
@@ -142,16 +137,35 @@ public class SnakeAgent : Agent
         var continuousActionsOut = actionsOut.ContinuousActions;
         continuousActionsOut[0] = Input.GetAxis("Horizontal");
     }
+    
+    private void ApplyPenalty()
+    {
+        AddReward(-25.0f);
+        enviormentManager.OnFailure();
+        EndEpisode();
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Body"))
+        {
+            Debug.Log("Collided with body! Penalizing agent.");
+            AddReward(-0.5f); 
+        }
+        else if (other.gameObject.CompareTag("Wall"))
+        {
+            Debug.Log("Collided with wall! Penalizing agent.");
+            ApplyPenalty();
+        }
+    }
 
     private void Update()
     {
-        if (StateManager.Instance.academyInfoText == null)
-            return;
-
         int episode = this.CompletedEpisodes;
         int steps = this.StepCount;
         int maxSteps = this.MaxStep;
-        float currentReward = GetCumulativeReward();
+        // Hvis steps er 0 (dvs. en ny episode), vis 0 som belønning.
+        float currentReward = steps == 0 ? 0 : GetCumulativeReward();
 
         StateManager.Instance.academyInfoText.text =
             $"Episode: {episode}\n" +

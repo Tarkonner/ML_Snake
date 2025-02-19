@@ -34,7 +34,6 @@ public class GunAgent : Agent
 
     public override void Initialize()
     {
-        Time.timeScale = 1000f;
         behaviorParameters = GetComponent<BehaviorParameters>();
         // Initialize DesiredRotation to the current rotation.
         DesiredRotation = transform.rotation;

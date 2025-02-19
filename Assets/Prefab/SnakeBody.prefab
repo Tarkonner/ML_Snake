@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 6933790748523579244}
   m_Layer: 7
   m_Name: SnakeBody
-  m_TagString: BlueTeam
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

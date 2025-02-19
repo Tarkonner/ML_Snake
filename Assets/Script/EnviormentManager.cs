@@ -42,6 +42,11 @@ public class EnviormentManager : MonoBehaviour
     {
         groundRenderer = ground.GetComponent<Renderer>();
         ResetAction += ResetEnviorment;
+        
+        // Setup ground and walls (same as before) …
+        ground.transform.localScale = new Vector3(enviormentSize.x + 1, 0, enviormentSize.y + 1);
+        // (Instantiate walls here as in your original code)
+        SpawnWalls();
     }
 
     private void OnDisable()
@@ -51,9 +56,7 @@ public class EnviormentManager : MonoBehaviour
 
     void Start()
     {
-        // Setup ground and walls (same as before) …
-        ground.transform.localScale = new Vector3(enviormentSize.x + 1, 0, enviormentSize.y + 1);
-        // (Instantiate walls here as in your original code)
+   
 
         // Spawn agent once at startup.
         SpawnAgent();
@@ -72,6 +75,27 @@ public class EnviormentManager : MonoBehaviour
             holdFood.Add(food);
             food.transform.localPosition = GetFreeSpace();
         }
+    }
+
+    private void SpawnWalls()
+    {
+        float halfX = (enviormentSize.x + 1f) / 2f; 
+        float halfZ = (enviormentSize.y + 1f) / 2f;
+        
+        // Spawn left/right walls.
+        Vector3 wallScale = new Vector3(1, 1, enviormentSize.y + 1);
+        Vector3 wallPosition = new Vector3(halfX, 0, 0);
+        Instantiate(wallPrefab, wallPosition, Quaternion.identity, transform).transform.localScale = wallScale;
+        wallPosition = new Vector3(-halfX, 0, 0);
+        Instantiate(wallPrefab, wallPosition, Quaternion.identity, transform).transform.localScale = wallScale;
+
+        // Spawn top/bottom walls.
+        wallScale = new Vector3(enviormentSize.x + 1, 1, 1);
+        wallPosition = new Vector3(0, 0, halfZ);
+        Instantiate(wallPrefab, wallPosition, Quaternion.identity, transform).transform.localScale = wallScale;
+        wallPosition = new Vector3(0, 0, -halfZ);
+        Instantiate(wallPrefab, wallPosition, Quaternion.identity, transform).transform.localScale = wallScale;
+
     }
 
     /// <summary>
@@ -128,10 +152,10 @@ public class EnviormentManager : MonoBehaviour
 
             // Call EndEpisode() on the agent so that it can reset its internal state.
             var snakeAgent = holdAgent.GetComponent<SnakeAgent>();
-            if (snakeAgent != null)
-            {
-                snakeAgent.EndEpisode();
-            }
+            // if (snakeAgent != null)
+            // {
+            //     snakeAgent.EndEpisode();
+            // }
         }
     }
 

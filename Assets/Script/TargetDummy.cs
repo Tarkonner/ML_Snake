@@ -24,10 +24,10 @@ public class TargetDummy : MonoBehaviour
                     manager.ResetTargetDummy();
                 }
             }
-            else
-            {
-                Debug.Log("Bullet already triggered reset; dummy not reset again.");
-            }
+            // else
+            // {
+            //     Debug.Log("Bullet already triggered reset; dummy not reset again.");
+            // }
         }
     }
 
