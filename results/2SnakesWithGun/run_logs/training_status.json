@@ -1,0 +1,65 @@
+{
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.2.2+cu121"
+    },
+    "SnakeAgent": {
+        "checkpoints": [
+            {
+                "steps": 0,
+                "file_path": "results\\2SnakesWithGun\\SnakeAgent\\SnakeAgent-0.onnx",
+                "reward": null,
+                "creation_time": 1739996630.3180294,
+                "auxillary_file_paths": [
+                    "results\\2SnakesWithGun\\SnakeAgent\\SnakeAgent-0.pt"
+                ]
+            },
+            {
+                "steps": 0,
+                "file_path": "results\\2SnakesWithGun\\SnakeAgent\\SnakeAgent-0.onnx",
+                "reward": null,
+                "creation_time": 1739996696.5257676,
+                "auxillary_file_paths": [
+                    "results\\2SnakesWithGun\\SnakeAgent\\SnakeAgent-0.pt"
+                ]
+            },
+            {
+                "steps": 0,
+                "file_path": "results\\2SnakesWithGun\\SnakeAgent\\SnakeAgent-0.onnx",
+                "reward": null,
+                "creation_time": 1739997118.6381931,
+                "auxillary_file_paths": [
+                    "results\\2SnakesWithGun\\SnakeAgent\\SnakeAgent-0.pt"
+                ]
+            },
+            {
+                "steps": 499974,
+                "file_path": "results\\2SnakesWithGun\\SnakeAgent\\SnakeAgent-499974.onnx",
+                "reward": 17.107767458369093,
+                "creation_time": 1740001228.2992485,
+                "auxillary_file_paths": [
+                    "results\\2SnakesWithGun\\SnakeAgent\\SnakeAgent-499974.pt"
+                ]
+            },
+            {
+                "steps": 500102,
+                "file_path": "results\\2SnakesWithGun\\SnakeAgent\\SnakeAgent-500102.onnx",
+                "reward": 17.107767458369093,
+                "creation_time": 1740001228.6096487,
+                "auxillary_file_paths": [
+                    "results\\2SnakesWithGun\\SnakeAgent\\SnakeAgent-500102.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 500102,
+            "file_path": "results\\2SnakesWithGun\\SnakeAgent.onnx",
+            "reward": 17.107767458369093,
+            "creation_time": 1740001228.6096487,
+            "auxillary_file_paths": [
+                "results\\2SnakesWithGun\\SnakeAgent\\SnakeAgent-500102.pt"
+            ]
+        }
+    }
+}
