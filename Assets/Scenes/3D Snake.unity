@@ -1428,7 +1428,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1198959988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1442,7 +1442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enviormentPrefab: {fileID: 1415600777556534610, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
-  numberToSpawn: {x: 2, y: 2}
+  numberToSpawn: {x: 3, y: 3}
   spaceBetweenEnviorment: {x: 25, y: 25}
 --- !u!4 &1198959989
 Transform:
@@ -1609,7 +1609,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1415600777556534610, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2234609031462090516, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
       propertyPath: gunPrefab
@@ -2053,7 +2053,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1594398224
 BoxCollider:
   m_ObjectHideFlags: 0

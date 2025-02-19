@@ -18,8 +18,9 @@ public class EnviormentManager : MonoBehaviour
     
     [Header("Agent")]
     [SerializeField] GameObject agentPrefab;
-    [SerializeField, Range(1, 2)] int numberOfAgents = 1;
+    [SerializeField] GameObject brainAgentPrefab;
     [SerializeField] GameObject gunPrefab;
+    private List<GameObject> holdAgents = new List<GameObject>();
 
     [Header("Food")]
     [SerializeField] GameObject foodPrefab;
@@ -28,7 +29,6 @@ public class EnviormentManager : MonoBehaviour
 
     [SerializeField] GameObject targetPrefab;
 
-    private List<GameObject> holdAgents = new List<GameObject>();
     private GameObject holdTarget;
     private GameObject holdGun;
 
@@ -101,52 +101,43 @@ public class EnviormentManager : MonoBehaviour
     {
         if (holdAgents.Count == 0)
         {
-            for (global::System.Int32 i = 0; i < numberOfAgents; i++)
+            //Traning agent
+            GameObject spawn = Instantiate(agentPrefab, transform);
+            holdAgents.Add(spawn);
+            spawn.transform.localPosition = new Vector3(
+                Random.Range(-centrumSpawnOffset.x, centrumSpawnOffset.x),
+                0,
+                Random.Range(-centrumSpawnOffset.y, centrumSpawnOffset.y));
+
+
+            // Setup gun if available.
+            if (gunPrefab != null)
+                AddGun(spawn);
+
+
+            // Subscribe to death events so that a reset is triggered.
+            if (spawn.GetComponentInChildren<SnakeMovement>() != null)
             {
-                GameObject spawn = Instantiate(agentPrefab, transform);
-                // No agent exists yet, so instantiate one.
-                holdAgents.Add(spawn);
-                spawn.transform.localPosition = new Vector3(
-                    Random.Range(-centrumSpawnOffset.x, centrumSpawnOffset.x),
-                    0,
-                    Random.Range(-centrumSpawnOffset.y, centrumSpawnOffset.y));
-
-                // Setup gun if available.
-                if (gunPrefab != null)
-                {
-                    SnakeMovement snakeMovement = spawn.GetComponentInChildren<SnakeMovement>();
-                    if (snakeMovement != null)
-                    {
-                        Transform snakeHead = snakeMovement.transform;
-                        holdGun = Instantiate(gunPrefab, snakeHead.position, Quaternion.identity);
-
-                        GunPositionFollower follower = holdGun.GetComponent<GunPositionFollower>();
-                        if (follower != null)
-                        {
-                            follower.target = snakeHead;
-                            follower.offset = new Vector3(0, 0.5f, 0);
-                        }
-                    }
-                    else
-                    {
-                        Debug.LogWarning("SnakeMovement component not found on spawned agent. Gun not attached.");
-                    }
-                }
-
-                // Subscribe to death events so that a reset is triggered.
-                if (spawn.GetComponentInChildren<SnakeMovement>() != null)
-                {
-                    var snakeMove = spawn.GetComponentInChildren<SnakeMovement>();
-                    snakeMove.Dying += SpawnAgent;
-                    snakeMove.Dying += MoveAllFood;
-                }
+                var snakeMove = spawn.GetComponentInChildren<SnakeMovement>();
+                snakeMove.Dying += SpawnAgent;
+                snakeMove.Dying += MoveAllFood;
             }
 
+            //Brain agent
+            spawn = Instantiate(brainAgentPrefab, transform);
+            holdAgents.Add(spawn);
+            spawn.transform.localPosition = new Vector3(
+                Random.Range(-centrumSpawnOffset.x, centrumSpawnOffset.x),
+                0,
+                Random.Range(-centrumSpawnOffset.y, centrumSpawnOffset.y));
+            // Setup gun if available.
+            if (gunPrefab != null)
+                AddGun(spawn);
 
         }
         else
         {
-            for (int i = 0; i < numberOfAgents; i++)
+            for (int i = 0; i < holdAgents.Count; i++)
             {
                 // Reset the existing agent's position.
                 holdAgents[i].transform.localPosition = new Vector3(
@@ -165,6 +156,28 @@ public class EnviormentManager : MonoBehaviour
 
         }
     }
+
+    private void AddGun(GameObject snake)
+    {
+        SnakeMovement snakeMovement = snake.GetComponentInChildren<SnakeMovement>();
+        if (snakeMovement != null)
+        {
+            Transform snakeHead = snakeMovement.transform;
+            holdGun = Instantiate(gunPrefab, snakeHead.position, Quaternion.identity);
+
+            GunPositionFollower follower = holdGun.GetComponent<GunPositionFollower>();
+            if (follower != null)
+            {
+                follower.target = snakeHead;
+                follower.offset = new Vector3(0, 0.5f, 0);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("SnakeMovement component not found on spawned agent. Gun not attached.");
+        }
+    }
+
 
     public void ResetEnviorment()
     {

@@ -147,23 +147,15 @@ public class SnakeAgent : Agent
         EndEpisode();
     }
 
-    // private void OnCollisionEnter(Collision other)
-    // {
-    //     if (other.gameObject.CompareTag("Wall"))
-    //     {
-    //         Debug.Log("Collided with wall! Penalizing agent.");
-    //         AddReward(-2.0f); 
-    //         EndEpisode(); 
-    //     }
-    //
-    //     if (other.gameObject.CompareTag("Body"))
-    //     {
-    //         Debug.Log("Collided with body! Penalizing agent.");
-    //         AddReward(-0.5f); 
-    //     }
-    // }
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Body"))
+        {
+            AddReward(-0.01f);
+        }
+    }
 
-    
+
     private void Update()
     {
         if (!StateManager.Instance.academyInfoText)
