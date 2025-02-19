@@ -1,0 +1,29 @@
+{
+    "GunAgent": {
+        "checkpoints": [
+            {
+                "steps": 7728,
+                "file_path": "results\\Gun2\\GunAgent\\GunAgent-7728.onnx",
+                "reward": -2.933333422988653,
+                "creation_time": 1739804140.1671603,
+                "auxillary_file_paths": [
+                    "results\\Gun2\\GunAgent\\GunAgent-7728.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 7728,
+            "file_path": "results\\Gun2\\GunAgent.onnx",
+            "reward": -2.933333422988653,
+            "creation_time": 1739804140.1671603,
+            "auxillary_file_paths": [
+                "results\\Gun2\\GunAgent\\GunAgent-7728.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}

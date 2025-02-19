@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: -2209275265752007090}
   - component: {fileID: 7427489068348478619}
   - component: {fileID: 2090904392744662843}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gun
-  m_TagString: Untagged
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,7 +114,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 46dded73f270bf9438fc98da9bcfcd7d, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: bbf52245e6055f740947f695a36b3b70, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 2
   m_BehaviorName: GunAgent
@@ -140,8 +140,10 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 1000
   projectilePrefab: {fileID: 3459226482120009080, guid: 20801c43147abee4d8b242febfcf386d, type: 3}
-  projectileForce: 15
-  cooldownDuration: 1
+  projectileCount: 0
+  shootPenalty: -0.01
+  projectileForce: 20
+  cooldownDuration: 0.5
   rotationSpeed: 180
 --- !u!114 &-2209275265752007090
 MonoBehaviour:
@@ -179,7 +181,7 @@ MonoBehaviour:
   m_RayLength: 211
   m_RayLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967291
+    m_Bits: 4294966619
   m_ObservationStacks: 1
   m_AlternatingRayOrder: 1
   m_UseBatchedRaycasts: 0
@@ -199,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 600cb863e428c9f49a6bace5df9aa4fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 6595765019542759599, guid: 7832d158902ca6646bc82450825824dd, type: 3}
   offset: {x: 0, y: 0.5, z: 0}
 --- !u!1 &8493019991800138228
 GameObject:
@@ -212,9 +214,9 @@ GameObject:
   - component: {fileID: 2564412780768974028}
   - component: {fileID: 5211538579017870382}
   - component: {fileID: 5793303834327965520}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gun
-  m_TagString: Untagged
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

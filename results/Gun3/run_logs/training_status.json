@@ -1,0 +1,56 @@
+{
+    "GunAgent": {
+        "checkpoints": [
+            {
+                "steps": 45400,
+                "file_path": "results\\Gun3\\GunAgent\\GunAgent-45400.onnx",
+                "reward": -13.25,
+                "creation_time": 1739871701.476905,
+                "auxillary_file_paths": [
+                    "results\\Gun3\\GunAgent\\GunAgent-45400.pt"
+                ]
+            },
+            {
+                "steps": 129265,
+                "file_path": "results\\Gun3\\GunAgent\\GunAgent-129265.onnx",
+                "reward": null,
+                "creation_time": 1739874542.823426,
+                "auxillary_file_paths": [
+                    "results\\Gun3\\GunAgent\\GunAgent-129265.pt"
+                ]
+            },
+            {
+                "steps": 221665,
+                "file_path": "results\\Gun3\\GunAgent\\GunAgent-221665.onnx",
+                "reward": 8.068181818181818,
+                "creation_time": 1739877855.6630685,
+                "auxillary_file_paths": [
+                    "results\\Gun3\\GunAgent\\GunAgent-221665.pt"
+                ]
+            },
+            {
+                "steps": 286065,
+                "file_path": "results\\Gun3\\GunAgent\\GunAgent-286065.onnx",
+                "reward": 9.3515625,
+                "creation_time": 1739880193.0472953,
+                "auxillary_file_paths": [
+                    "results\\Gun3\\GunAgent\\GunAgent-286065.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 286065,
+            "file_path": "results\\Gun3\\GunAgent.onnx",
+            "reward": 9.3515625,
+            "creation_time": 1739880193.0472953,
+            "auxillary_file_paths": [
+                "results\\Gun3\\GunAgent\\GunAgent-286065.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}
