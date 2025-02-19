@@ -1,0 +1,29 @@
+{
+    "SnakeAgent": {
+        "checkpoints": [
+            {
+                "steps": 1887,
+                "file_path": "results\\ArcticSnake3\\SnakeAgent\\SnakeAgent-1887.onnx",
+                "reward": -5.19336112588644,
+                "creation_time": 1739909337.401748,
+                "auxillary_file_paths": [
+                    "results\\ArcticSnake3\\SnakeAgent\\SnakeAgent-1887.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1887,
+            "file_path": "results\\ArcticSnake3\\SnakeAgent.onnx",
+            "reward": -5.19336112588644,
+            "creation_time": 1739909337.401748,
+            "auxillary_file_paths": [
+                "results\\ArcticSnake3\\SnakeAgent\\SnakeAgent-1887.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}

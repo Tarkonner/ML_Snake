@@ -2,22 +2,58 @@
     "GunAgent": {
         "checkpoints": [
             {
-                "steps": 0,
-                "file_path": "results\\Gun1\\GunAgent\\GunAgent-0.onnx",
-                "reward": null,
-                "creation_time": 1739704388.8052185,
+                "steps": 76600,
+                "file_path": "results\\Gun1\\GunAgent\\GunAgent-76600.onnx",
+                "reward": 14.231378957179599,
+                "creation_time": 1739800709.440862,
                 "auxillary_file_paths": [
-                    "results\\Gun1\\GunAgent\\GunAgent-0.pt"
+                    "results\\Gun1\\GunAgent\\GunAgent-76600.pt"
+                ]
+            },
+            {
+                "steps": 80863,
+                "file_path": "results\\Gun1\\GunAgent\\GunAgent-80863.onnx",
+                "reward": 4.136666481072704,
+                "creation_time": 1739800973.5062947,
+                "auxillary_file_paths": [
+                    "results\\Gun1\\GunAgent\\GunAgent-80863.pt"
+                ]
+            },
+            {
+                "steps": 133463,
+                "file_path": "results\\Gun1\\GunAgent\\GunAgent-133463.onnx",
+                "reward": 5.8340002950280905,
+                "creation_time": 1739803016.4333205,
+                "auxillary_file_paths": [
+                    "results\\Gun1\\GunAgent\\GunAgent-133463.pt"
+                ]
+            },
+            {
+                "steps": 137581,
+                "file_path": "results\\Gun1\\GunAgent\\GunAgent-137581.onnx",
+                "reward": 2.6899998903666673,
+                "creation_time": 1739803324.378193,
+                "auxillary_file_paths": [
+                    "results\\Gun1\\GunAgent\\GunAgent-137581.pt"
+                ]
+            },
+            {
+                "steps": 145709,
+                "file_path": "results\\Gun1\\GunAgent\\GunAgent-145709.onnx",
+                "reward": 4.387499897740781,
+                "creation_time": 1739803786.3303754,
+                "auxillary_file_paths": [
+                    "results\\Gun1\\GunAgent\\GunAgent-145709.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 0,
+            "steps": 145709,
             "file_path": "results\\Gun1\\GunAgent.onnx",
-            "reward": null,
-            "creation_time": 1739704388.8052185,
+            "reward": 4.387499897740781,
+            "creation_time": 1739803786.3303754,
             "auxillary_file_paths": [
-                "results\\Gun1\\GunAgent\\GunAgent-0.pt"
+                "results\\Gun1\\GunAgent\\GunAgent-145709.pt"
             ]
         }
     },

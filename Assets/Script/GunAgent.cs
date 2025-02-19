@@ -10,7 +10,9 @@ public class GunAgent : Agent
     [Header("Projectile Settings")]
     [Tooltip("Projectile prefab to be fired.")]
     public GameObject projectilePrefab;
-
+    public int projectileCount = 0;
+    public float shootPenalty = -0.01f;
+    
     [Tooltip("Speed applied to the projectile.")]
     public float projectileForce = 5f;
 
@@ -32,6 +34,7 @@ public class GunAgent : Agent
 
     public override void Initialize()
     {
+        Time.timeScale = 1000f;
         behaviorParameters = GetComponent<BehaviorParameters>();
         // Initialize DesiredRotation to the current rotation.
         DesiredRotation = transform.rotation;
@@ -41,6 +44,7 @@ public class GunAgent : Agent
     {
         lastShotTime = -Mathf.Infinity;
         bulletWaiting = false;
+        projectileCount = 0;
 
         // Destroy all bullets in the scene.
         GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
@@ -135,8 +139,8 @@ public class GunAgent : Agent
             rb.linearVelocity = transform.forward * projectileForce;
         }
 
-        // Add a small reward for shooting.
-        AddReward(0.01f);
+        // Add a small penalty for shooting.
+        AddReward(shootPenalty * projectileCount);
 
         // Assign this agent to the bullet so it can reward hits.
         BulletReward bulletReward = projectile.GetComponent<BulletReward>();

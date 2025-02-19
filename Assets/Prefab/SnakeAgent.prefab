@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2012259449135677511}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SnakeAgent
-  m_TagString: Untagged
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,10 +49,11 @@ GameObject:
   - component: {fileID: 9107171386302636810}
   - component: {fileID: 6676187475054730374}
   - component: {fileID: 6954146446796350118}
-  - component: {fileID: 2781160808090891500}
-  m_Layer: 0
+  - component: {fileID: 6873189682387491924}
+  - component: {fileID: 5501711478676167589}
+  m_Layer: 7
   m_Name: Head
-  m_TagString: Untagged
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,13 +167,13 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!114 &3331848926571576303
 MonoBehaviour:
@@ -196,9 +197,9 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: a64c006ca7f2a83409f403cebc4815eb, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: f57faeb26d75d5e4a89c223dedbd3103, type: 3}
   m_InferenceDevice: 0
-  m_BehaviorType: 0
+  m_BehaviorType: 2
   m_BehaviorName: SnakeAgent
   TeamId: 0
   m_UseChildSensors: 1
@@ -221,7 +222,9 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 1000
+  targetDummyManager: {fileID: 2162603556298904361, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
   winScore: 20
+  agentRotationSpeed: 400
 --- !u!114 &6676187475054730374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,8 +238,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 200
-  rotationSpeed: 0.1
-  bodyPrefab: {fileID: 8590049770274324334, guid: 4c0e0eecdc02a1e4ea13880a4ffb0bb4, type: 3}
+  rotationSpeed: 100
+  bodyPrefab: {fileID: 6555164450744074074, guid: 53dec15c75b518145acd262d27a7f4ed, type: 3}
   desiredDistance: 1
   followSpeed: 5
   startBodySize: 3
@@ -256,7 +259,7 @@ MonoBehaviour:
   DecisionPeriod: 5
   DecisionStep: 0
   TakeActionsBetweenDecisions: 1
---- !u!114 &2781160808090891500
+--- !u!114 &6873189682387491924
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -265,31 +268,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 4218471239017000936}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a501962d056745d1a30e99146ee39fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SensorName: GridSensor
-  m_CellScale: {x: 1, y: 0.01, z: 1}
-  m_GridSize: {x: 20, y: 1, z: 20}
-  m_RotateWithAgent: 0
-  m_AgentGameObject: {fileID: 2603193171156403207}
+  m_SensorName: RayPerceptionSensor
   m_DetectableTags:
   - Food
-  - EnemySnake
-  - Body
-  m_ColliderMask:
+  - BlueTeam
+  - RedTeam
+  - Enemy
+  m_RaysPerDirection: 24
+  m_MaxRayDegrees: 70
+  m_SphereCastRadius: 0.5
+  m_RayLength: 53
+  m_RayLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
-  m_MaxColliderBufferSize: 500
-  m_InitialColliderBufferSize: 4
-  m_DebugColors:
-  - {r: 1, g: 0.028334636, b: 0, a: 1}
-  - {r: 1, g: 0.86353207, b: 0, a: 1}
-  - {r: 0, g: 0.41886973, b: 1, a: 1}
-  m_GizmoYOffset: 0
-  m_ShowGizmos: 1
-  m_CompressionType: 1
+    m_Bits: 4294967035
   m_ObservationStacks: 1
+  m_AlternatingRayOrder: 1
+  m_UseBatchedRaycasts: 0
+  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
+  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
+  m_StartVerticalOffset: 0
+  m_EndVerticalOffset: 0
+--- !u!114 &5501711478676167589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4218471239017000936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2902496c0120472b90269f94a0aec7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Record: 0
+  NumStepsToRecord: 0
+  DemonstrationName: ArcticSnake4
+  DemonstrationDirectory: DemoArcticSnake
 --- !u!1 &8473877637833376028
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,9 +319,9 @@ GameObject:
   - component: {fileID: 1332731640845849775}
   - component: {fileID: 8222549713074582139}
   - component: {fileID: 5752279143083944222}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Nose
-  m_TagString: Untagged
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -390,7 +407,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0

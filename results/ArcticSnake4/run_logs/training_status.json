@@ -1,0 +1,65 @@
+{
+    "SnakeAgent": {
+        "checkpoints": [
+            {
+                "steps": 16508,
+                "file_path": "results\\ArcticSnake4\\SnakeAgent\\SnakeAgent-16508.onnx",
+                "reward": -1.9713331818580628,
+                "creation_time": 1739949933.3113003,
+                "auxillary_file_paths": [
+                    "results\\ArcticSnake4\\SnakeAgent\\SnakeAgent-16508.pt"
+                ]
+            },
+            {
+                "steps": 19964,
+                "file_path": "results\\ArcticSnake4\\SnakeAgent\\SnakeAgent-19964.onnx",
+                "reward": -1.1502186339348555,
+                "creation_time": 1739950176.5472138,
+                "auxillary_file_paths": [
+                    "results\\ArcticSnake4\\SnakeAgent\\SnakeAgent-19964.pt"
+                ]
+            },
+            {
+                "steps": 32919,
+                "file_path": "results\\ArcticSnake4\\SnakeAgent\\SnakeAgent-32919.onnx",
+                "reward": 0.005902670543908067,
+                "creation_time": 1739950812.4162772,
+                "auxillary_file_paths": [
+                    "results\\ArcticSnake4\\SnakeAgent\\SnakeAgent-32919.pt"
+                ]
+            },
+            {
+                "steps": 33632,
+                "file_path": "results\\ArcticSnake4\\SnakeAgent\\SnakeAgent-33632.onnx",
+                "reward": -0.8921668231487274,
+                "creation_time": 1739950953.6773715,
+                "auxillary_file_paths": [
+                    "results\\ArcticSnake4\\SnakeAgent\\SnakeAgent-33632.pt"
+                ]
+            },
+            {
+                "steps": 33882,
+                "file_path": "results\\ArcticSnake4\\SnakeAgent\\SnakeAgent-33882.onnx",
+                "reward": -1.8600001856684685,
+                "creation_time": 1739951101.5320623,
+                "auxillary_file_paths": [
+                    "results\\ArcticSnake4\\SnakeAgent\\SnakeAgent-33882.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 33882,
+            "file_path": "results\\ArcticSnake4\\SnakeAgent.onnx",
+            "reward": -1.8600001856684685,
+            "creation_time": 1739951101.5320623,
+            "auxillary_file_paths": [
+                "results\\ArcticSnake4\\SnakeAgent\\SnakeAgent-33882.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}

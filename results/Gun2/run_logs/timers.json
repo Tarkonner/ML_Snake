@@ -1,0 +1,47 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1739868914",
+        "python_version": "3.10.12 | packaged by Anaconda, Inc. | (main, Jul  5 2023, 19:01:18) [MSC v.1916 64 bit (AMD64)]",
+        "command_line_arguments": "C:\\Users\\Bjark\\miniconda3\\envs\\mlagents\\Scripts\\mlagents-learn config/GunAgent.yaml --run-id=Gun2 --resume",
+        "mlagents_version": "1.1.0",
+        "mlagents_envs_version": "1.1.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "2.2.2+cu121",
+        "numpy_version": "1.23.5",
+        "end_time_seconds": "1739868927"
+    },
+    "total": 12.876708899973892,
+    "count": 1,
+    "self": 0.006667800014838576,
+    "children": {
+        "run_training.setup": {
+            "total": 0.11188340000808239,
+            "count": 1,
+            "self": 0.11188340000808239
+        },
+        "TrainerController.start_learning": {
+            "total": 12.75815769995097,
+            "count": 1,
+            "self": 0.0006460000295192003,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 12.757503299973905,
+                    "count": 1,
+                    "self": 12.757503299973905
+                },
+                "trainer_threads": {
+                    "total": 9.00006853044033e-07,
+                    "count": 1,
+                    "self": 9.00006853044033e-07
+                },
+                "TrainerController._save_models": {
+                    "total": 7.4999406933784485e-06,
+                    "count": 1,
+                    "self": 7.4999406933784485e-06
+                }
+            }
+        }
+    }
+}
