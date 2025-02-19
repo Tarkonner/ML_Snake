@@ -53,6 +53,10 @@ PrefabInstance:
       value: SnakeAgentWithBrain Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3331848926571576303, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 5022602860645237092, guid: 49d03cc66f9296145884ec6173c457c2, type: 3}
+    - target: {fileID: 3331848926571576303, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
       propertyPath: m_BehaviorType
       value: 2
       objectReference: {fileID: 0}
@@ -60,6 +64,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 2a2fe8f5deeff27408cccbbe2eab2191, type: 2}
+    - target: {fileID: 6676187475054730374, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
+      propertyPath: bodyPrefab
+      value: 
+      objectReference: {fileID: 8944182338711380134, guid: 9dbb02cc6a8b67841b15a114f363ab21, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

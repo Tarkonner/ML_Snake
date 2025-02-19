@@ -275,7 +275,7 @@ MonoBehaviour:
   m_AgentGameObject: {fileID: 2603193171156403207}
   m_DetectableTags:
   - Food
-  - Target
+  - EnemySnake
   - Body
   m_ColliderMask:
     serializedVersion: 2

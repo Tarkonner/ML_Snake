@@ -27,7 +27,6 @@ public class EnviormentManager : MonoBehaviour
     private List<GameObject> holdFood = new List<GameObject>();
     [SerializeField] int numberOfFoodInEnviorment = 2;
 
-    [SerializeField] GameObject targetPrefab;
 
     private GameObject holdTarget;
     private GameObject holdGun;
@@ -73,17 +72,6 @@ public class EnviormentManager : MonoBehaviour
 
         // Spawn agent once at startup.
         SpawnAgent();
-
-        // Subscribe to snake events.
-        for (int i = 0; i < holdAgents.Count; i++)
-        {
-            SnakeMovement snakeMovement = holdAgents[i].GetComponentInChildren<SnakeMovement>();
-            if (snakeMovement != null)
-            {
-                snakeMovement.OnReachedTargetSize += SpawnTarget;
-            }
-        }
-
 
         // Spawn food.
         for (int i = 0; i < numberOfFoodInEnviorment; i++)
@@ -184,18 +172,6 @@ public class EnviormentManager : MonoBehaviour
         // Instead of destroying and re-instantiating, we just reset the agent.
         SpawnAgent();
         MoveAllFood();
-    }
-
-    void SpawnTarget()
-    {
-        Debug.Log("Spawning Special Target");
-
-        if (holdTarget == null)
-        {
-            holdTarget = Instantiate(targetPrefab, transform);
-        }
-
-        holdTarget.transform.localPosition = GetFreeSpace();
     }
 
     public void MoveAllFood()

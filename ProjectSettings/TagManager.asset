@@ -10,6 +10,7 @@ TagManager:
   - Target
   - Enemy
   - Bullet
+  - EnemySnake
   layers:
   - Default
   - TransparentFX
