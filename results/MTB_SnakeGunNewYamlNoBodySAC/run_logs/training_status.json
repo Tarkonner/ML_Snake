@@ -1,0 +1,65 @@
+{
+    "SnakeAgent": {
+        "checkpoints": [
+            {
+                "steps": 318967,
+                "file_path": "results\\MTB_SnakeGunNewYamlNoBodySAC\\SnakeAgent\\SnakeAgent-318967.onnx",
+                "reward": null,
+                "creation_time": 1739820017.497499,
+                "auxillary_file_paths": [
+                    "results\\MTB_SnakeGunNewYamlNoBodySAC\\SnakeAgent\\SnakeAgent-318967.pt"
+                ]
+            },
+            {
+                "steps": 320748,
+                "file_path": "results\\MTB_SnakeGunNewYamlNoBodySAC\\SnakeAgent\\SnakeAgent-320748.onnx",
+                "reward": null,
+                "creation_time": 1739866618.7615566,
+                "auxillary_file_paths": [
+                    "results\\MTB_SnakeGunNewYamlNoBodySAC\\SnakeAgent\\SnakeAgent-320748.pt"
+                ]
+            },
+            {
+                "steps": 329177,
+                "file_path": "results\\MTB_SnakeGunNewYamlNoBodySAC\\SnakeAgent\\SnakeAgent-329177.onnx",
+                "reward": null,
+                "creation_time": 1739867216.1493654,
+                "auxillary_file_paths": [
+                    "results\\MTB_SnakeGunNewYamlNoBodySAC\\SnakeAgent\\SnakeAgent-329177.pt"
+                ]
+            },
+            {
+                "steps": 339184,
+                "file_path": "results\\MTB_SnakeGunNewYamlNoBodySAC\\SnakeAgent\\SnakeAgent-339184.onnx",
+                "reward": null,
+                "creation_time": 1739867492.1173813,
+                "auxillary_file_paths": [
+                    "results\\MTB_SnakeGunNewYamlNoBodySAC\\SnakeAgent\\SnakeAgent-339184.pt"
+                ]
+            },
+            {
+                "steps": 341552,
+                "file_path": "results\\MTB_SnakeGunNewYamlNoBodySAC\\SnakeAgent\\SnakeAgent-341552.onnx",
+                "reward": null,
+                "creation_time": 1739867552.9023173,
+                "auxillary_file_paths": [
+                    "results\\MTB_SnakeGunNewYamlNoBodySAC\\SnakeAgent\\SnakeAgent-341552.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 341552,
+            "file_path": "results\\MTB_SnakeGunNewYamlNoBodySAC\\SnakeAgent.onnx",
+            "reward": null,
+            "creation_time": 1739867552.9023173,
+            "auxillary_file_paths": [
+                "results\\MTB_SnakeGunNewYamlNoBodySAC\\SnakeAgent\\SnakeAgent-341552.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}

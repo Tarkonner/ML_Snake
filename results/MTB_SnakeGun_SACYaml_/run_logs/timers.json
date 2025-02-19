@@ -1,0 +1,47 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1739867646",
+        "python_version": "3.10.12 | packaged by Anaconda, Inc. | (main, Jul  5 2023, 19:01:18) [MSC v.1916 64 bit (AMD64)]",
+        "command_line_arguments": "C:\\Users\\thorb\\Anaconda3\\envs\\mlagents\\Scripts\\mlagents-learn config/SnakeAgent.yaml --run-id=MTB_SnakeGun_SACYaml_",
+        "mlagents_version": "1.1.0",
+        "mlagents_envs_version": "1.1.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "2.2.2+cu121",
+        "numpy_version": "1.23.5",
+        "end_time_seconds": "1739867651"
+    },
+    "total": 5.287541999999803,
+    "count": 1,
+    "self": 0.016474699999889708,
+    "children": {
+        "run_training.setup": {
+            "total": 0.14487289999988207,
+            "count": 1,
+            "self": 0.14487289999988207
+        },
+        "TrainerController.start_learning": {
+            "total": 5.126194400000031,
+            "count": 1,
+            "self": 0.0027911999998195824,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 5.1233724000001075,
+                    "count": 1,
+                    "self": 5.1233724000001075
+                },
+                "trainer_threads": {
+                    "total": 2.7000000955013093e-06,
+                    "count": 1,
+                    "self": 2.7000000955013093e-06
+                },
+                "TrainerController._save_models": {
+                    "total": 2.8100000008635106e-05,
+                    "count": 1,
+                    "self": 2.8100000008635106e-05
+                }
+            }
+        }
+    }
+}
