@@ -18,15 +18,33 @@
                 "auxillary_file_paths": [
                     "results\\ArcticSnake5\\SnakeAgent\\SnakeAgent-270006.pt"
                 ]
+            },
+            {
+                "steps": 271492,
+                "file_path": "results\\ArcticSnake5\\SnakeAgent\\SnakeAgent-271492.onnx",
+                "reward": 21.16633230447769,
+                "creation_time": 1739966686.615662,
+                "auxillary_file_paths": [
+                    "results\\ArcticSnake5\\SnakeAgent\\SnakeAgent-271492.pt"
+                ]
+            },
+            {
+                "steps": 277144,
+                "file_path": "results\\ArcticSnake5\\SnakeAgent\\SnakeAgent-277144.onnx",
+                "reward": -1.3305557461248503,
+                "creation_time": 1739967302.0982873,
+                "auxillary_file_paths": [
+                    "results\\ArcticSnake5\\SnakeAgent\\SnakeAgent-277144.pt"
+                ]
             }
         ],
         "final_checkpoint": {
-            "steps": 270006,
+            "steps": 277144,
             "file_path": "results\\ArcticSnake5\\SnakeAgent.onnx",
-            "reward": 23.737325980328023,
-            "creation_time": 1739964091.7966669,
+            "reward": -1.3305557461248503,
+            "creation_time": 1739967302.0982873,
             "auxillary_file_paths": [
-                "results\\ArcticSnake5\\SnakeAgent\\SnakeAgent-270006.pt"
+                "results\\ArcticSnake5\\SnakeAgent\\SnakeAgent-277144.pt"
             ]
         }
     },
