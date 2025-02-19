@@ -30,7 +30,6 @@ public class SnakeAgent : Agent
         // Subscribe to events from the movement script
         snakeMovement.EatenFood += EatReward;
         snakeMovement.Dying += ApplyPenalty;
-        snakeMovement.OnTargetReached += TargetReward;
     }
 
     private void OnDisable()
@@ -39,7 +38,6 @@ public class SnakeAgent : Agent
         {
             snakeMovement.EatenFood -= EatReward;
             snakeMovement.Dying -= ApplyPenalty;
-            snakeMovement.OnTargetReached -= TargetReward;
         }
     }
 
@@ -122,14 +120,6 @@ public class SnakeAgent : Agent
 
         if (GetCumulativeReward() > winScore)
             Ending();
-    }
-
-    private void TargetReward()
-    {
-        Debug.Log("Target reached! Rewarding agent.");
-        AddReward(10.0f);
-        enviormentManager.OnSuccess();
-        Ending();
     }
 
     void Ending()

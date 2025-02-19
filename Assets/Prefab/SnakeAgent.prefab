@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 8
+    VectorObservationSize: 7
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 2
@@ -222,7 +222,6 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 1000
-  targetDummyManager: {fileID: 2162603556298904361, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
   winScore: 20
   agentRotationSpeed: 400
 --- !u!114 &6676187475054730374

@@ -28,7 +28,6 @@ public class SnakeMovement : MonoBehaviour
     public Action Dying;
     public Action EatenFood;
     public Action OnReachedTargetSize;
-    public Action OnTargetReached;
 
     
 
@@ -170,7 +169,6 @@ public class SnakeMovement : MonoBehaviour
             Food food = collision.gameObject.GetComponent<Food>();
             if (food != null && !food.IsEaten)
             {
-
                 Debug.Log("Food");
                 food.MarkAsEaten(); // Prevents multiple triggers
                 EatenFood?.Invoke();
@@ -181,13 +179,6 @@ public class SnakeMovement : MonoBehaviour
         if (collision.gameObject.tag == "Wall")
         {
             SnakeDies();
-        }
-        
-        // if snake collides with target and has more than 10 segments
-        else if (collision.gameObject.CompareTag("Target") && bodyParts.Count >= TargetBodySize)
-        {
-            Debug.Log("Target hit");
-            OnTargetReached?.Invoke();
         }
     }
 }
