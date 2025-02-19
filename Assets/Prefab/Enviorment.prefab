@@ -53,10 +53,10 @@ MonoBehaviour:
   ground: {fileID: 3968398566344741371}
   yOffset: -0.2
   agentPrefab: {fileID: 2603193171156403207, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
+  brainAgentPrefab: {fileID: 9027204518141775427, guid: 7d9ba8efe8593b64cb2150f5609a9805, type: 3}
   gunPrefab: {fileID: 8492620280233336362, guid: f4231182d74ecb54895de431d460ee1f, type: 3}
   foodPrefab: {fileID: 8495195608573793494, guid: abc41993c67507643ba97c7c6b457b53, type: 3}
-  numberOfFoodInEnviorment: 1
-  targetPrefab: {fileID: 8495195608573793494, guid: f1dd37051055b8046a4600fa26d69506, type: 3}
+  numberOfFoodInEnviorment: 4
 --- !u!114 &2162603556298904361
 MonoBehaviour:
   m_ObjectHideFlags: 0
