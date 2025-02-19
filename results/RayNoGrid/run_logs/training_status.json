@@ -1,0 +1,47 @@
+{
+    "SnakeAgent": {
+        "checkpoints": [
+            {
+                "steps": 371331,
+                "file_path": "results\\RayNoGrid\\SnakeAgent\\SnakeAgent-371331.onnx",
+                "reward": null,
+                "creation_time": 1739882939.7803419,
+                "auxillary_file_paths": [
+                    "results\\RayNoGrid\\SnakeAgent\\SnakeAgent-371331.pt"
+                ]
+            },
+            {
+                "steps": 376252,
+                "file_path": "results\\RayNoGrid\\SnakeAgent\\SnakeAgent-376252.onnx",
+                "reward": null,
+                "creation_time": 1739883240.0955892,
+                "auxillary_file_paths": [
+                    "results\\RayNoGrid\\SnakeAgent\\SnakeAgent-376252.pt"
+                ]
+            },
+            {
+                "steps": 379131,
+                "file_path": "results\\RayNoGrid\\SnakeAgent\\SnakeAgent-379131.onnx",
+                "reward": null,
+                "creation_time": 1739884659.7675436,
+                "auxillary_file_paths": [
+                    "results\\RayNoGrid\\SnakeAgent\\SnakeAgent-379131.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 379131,
+            "file_path": "results\\RayNoGrid\\SnakeAgent.onnx",
+            "reward": null,
+            "creation_time": 1739884659.7675436,
+            "auxillary_file_paths": [
+                "results\\RayNoGrid\\SnakeAgent\\SnakeAgent-379131.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}

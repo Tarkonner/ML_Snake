@@ -18,6 +18,7 @@ public class EnviormentManager : MonoBehaviour
     
     [Header("Agent")]
     [SerializeField] GameObject agentPrefab;
+    [SerializeField, Range(1, 2)] int numberOfAgents = 1;
     [SerializeField] GameObject gunPrefab;
 
     [Header("Food")]
@@ -27,7 +28,7 @@ public class EnviormentManager : MonoBehaviour
 
     [SerializeField] GameObject targetPrefab;
 
-    private GameObject holdAgent;
+    private List<GameObject> holdAgents = new List<GameObject>();
     private GameObject holdTarget;
     private GameObject holdGun;
 
@@ -74,11 +75,15 @@ public class EnviormentManager : MonoBehaviour
         SpawnAgent();
 
         // Subscribe to snake events.
-        SnakeMovement snakeMovement = holdAgent.GetComponentInChildren<SnakeMovement>();
-        if (snakeMovement != null)
+        for (int i = 0; i < holdAgents.Count; i++)
         {
-            snakeMovement.OnReachedTargetSize += SpawnTarget;
+            SnakeMovement snakeMovement = holdAgents[i].GetComponentInChildren<SnakeMovement>();
+            if (snakeMovement != null)
+            {
+                snakeMovement.OnReachedTargetSize += SpawnTarget;
+            }
         }
+
 
         // Spawn food.
         for (int i = 0; i < numberOfFoodInEnviorment; i++)
@@ -94,59 +99,70 @@ public class EnviormentManager : MonoBehaviour
     /// </summary>
     public void SpawnAgent()
     {
-        if (holdAgent == null)
+        if (holdAgents.Count == 0)
         {
-            // No agent exists yet, so instantiate one.
-            holdAgent = Instantiate(agentPrefab, transform);
-            holdAgent.transform.localPosition = new Vector3(
-                Random.Range(-centrumSpawnOffset.x, centrumSpawnOffset.x),
-                0,
-                Random.Range(-centrumSpawnOffset.y, centrumSpawnOffset.y));
-
-            // Setup gun if available.
-            if (gunPrefab != null)
+            for (global::System.Int32 i = 0; i < numberOfAgents; i++)
             {
-                SnakeMovement snakeMovement = holdAgent.GetComponentInChildren<SnakeMovement>();
-                if (snakeMovement != null)
-                {
-                    Transform snakeHead = snakeMovement.transform;
-                    holdGun = Instantiate(gunPrefab, snakeHead.position, Quaternion.identity);
+                GameObject spawn = Instantiate(agentPrefab, transform);
+                // No agent exists yet, so instantiate one.
+                holdAgents.Add(spawn);
+                spawn.transform.localPosition = new Vector3(
+                    Random.Range(-centrumSpawnOffset.x, centrumSpawnOffset.x),
+                    0,
+                    Random.Range(-centrumSpawnOffset.y, centrumSpawnOffset.y));
 
-                    GunPositionFollower follower = holdGun.GetComponent<GunPositionFollower>();
-                    if (follower != null)
+                // Setup gun if available.
+                if (gunPrefab != null)
+                {
+                    SnakeMovement snakeMovement = spawn.GetComponentInChildren<SnakeMovement>();
+                    if (snakeMovement != null)
                     {
-                        follower.target = snakeHead;
-                        follower.offset = new Vector3(0, 0.5f, 0);
+                        Transform snakeHead = snakeMovement.transform;
+                        holdGun = Instantiate(gunPrefab, snakeHead.position, Quaternion.identity);
+
+                        GunPositionFollower follower = holdGun.GetComponent<GunPositionFollower>();
+                        if (follower != null)
+                        {
+                            follower.target = snakeHead;
+                            follower.offset = new Vector3(0, 0.5f, 0);
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogWarning("SnakeMovement component not found on spawned agent. Gun not attached.");
                     }
                 }
-                else
+
+                // Subscribe to death events so that a reset is triggered.
+                if (spawn.GetComponentInChildren<SnakeMovement>() != null)
                 {
-                    Debug.LogWarning("SnakeMovement component not found on spawned agent. Gun not attached.");
+                    var snakeMove = spawn.GetComponentInChildren<SnakeMovement>();
+                    snakeMove.Dying += SpawnAgent;
+                    snakeMove.Dying += MoveAllFood;
                 }
             }
 
-            // Subscribe to death events so that a reset is triggered.
-            if (holdAgent.GetComponentInChildren<SnakeMovement>() != null)
-            {
-                var snakeMove = holdAgent.GetComponentInChildren<SnakeMovement>();
-                snakeMove.Dying += SpawnAgent;
-                snakeMove.Dying += MoveAllFood;
-            }
+
         }
         else
         {
-            // Reset the existing agent's position.
-            holdAgent.transform.localPosition = new Vector3(
-                Random.Range(-centrumSpawnOffset.x, centrumSpawnOffset.x),
-                0,
-                Random.Range(-centrumSpawnOffset.y, centrumSpawnOffset.y));
-
-            // Call EndEpisode() on the agent so that it can reset its internal state.
-            var snakeAgent = holdAgent.GetComponent<SnakeAgent>();
-            if (snakeAgent != null)
+            for (int i = 0; i < numberOfAgents; i++)
             {
-                snakeAgent.EndEpisode();
+                // Reset the existing agent's position.
+                holdAgents[i].transform.localPosition = new Vector3(
+                    Random.Range(-centrumSpawnOffset.x, centrumSpawnOffset.x),
+                    0,
+                    Random.Range(-centrumSpawnOffset.y, centrumSpawnOffset.y));
+
+                // Call EndEpisode() on the agent so that it can reset its internal state.
+                var snakeAgent = holdAgents[i].GetComponent<SnakeAgent>();
+                if (snakeAgent != null)
+                {
+                    snakeAgent.EndEpisode();
+                }
             }
+
+
         }
     }
 
