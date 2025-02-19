@@ -30,6 +30,8 @@ public class SnakeMovement : MonoBehaviour
     public Action OnReachedTargetSize;
     public Action OnTargetReached;
 
+    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -168,6 +170,7 @@ public class SnakeMovement : MonoBehaviour
             Food food = collision.gameObject.GetComponent<Food>();
             if (food != null && !food.IsEaten)
             {
+
                 Debug.Log("Food");
                 food.MarkAsEaten(); // Prevents multiple triggers
                 EatenFood?.Invoke();

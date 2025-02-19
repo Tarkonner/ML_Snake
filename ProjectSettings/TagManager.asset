@@ -5,13 +5,13 @@ TagManager:
   serializedVersion: 3
   tags:
   - Wall
-  - Food
   - Body
   - Target
   - Enemy
   - Bullet
   - RedTeam
   - BlueTeam
+  - Food
   layers:
   - Default
   - TransparentFX
@@ -22,7 +22,7 @@ TagManager:
   - RedTeam
   - BlueTeam
   - EnemyDummy
-  - 
+  - Food
   - 
   - 
   - 

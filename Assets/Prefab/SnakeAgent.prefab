@@ -50,6 +50,7 @@ GameObject:
   - component: {fileID: 6676187475054730374}
   - component: {fileID: 6954146446796350118}
   - component: {fileID: 6873189682387491924}
+  - component: {fileID: 5501711478676167589}
   m_Layer: 7
   m_Name: Head
   m_TagString: BlueTeam
@@ -196,9 +197,9 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: 7e20db8d537950248ac199da9523bd15, type: 3}
   m_InferenceDevice: 0
-  m_BehaviorType: 1
+  m_BehaviorType: 2
   m_BehaviorName: SnakeAgent
   TeamId: 0
   m_UseChildSensors: 1
@@ -223,6 +224,7 @@ MonoBehaviour:
   MaxStep: 1000
   targetDummyManager: {fileID: 2162603556298904361, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
   winScore: 20
+  agentRotationSpeed: 400
 --- !u!114 &6676187475054730374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,7 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 200
-  rotationSpeed: 0.1
+  rotationSpeed: 100
   bodyPrefab: {fileID: 6555164450744074074, guid: 53dec15c75b518145acd262d27a7f4ed, type: 3}
   desiredDistance: 1
   followSpeed: 5
@@ -281,7 +283,7 @@ MonoBehaviour:
   m_RayLength: 53
   m_RayLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967291
+    m_Bits: 4294967035
   m_ObservationStacks: 1
   m_AlternatingRayOrder: 1
   m_UseBatchedRaycasts: 0
@@ -289,6 +291,22 @@ MonoBehaviour:
   rayMissColor: {r: 1, g: 1, b: 1, a: 1}
   m_StartVerticalOffset: 0
   m_EndVerticalOffset: 0
+--- !u!114 &5501711478676167589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4218471239017000936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2902496c0120472b90269f94a0aec7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Record: 0
+  NumStepsToRecord: 0
+  DemonstrationName: ArcticSnake4
+  DemonstrationDirectory: DemoArcticSnake
 --- !u!1 &8473877637833376028
 GameObject:
   m_ObjectHideFlags: 0

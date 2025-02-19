@@ -13,6 +13,7 @@ public class TargetDummy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
+            //Debug.Log("DummyHitRegister");
             int bulletID = collision.gameObject.GetInstanceID();
             // Only reset if this bullet hasn't already triggered a reset.
             if (!bulletsThatTriggeredReset.Contains(bulletID))
