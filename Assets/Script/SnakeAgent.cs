@@ -130,16 +130,6 @@ public class SnakeAgent : Agent
         continuousActionsOut[1] = Input.GetAxis("Vertical");
     }
     
-    // // if collide with body, add small penalty eacvh frame in contact
-    // private void OnCollisionEnter(Collision other)
-    // {
-    //     if (other.gameObject.CompareTag("Body"))
-    //     {
-    //         Debug.Log("Collided with body! Penalizing agent.");
-    //         AddReward(-0.005f); // Give a penalty of -0.01
-    //     }
-    // }
-    
     private void ApplyPenalty()
     {
         AddReward(-3.0f);
@@ -147,21 +137,19 @@ public class SnakeAgent : Agent
         EndEpisode();
     }
 
-    // private void OnCollisionEnter(Collision other)
-    // {
-    //     if (other.gameObject.CompareTag("Wall"))
-    //     {
-    //         Debug.Log("Collided with wall! Penalizing agent.");
-    //         AddReward(-2.0f); 
-    //         EndEpisode(); 
-    //     }
-    //
-    //     if (other.gameObject.CompareTag("Body"))
-    //     {
-    //         Debug.Log("Collided with body! Penalizing agent.");
-    //         AddReward(-0.5f); 
-    //     }
-    // }
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            ApplyPenalty();
+        }
+    
+        if (other.gameObject.CompareTag("Body"))
+        {
+            Debug.Log("Collided with body! Penalizing agent.");
+            AddReward(-0.5f); 
+        }
+    }
 
     
     private void Update()
