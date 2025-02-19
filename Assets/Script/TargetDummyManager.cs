@@ -27,7 +27,7 @@ public class TargetDummyManager : MonoBehaviour
     {
         if (currentTargetDummy == null)
         {
-            currentTargetDummy = Instantiate(targetDummyPrefab, transform);
+            currentTargetDummy = Instantiate(targetDummyPrefab);
             // Ensure the dummy is tagged as "Enemy" (if needed)
             currentTargetDummy.tag = "Enemy";
 
