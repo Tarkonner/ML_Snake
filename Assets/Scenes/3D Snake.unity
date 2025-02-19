@@ -1946,7 +1946,7 @@ PrefabInstance:
     - target: {fileID: 2234609031462090516, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
       propertyPath: targetDummyManager
       value: 
-      objectReference: {fileID: 2162603556298904361, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
+      objectReference: {fileID: 6873479125584865694, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
     - target: {fileID: 5010434914573024936, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5010434914573024936}
   - component: {fileID: 2234609031462090516}
+  - component: {fileID: 6873479125584865694}
   m_Layer: 0
   m_Name: Enviorment
   m_TagString: Untagged
@@ -46,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enviormentSize: {x: 20, y: 20}
+  targetDummyManager: {fileID: 6873479125584865694}
   centrumSpawnOffset: {x: 0, y: 0}
   wallPrefab: {fileID: 7950988272589840854, guid: bcdf5a639640e7d458937d455aa4901f, type: 3}
   ground: {fileID: 3968398566344741371}
@@ -55,6 +57,22 @@ MonoBehaviour:
   foodPrefab: {fileID: 8495195608573793494, guid: abc41993c67507643ba97c7c6b457b53, type: 3}
   numberOfFoodInEnviorment: 1
   targetPrefab: {fileID: 8495195608573793494, guid: f1dd37051055b8046a4600fa26d69506, type: 3}
+--- !u!114 &6873479125584865694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415600777556534610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1bb92f50e2be44995d6289cc2d0d19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetDummyPrefab: {fileID: 9192268292913501817, guid: 7832d158902ca6646bc82450825824dd, type: 3}
+  environmentSize: {x: 10, y: 10}
+  yOffset: 0
+  maxStep: 1000
 --- !u!1 &3968398566344741371
 GameObject:
   m_ObjectHideFlags: 0

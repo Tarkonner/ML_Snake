@@ -121,4 +121,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edae7420a50671f4db9ac6b9e824824a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 2162603556298904361, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
+  manager: {fileID: 6873479125584865694, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}

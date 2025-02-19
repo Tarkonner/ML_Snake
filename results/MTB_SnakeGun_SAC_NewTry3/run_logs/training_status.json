@@ -2,15 +2,6 @@
     "SnakeAgent": {
         "checkpoints": [
             {
-                "steps": 499966,
-                "file_path": "results\\MTB_SnakeGun_SAC_NewTry3\\SnakeAgent\\SnakeAgent-499966.onnx",
-                "reward": null,
-                "creation_time": 1739939060.6185017,
-                "auxillary_file_paths": [
-                    "results\\MTB_SnakeGun_SAC_NewTry3\\SnakeAgent\\SnakeAgent-499966.pt"
-                ]
-            },
-            {
                 "steps": 800236,
                 "file_path": "results\\MTB_SnakeGun_SAC_NewTry3\\SnakeAgent\\SnakeAgent-800236.onnx",
                 "reward": null,
@@ -18,15 +9,51 @@
                 "auxillary_file_paths": [
                     "results\\MTB_SnakeGun_SAC_NewTry3\\SnakeAgent\\SnakeAgent-800236.pt"
                 ]
+            },
+            {
+                "steps": 801564,
+                "file_path": "results\\MTB_SnakeGun_SAC_NewTry3\\SnakeAgent\\SnakeAgent-801564.onnx",
+                "reward": null,
+                "creation_time": 1739958702.8678262,
+                "auxillary_file_paths": [
+                    "results\\MTB_SnakeGun_SAC_NewTry3\\SnakeAgent\\SnakeAgent-801564.pt"
+                ]
+            },
+            {
+                "steps": 803834,
+                "file_path": "results\\MTB_SnakeGun_SAC_NewTry3\\SnakeAgent\\SnakeAgent-803834.onnx",
+                "reward": null,
+                "creation_time": 1739959118.7534068,
+                "auxillary_file_paths": [
+                    "results\\MTB_SnakeGun_SAC_NewTry3\\SnakeAgent\\SnakeAgent-803834.pt"
+                ]
+            },
+            {
+                "steps": 807314,
+                "file_path": "results\\MTB_SnakeGun_SAC_NewTry3\\SnakeAgent\\SnakeAgent-807314.onnx",
+                "reward": null,
+                "creation_time": 1739959443.4751754,
+                "auxillary_file_paths": [
+                    "results\\MTB_SnakeGun_SAC_NewTry3\\SnakeAgent\\SnakeAgent-807314.pt"
+                ]
+            },
+            {
+                "steps": 901720,
+                "file_path": "results\\MTB_SnakeGun_SAC_NewTry3\\SnakeAgent\\SnakeAgent-901720.onnx",
+                "reward": null,
+                "creation_time": 1739964052.3652742,
+                "auxillary_file_paths": [
+                    "results\\MTB_SnakeGun_SAC_NewTry3\\SnakeAgent\\SnakeAgent-901720.pt"
+                ]
             }
         ],
         "final_checkpoint": {
-            "steps": 800236,
+            "steps": 901720,
             "file_path": "results\\MTB_SnakeGun_SAC_NewTry3\\SnakeAgent.onnx",
             "reward": null,
-            "creation_time": 1739953581.7546928,
+            "creation_time": 1739964052.3652742,
             "auxillary_file_paths": [
-                "results\\MTB_SnakeGun_SAC_NewTry3\\SnakeAgent\\SnakeAgent-800236.pt"
+                "results\\MTB_SnakeGun_SAC_NewTry3\\SnakeAgent\\SnakeAgent-901720.pt"
             ]
         }
     },
