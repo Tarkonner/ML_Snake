@@ -151,7 +151,6 @@ public class GunAgent : Agent
         if (bulletReward != null)
         {
             bulletReward.agent = this;
-            bulletReward.Setup(ownerSnake);
         }
     }
 

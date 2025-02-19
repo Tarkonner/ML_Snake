@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using UnityEngine;
 
 public class BulletReward : MonoBehaviour
@@ -7,7 +8,6 @@ public class BulletReward : MonoBehaviour
 
     [HideInInspector]
     public GunAgent agent;
-    private GameObject snake;
 
     // This flag indicates whether this bullet has already registered a hit.
     // Make sure this is NOT declared as static.
@@ -21,10 +21,6 @@ public class BulletReward : MonoBehaviour
         hasRegisteredHit = false;
     }
 
-    public void Setup(GameObject ownerSnake)
-    {
-        snake = ownerSnake;
-    }
 
     void OnCollisionEnter(Collision collision)
     {
@@ -38,7 +34,12 @@ public class BulletReward : MonoBehaviour
                 GameObject child = collision.gameObject.transform.GetChild(i).gameObject;
                 if (child.CompareTag("Enemy"))
                 {
-                    snake.GetComponentInChildren<SnakeMovement>().ShrinkSnake();
+                    SnakeMovement sm = child.GetComponent<SnakeMovement>();
+                    if (sm == null)
+                        sm = child.GetComponentInParent<SnakeMovement>();
+                    if (sm == null)
+                        sm = child.GetComponentInChildren<SnakeMovement>();
+                    sm.ShrinkSnake();
 
                     if (agent != null)
                     {

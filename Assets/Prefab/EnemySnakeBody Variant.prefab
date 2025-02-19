@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1265610373668084288, guid: 53dec15c75b518145acd262d27a7f4ed, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2264585280591142838, guid: 53dec15c75b518145acd262d27a7f4ed, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -15,6 +19,10 @@ PrefabInstance:
     - target: {fileID: 6555164450744074074, guid: 53dec15c75b518145acd262d27a7f4ed, type: 3}
       propertyPath: m_Name
       value: EnemySnakeBody Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6555164450744074074, guid: 53dec15c75b518145acd262d27a7f4ed, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6555164450744074074, guid: 53dec15c75b518145acd262d27a7f4ed, type: 3}
       propertyPath: m_TagString
