@@ -114,7 +114,7 @@ public class GunAgent : Agent
             }
 
             // Only set bulletWaiting if Space is pressed AND the cooldown is ready.
-            if (Input.GetKeyDown(KeyCode.Space) && Time.time >= lastShotTime + cooldownDuration)
+            if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && Time.time >= lastShotTime + cooldownDuration)
             {
                 bulletWaiting = true;
             }

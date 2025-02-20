@@ -7,8 +7,9 @@
     <list default="true" id="70c17c93-c167-49b7-bd35-1353d05256f8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ML_Snake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ML_Snake/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ML-Agents/Timers/3D Snake_timers.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ML-Agents/Timers/3D Snake_timers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/BulletReward.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/BulletReward.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/EnviormentManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/EnviormentManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/SnakeAgent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/SnakeAgent.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/GunAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/GunAgent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/SnakeMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/SnakeMovement.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
