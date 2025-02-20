@@ -34,14 +34,17 @@ public class GunAgent : Agent
     // This property will store the desired rotation computed in Update.
     public Quaternion DesiredRotation { get; private set; }
 
-    public GameObject ownerSnake;
-
     public override void Initialize()
     {
         //Time.timeScale = 1000f;
         behaviorParameters = GetComponent<BehaviorParameters>();
         // Initialize DesiredRotation to the current rotation.
         DesiredRotation = transform.rotation;
+    }
+
+    public void PlayerControl()
+    {
+        GetComponent<BehaviorParameters>().BehaviorType = BehaviorType.HeuristicOnly;
     }
 
     public override void OnEpisodeBegin()

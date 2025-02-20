@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enviormentSize: {x: 30, y: 30}
-  centrumSpawnOffset: {x: 5, y: 5}
+  hasPlayer: 1
   wallPrefab: {fileID: 7950988272589840854, guid: bcdf5a639640e7d458937d455aa4901f, type: 3}
   ground: {fileID: 3968398566344741371}
   yOffset: -0.2
@@ -56,6 +56,7 @@ MonoBehaviour:
   - {fileID: 8470814199132296566}
   - {fileID: 8097457209955373219}
   - {fileID: 6117074196985259960}
+  playerAgentPrefab: {fileID: 6281734180890216661, guid: d27fdc0b4aba7ec42850706573fef6dc, type: 3}
   agentPrefab: {fileID: 2603193171156403207, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
   brainAgentPrefab: {fileID: 9027204518141775427, guid: 7d9ba8efe8593b64cb2150f5609a9805, type: 3}
   gunPrefab: {fileID: 8492620280233336362, guid: f4231182d74ecb54895de431d460ee1f, type: 3}

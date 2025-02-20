@@ -1612,13 +1612,21 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2234609031462090516, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
+      propertyPath: hasPlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2234609031462090516, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
       propertyPath: agentPrefab
       value: 
-      objectReference: {fileID: 6281734180890216661, guid: d27fdc0b4aba7ec42850706573fef6dc, type: 3}
+      objectReference: {fileID: 2603193171156403207, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
     - target: {fileID: 2234609031462090516, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
       propertyPath: brainAgentPrefab
       value: 
-      objectReference: {fileID: 2603193171156403207, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
+      objectReference: {fileID: 9027204518141775427, guid: 7d9ba8efe8593b64cb2150f5609a9805, type: 3}
+    - target: {fileID: 2234609031462090516, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
+      propertyPath: playerAgentPrefab
+      value: 
+      objectReference: {fileID: 6281734180890216661, guid: d27fdc0b4aba7ec42850706573fef6dc, type: 3}
     - target: {fileID: 5010434914573024936, guid: d89dfc1afd8ede4489e86c1504c30fc8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

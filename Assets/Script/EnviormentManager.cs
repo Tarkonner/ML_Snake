@@ -10,12 +10,14 @@ public class EnviormentManager : MonoBehaviour
     public Vector2 enviormentRadius => enviormentSize / 2;
 
     [Header("Enviorment")]
+    [SerializeField] bool hasPlayer = false;
     [SerializeField] GameObject wallPrefab;
     [SerializeField] GameObject ground;
     [SerializeField] float yOffset = -.2f;
     [SerializeField] GameObject[] spawnPoints;
-    
+
     [Header("Agent")]
+    [SerializeField] GameObject playerAgentPrefab;
     [SerializeField] GameObject agentPrefab;
     [SerializeField] GameObject brainAgentPrefab;
     [SerializeField] GameObject gunPrefab;
@@ -93,14 +95,18 @@ public class EnviormentManager : MonoBehaviour
 
 
             //Traning agent
-            GameObject spawn = Instantiate(agentPrefab, transform);
+            GameObject spawn;
+            if(hasPlayer)
+                spawn = Instantiate(playerAgentPrefab, transform);
+            else
+                spawn = Instantiate(agentPrefab, transform);
             holdAgents.Add(spawn);
             spawn.transform.localPosition = spawnPoints[firstSpawnIndex].transform.localPosition;
 
 
             // Setup gun if available.
             if (gunPrefab != null)
-                AddGun(spawn);
+                AddGun(spawn, hasPlayer);
 
 
             // Subscribe to death events so that a reset is triggered.
@@ -150,14 +156,17 @@ public class EnviormentManager : MonoBehaviour
         }
     }
 
-    private void AddGun(GameObject snake)
+    private void AddGun(GameObject snake, bool isPlayer = false)
     {
         SnakeMovement snakeMovement = snake.GetComponentInChildren<SnakeMovement>();
         if (snakeMovement != null)
         {
             Transform snakeHead = snakeMovement.transform;
             GameObject holdGun = Instantiate(gunPrefab, snakeHead.position, Quaternion.identity);
-            holdGun.GetComponent<GunAgent>().ownerSnake = snake;
+
+
+            if (isPlayer)
+                holdGun.GetComponent<GunAgent>().PlayerControl();
 
             GunPositionFollower follower = holdGun.GetComponent<GunPositionFollower>();
             if (follower != null)
