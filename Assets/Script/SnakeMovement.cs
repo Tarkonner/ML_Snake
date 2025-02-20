@@ -88,9 +88,10 @@ public class SnakeMovement : MonoBehaviour
         // Fell off platform
         if (transform.localPosition.y < -1f)
         {
-            Debug.Log("Snake fell off the platform! Penalizing agent.");
-            enviormentManager.OnFailure(); // Call blinking effect
-            SnakeDies();
+            ResetSnake();
+            // Debug.Log("Snake fell off the platform! Penalizing agent.");
+            // enviormentManager.OnFailure(); // Call blinking effect
+            // SnakeDies();
         }
     }
     
