@@ -41,12 +41,12 @@ public class BulletReward : MonoBehaviour
                         sm = child.GetComponentInChildren<SnakeMovement>();
                     sm.ShrinkSnake();
 
-                    if (agent != null)
-                    {
-                        agent.AddReward(rewardOnHit);
-                    }
-                    else
-                        agent.AddReward((rewardOnHit / 4) * -1);
+                    // if (agent != null)
+                    // {
+                    //     agent.AddReward(rewardOnHit);
+                    // }
+                    // else
+                    //     agent.AddReward((rewardOnHit / 4) * -1);
                 }
 
                 hasRegisteredHit = true;

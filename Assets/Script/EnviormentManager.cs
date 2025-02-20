@@ -141,12 +141,12 @@ public class EnviormentManager : MonoBehaviour
                 else if(i == 1)
                     holdAgents[i].transform.localPosition = spawnPoints[secondSpawnIndex].transform.localPosition;
 
-                // Call EndEpisode() on the agent so that it can reset its internal state.
-                SnakeAgent snakeAgent = holdAgents[i].GetComponentInChildren<SnakeAgent>();
-                if (snakeAgent != null)
-                {
-                    snakeAgent.EndEpisode();
-                }
+                // // Call EndEpisode() on the agent so that it can reset its internal state.
+                // SnakeAgent snakeAgent = holdAgents[i].GetComponentInChildren<SnakeAgent>();
+                // if (snakeAgent != null && snakeAgent.gameObject.activeInHierarchy)
+                // {
+                //     snakeAgent.EndEpisode();
+                // }
 
                 //Reset body
                 holdAgents[i].GetComponentInChildren<SnakeMovement>().ResetSnake();
