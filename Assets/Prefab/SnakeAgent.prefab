@@ -354,7 +354,7 @@ MonoBehaviour:
   rotationSpeed: 100
   bodyPrefab: {fileID: 6555164450744074074, guid: 53dec15c75b518145acd262d27a7f4ed, type: 3}
   desiredDistance: 1
-  followSpeed: 5
+  followSpeed: 200
   startBodySize: 3
   TargetBodySize: 20
 --- !u!114 &6954146446796350118
