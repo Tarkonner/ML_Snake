@@ -189,10 +189,5 @@ public class SnakeMovement : MonoBehaviour
                 GrowSnake();
             }
         }
-        
-        if (collision.gameObject.tag == "Wall")
-        {
-            SnakeDies();
-        }
     }
 }
