@@ -76,6 +76,10 @@ PrefabInstance:
       propertyPath: m_BrainParameters.VectorObservationSize
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 5488634156353500491, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7b0e921883006eb4ea4273590bf29d4c, type: 2}
     - target: {fileID: 5501711478676167589, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -92,6 +96,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7782264399174473814, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7b0e921883006eb4ea4273590bf29d4c, type: 2}
     - target: {fileID: 9107171386302636810, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
       propertyPath: m_Enabled
       value: 0
