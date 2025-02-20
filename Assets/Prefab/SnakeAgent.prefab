@@ -390,6 +390,7 @@ MonoBehaviour:
   - BlueTeam
   - RedTeam
   - Enemy
+  - Wall
   m_RaysPerDirection: 24
   m_MaxRayDegrees: 70
   m_SphereCastRadius: 0.5
@@ -431,7 +432,7 @@ GameObject:
   - component: {fileID: 1149062619324541841}
   m_Layer: 0
   m_Name: tag
-  m_TagString: Red
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
