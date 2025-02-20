@@ -12,6 +12,9 @@ TagManager:
   - RedTeam
   - BlueTeam
   - Food
+  - EnemySnake
+  - Blue
+  - Red
   layers:
   - Default
   - TransparentFX

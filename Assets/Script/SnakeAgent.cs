@@ -6,7 +6,9 @@ using UnityEngine;
 
 public class SnakeAgent : Agent
 {
-    public bool isTrainingMode = false; 
+    public bool isTrainingMode = false;
+    // Assign this in the inspector: for the player snake, assign the child with tag "Blue"; for the enemy, assign the one with tag "Red"
+    public GameObject childTagObject;
 
     private Rigidbody rb;
     private EnviormentManager enviormentManager;
@@ -22,8 +24,27 @@ public class SnakeAgent : Agent
         snakeMovement = GetComponent<SnakeMovement>();
         enviormentManager = GetComponentInParent<EnviormentManager>();
 
+        // If not assigned in the inspector, attempt to find a child named "tag"
+        if (childTagObject == null)
+        {
+            Transform tagTransform = transform.Find("tag");
+            if (tagTransform != null)
+            {
+                childTagObject = tagTransform.gameObject;
+                Debug.Log("Found child tag object: " + childTagObject.tag);
+            }
+            else
+            {
+                Debug.LogWarning("childTagObject not assigned and no child named 'tag' found.");
+            }
+        }
+        else
+        {
+            Debug.Log("childTagObject assigned with tag: " + childTagObject.tag);
+        }
+
         snakeMovement.EatenFood += EatReward;
-        snakeMovement.Dying += ApplyPenalty;
+        snakeMovement.Dying += OnSnakeDied;
     }
 
     private void OnDisable()
@@ -31,7 +52,7 @@ public class SnakeAgent : Agent
         if (snakeMovement != null)
         {
             snakeMovement.EatenFood -= EatReward;
-            snakeMovement.Dying -= ApplyPenalty;
+            snakeMovement.Dying -= OnSnakeDied;
         }
     }
 
@@ -44,7 +65,21 @@ public class SnakeAgent : Agent
         foodCollected = 0;
     }
 
-    private void ApplyPenalty()
+    // Helper method: returns true if the assigned child object's tag is "Blue"
+    private bool IsPlayerSnake()
+    {
+        if (childTagObject != null)
+        {
+            return childTagObject.CompareTag("Blue");
+        }
+        else
+        {
+            Debug.LogWarning("childTagObject is null in IsPlayerSnake()");
+            return false;
+        }
+    }
+
+    private void OnSnakeDied()
     {
         if (isTrainingMode)
         {
@@ -54,7 +89,17 @@ public class SnakeAgent : Agent
         }
         else
         {
-            Debug.Log("Game Over - Game Mode");
+            // In game mode, if the player's snake dies (child tagged "Blue"), show lose; otherwise, show win.
+            if (IsPlayerSnake())
+            {
+                Debug.Log("Player snake died - game over.");
+                StateManager.Instance.ShowLoseScreen();
+            }
+            else
+            {
+                Debug.Log("Enemy snake died - you win!");
+                StateManager.Instance.ShowWinScreen();
+            }
         }
     }
 
@@ -130,7 +175,17 @@ public class SnakeAgent : Agent
         }
         else
         {
-            Debug.Log("Win - Game Mode");
+            // In game mode, if the win condition is met, decide outcome based on the child's tag.
+            if (IsPlayerSnake())
+            {
+                Debug.Log("Player wins in game mode.");
+                StateManager.Instance.ShowWinScreen();
+            }
+            else
+            {
+                Debug.Log("Enemy wins in game mode - player loses.");
+                StateManager.Instance.ShowLoseScreen();
+            }
         }
     }
 
@@ -154,7 +209,7 @@ public class SnakeAgent : Agent
                 Debug.Log("Kollision med snake body i game mode");
             }
         }
-        
+
         if (other.gameObject.CompareTag("Wall"))
         {
             if (isTrainingMode)

@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -21,9 +22,15 @@ public class StateManager : MonoBehaviour
     public Button audioToggleButton;
     // Reference to the dedicated ESC button (assign via Inspector)
     public GameObject escButton;
-
+    // UI Text for showing academy info (or any other in-game info).
     public TextMeshProUGUI academyInfoText;
-    
+
+    [Header("End Game UI")]
+    // Panel for the win screen.
+    public GameObject winScreen;
+    // Panel for the lose screen.
+    public GameObject loseScreen;
+
     public GameState currentState;
 
     // This flag indicates if the game has been started at least once.
@@ -69,7 +76,7 @@ public class StateManager : MonoBehaviour
 
     void Update()
     {
-        // Allow toggling via ESC key only if the game has started.
+        // Allow toggling via ESC key only if the game has been started.
         if (hasGameStarted && Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePause();
@@ -103,6 +110,11 @@ public class StateManager : MonoBehaviour
                     pauseScreenUI.SetActive(true);
                 if (gamePanel != null)
                     gamePanel.SetActive(false);
+                // Also hide win/lose panels.
+                if (winScreen != null)
+                    winScreen.SetActive(false);
+                if (loseScreen != null)
+                    loseScreen.SetActive(false);
                 break;
 
             case GameState.Game:
@@ -164,5 +176,47 @@ public class StateManager : MonoBehaviour
         {
             escButton.SetActive(hasGameStarted);
         }
+    }
+
+    /// <summary>
+    /// Shows the win screen, pauses the game, and returns to the menu after a delay.
+    /// </summary>
+    public void ShowWinScreen()
+    {
+        if (winScreen != null)
+            winScreen.SetActive(true);
+        if (loseScreen != null)
+            loseScreen.SetActive(false);
+        Time.timeScale = 0f;
+        StartCoroutine(ReturnToMenuAfterDelay());
+    }
+
+    /// <summary>
+    /// Shows the lose screen, pauses the game, and returns to the menu after a delay.
+    /// </summary>
+    public void ShowLoseScreen()
+    {
+        if (loseScreen != null)
+            loseScreen.SetActive(true);
+        if (winScreen != null)
+            winScreen.SetActive(false);
+        Time.timeScale = 0f;
+        StartCoroutine(ReturnToMenuAfterDelay());
+    }
+
+    /// <summary>
+    /// Waits a few seconds, hides the win/lose panels, and then returns the game to the Menu state.
+    /// </summary>
+    private IEnumerator ReturnToMenuAfterDelay()
+    {
+        // Wait for 3 seconds in real time (since timeScale is 0)
+        yield return new WaitForSecondsRealtime(2f);
+        // Hide win/lose panels before returning to the menu.
+        if (winScreen != null)
+            winScreen.SetActive(false);
+        if (loseScreen != null)
+            loseScreen.SetActive(false);
+        Time.timeScale = 1f; // Resume time
+        SetState(GameState.Menu);
     }
 }
