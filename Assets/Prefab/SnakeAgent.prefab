@@ -332,7 +332,7 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 1000
+  MaxStep: 0
   winScore: 20
   agentRotationSpeed: 400
 --- !u!114 &6676187475054730374
