@@ -7,7 +7,6 @@ using UnityEngine;
 public class SnakeAgent : Agent
 {
     private Rigidbody rb;
-
     private EnviormentManager enviormentManager;
     private SnakeMovement snakeMovement;
 
@@ -18,18 +17,20 @@ public class SnakeAgent : Agent
     // Agent's rotation speed (in degrees per second) for controlling the snake
     [SerializeField] float agentRotationSpeed = 100f;
 
-    
+    // Flag to indicate if this snake is controlled by the player.
+    // Set to true for the player's snake (index 0) and false for the AI snake (index 1).
+    public bool isPlayer = false;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-
         snakeMovement = GetComponent<SnakeMovement>();
         enviormentManager = GetComponentInParent<EnviormentManager>();
 
-        // Subscribe to events from the movement script
+        // Subscribe to events from the movement script.
         snakeMovement.EatenFood += EatReward;
-        snakeMovement.Dying += ApplyPenalty;
+        // Instead of using ApplyPenalty, subscribe to our new death handler.
+        snakeMovement.Dying += OnSnakeDied;
     }
 
     private void OnDisable()
@@ -37,7 +38,7 @@ public class SnakeAgent : Agent
         if (snakeMovement != null)
         {
             snakeMovement.EatenFood -= EatReward;
-            snakeMovement.Dying -= ApplyPenalty;
+            snakeMovement.Dying -= OnSnakeDied;
         }
     }
 
@@ -51,10 +52,20 @@ public class SnakeAgent : Agent
         foodCollected = 0;
     }
 
-    private void ApplyPenalty()
+    // This method is called when the snake dies.
+    private void OnSnakeDied()
     {
-        AddReward(-1.0f);
-        enviormentManager.OnFailure();
+        // Here we check the flag and decide which UI screen to show.
+        if (isPlayer)
+        {
+            Debug.Log("Player snake died!");
+            StateManager.Instance.ShowLoseScreen();
+        }
+        else
+        {
+            Debug.Log("AI snake died. Player wins!");
+            StateManager.Instance.ShowWinScreen();
+        }
         EndEpisode();
     }
 
@@ -64,7 +75,7 @@ public class SnakeAgent : Agent
         sensor.AddObservation(transform.localPosition);
         sensor.AddObservation(transform.rotation);
         // Optionally, observe the current forward speed or movementSpeed from SnakeMovement.
-        //sensor.AddObservation(snakeMovement == null ? 0 : snakeMovement.movementSpeed);
+        // sensor.AddObservation(snakeMovement == null ? 0 : snakeMovement.movementSpeed);
     }
 
     public override void OnActionReceived(ActionBuffers actionBuffers)
@@ -74,7 +85,7 @@ public class SnakeAgent : Agent
         controlSignal.z = actionBuffers.ContinuousActions[1];
         snakeMovement.SetMoveDirection(controlSignal);
 
-        // Step Penalty: Prevent wandering aimlessly
+        // Step Penalty: Prevent wandering aimlessly.
         AddReward(-0.0005f);
 
         // Use a single continuous action for turning.
@@ -89,22 +100,21 @@ public class SnakeAgent : Agent
         // Pass the new desired direction to the SnakeMovement component.
         snakeMovement.SetMoveDirection(newDirection);
 
-        // Reward shaping: small time penalty
+        // Reward shaping: small time penalty.
         AddReward(-0.001f);
     }
-
 
     private void EatReward()
     {
         float efficiencyBonus = Mathf.Clamp(1.5f - (StepCount / (float)MaxStep), 0.1f, 1.5f);
         float streakBonus = foodCollected * 0.5f; // Encourage consecutive pickups
-    
-        // Increase base food reward
+
+        // Increase base food reward.
         AddReward(1f + efficiencyBonus + streakBonus);
-    
-        foodCollected++; 
-        
-        // if less then 1000 steps add more steps
+
+        foodCollected++;
+
+        // If less than 1000 steps, add more steps.
         if (MaxStep < 1000)
         {
             MaxStep += 500;
@@ -131,6 +141,7 @@ public class SnakeAgent : Agent
         var continuousActionsOut = actionsOut.ContinuousActions;
         continuousActionsOut[0] = Input.GetAxis("Horizontal");
     }
+
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Body"))
@@ -138,6 +149,7 @@ public class SnakeAgent : Agent
             AddReward(-0.01f);
         }
     }
+
     private void Update()
     {
         if (StateManager.Instance.academyInfoText == null)

@@ -21,9 +21,15 @@ public class StateManager : MonoBehaviour
     public Button audioToggleButton;
     // Reference to the dedicated ESC button (assign via Inspector)
     public GameObject escButton;
-
+    // UI Text for showing academy info (or any other in-game info).
     public TextMeshProUGUI academyInfoText;
-    
+
+    [Header("End Game UI")]
+    // Panel for the win screen.
+    public GameObject winScreen;
+    // Panel for the lose screen.
+    public GameObject loseScreen;
+
     public GameState currentState;
 
     // This flag indicates if the game has been started at least once.
@@ -165,4 +171,29 @@ public class StateManager : MonoBehaviour
             escButton.SetActive(hasGameStarted);
         }
     }
+
+    /// <summary>
+    /// Shows the win screen and pauses the game.
+    /// </summary>
+    public void ShowWinScreen()
+    {
+        if (winScreen != null)
+            winScreen.SetActive(true);
+        if (loseScreen != null)
+            loseScreen.SetActive(false);
+        Time.timeScale = 0f;
+    }
+
+    /// <summary>
+    /// Shows the lose screen and pauses the game.
+    /// </summary>
+    public void ShowLoseScreen()
+    {
+        if (loseScreen != null)
+            loseScreen.SetActive(true);
+        if (winScreen != null)
+            winScreen.SetActive(false);
+        Time.timeScale = 0f;
+    }
 }
+
