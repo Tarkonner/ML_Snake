@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2012259449135677511}
-  m_Layer: 7
-  m_Name: SnakeAgent
-  m_TagString: BlueTeam
+  m_Layer: 6
+  m_Name: SnakeAgentRed
+  m_TagString: RedTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,9 +51,9 @@ GameObject:
   - component: {fileID: 6954146446796350118}
   - component: {fileID: 6873189682387491924}
   - component: {fileID: 5501711478676167589}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Head
-  m_TagString: BlueTeam
+  m_TagString: RedTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,7 +105,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0f57b1633cde9894fb65a4e84846b0c1, type: 2}
+  - {fileID: 2100000, guid: 03ea9cfb2a597614e94ee0b880fadcfc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -197,9 +197,9 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: f57faeb26d75d5e4a89c223dedbd3103, type: 3}
+  m_Model: {fileID: 0}
   m_InferenceDevice: 0
-  m_BehaviorType: 2
+  m_BehaviorType: 0
   m_BehaviorName: SnakeAgent
   TeamId: 0
   m_UseChildSensors: 1
@@ -320,9 +320,9 @@ GameObject:
   - component: {fileID: 1332731640845849775}
   - component: {fileID: 8222549713074582139}
   - component: {fileID: 5752279143083944222}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Nose
-  m_TagString: BlueTeam
+  m_TagString: RedTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -373,7 +373,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 32609a99ce4d29c448e57d6b5b55ec04, type: 2}
+  - {fileID: 2100000, guid: 7b0e921883006eb4ea4273590bf29d4c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

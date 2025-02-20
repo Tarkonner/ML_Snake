@@ -12,6 +12,8 @@ TagManager:
   - RedTeam
   - BlueTeam
   - Food
+  - RedTarget
+  - BlueTarget
   layers:
   - Default
   - TransparentFX

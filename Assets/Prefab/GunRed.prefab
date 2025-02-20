@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: -2209275265752007090}
   - component: {fileID: 7427489068348478619}
   - component: {fileID: 2090904392744662843}
-  m_Layer: 7
-  m_Name: Gun
-  m_TagString: BlueTeam
+  m_Layer: 6
+  m_Name: GunRed
+  m_TagString: RedTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_SensorName: GunVision
   m_DetectableTags:
   - Enemy
-  - RedTarget
+  - BlueTarget
   m_RaysPerDirection: 12
   m_MaxRayDegrees: 84
   m_SphereCastRadius: 3.3
@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 2564412780768974028}
   - component: {fileID: 5211538579017870382}
   - component: {fileID: 5793303834327965520}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Gun
   m_TagString: BlueTeam
   m_Icon: {fileID: 0}
