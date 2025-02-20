@@ -48,10 +48,7 @@ public class SnakeAgent : Agent
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
 
-        snakeMovement?.ResetSnake();
-
         foodCollected = 0;
-        enviormentManager.MoveAllFood();
     }
 
     private void ApplyPenalty()

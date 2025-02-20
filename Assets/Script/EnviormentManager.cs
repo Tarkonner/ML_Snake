@@ -8,12 +8,12 @@ public class EnviormentManager : MonoBehaviour
 {
     [SerializeField] Vector2 enviormentSize = new Vector3(10, 10);
     public Vector2 enviormentRadius => enviormentSize / 2;
-    [SerializeField] Vector2 centrumSpawnOffset = new Vector2(2, 2);
 
     [Header("Enviorment")]
     [SerializeField] GameObject wallPrefab;
     [SerializeField] GameObject ground;
     [SerializeField] float yOffset = -.2f;
+    [SerializeField] GameObject[] spawnPoints;
     
     [Header("Agent")]
     [SerializeField] GameObject agentPrefab;
@@ -85,13 +85,17 @@ public class EnviormentManager : MonoBehaviour
     {
         if (holdAgents.Count == 0)
         {
+            int firstSpawnIndex = Random.Range(0, spawnPoints.Length);    
+            int secondSpawnIndex = Random.Range(0, spawnPoints.Length);
+            while(firstSpawnIndex == secondSpawnIndex)
+                secondSpawnIndex = Random.Range(0, spawnPoints.Length);
+
+
+
             //Traning agent
             GameObject spawn = Instantiate(agentPrefab, transform);
             holdAgents.Add(spawn);
-            spawn.transform.localPosition = new Vector3(
-                Random.Range(-centrumSpawnOffset.x, centrumSpawnOffset.x),
-                0,
-                Random.Range(-centrumSpawnOffset.y, centrumSpawnOffset.y));
+            spawn.transform.localPosition = spawnPoints[firstSpawnIndex].transform.localPosition;
 
 
             // Setup gun if available.
@@ -110,10 +114,7 @@ public class EnviormentManager : MonoBehaviour
             //Brain agent
             spawn = Instantiate(brainAgentPrefab, transform);
             holdAgents.Add(spawn);
-            spawn.transform.localPosition = new Vector3(
-                Random.Range(-centrumSpawnOffset.x, centrumSpawnOffset.x),
-                0,
-                Random.Range(-centrumSpawnOffset.y, centrumSpawnOffset.y));
+            spawn.transform.localPosition = spawnPoints[secondSpawnIndex].transform.localPosition;
             // Setup gun if available.
             if (gunPrefab != null)
                 AddGun(spawn);
@@ -121,23 +122,31 @@ public class EnviormentManager : MonoBehaviour
         }
         else
         {
+            int firstSpawnIndex = Random.Range(0, spawnPoints.Length);
+            int secondSpawnIndex = Random.Range(0, spawnPoints.Length);
+            while (firstSpawnIndex == secondSpawnIndex)
+                secondSpawnIndex = Random.Range(0, spawnPoints.Length);
+
             for (int i = 0; i < holdAgents.Count; i++)
             {
                 // Reset the existing agent's position.
-                holdAgents[i].transform.localPosition = new Vector3(
-                    Random.Range(-centrumSpawnOffset.x, centrumSpawnOffset.x),
-                    0,
-                    Random.Range(-centrumSpawnOffset.y, centrumSpawnOffset.y));
+                if (i == 0)
+                    holdAgents[i].transform.localPosition = spawnPoints[firstSpawnIndex].transform.localPosition;
+                else if(i == 1)
+                    holdAgents[i].transform.localPosition = spawnPoints[secondSpawnIndex].transform.localPosition;
 
                 // Call EndEpisode() on the agent so that it can reset its internal state.
-                var snakeAgent = holdAgents[i].GetComponent<SnakeAgent>();
+                SnakeAgent snakeAgent = holdAgents[i].GetComponentInChildren<SnakeAgent>();
                 if (snakeAgent != null)
                 {
                     snakeAgent.EndEpisode();
                 }
+
+                //Reset body
+                holdAgents[i].GetComponentInChildren<SnakeMovement>().ResetSnake();
             }
 
-
+            MoveAllFood();
         }
     }
 

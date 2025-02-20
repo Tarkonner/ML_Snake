@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class SnakeMovement : MonoBehaviour
 {
@@ -95,8 +96,10 @@ public class SnakeMovement : MonoBehaviour
     
     public void ResetSnake()
     {
+        desiredDirection = Vector3.forward;
+
         // Destroy all existing body parts.
-        for (int i = 0; i < bodyParts.Count; i++)
+        for (int i = bodyParts.Count - 1; i >= 0; i--)
         {
             if (bodyParts[i] != null)
                 Destroy(bodyParts[i]);
