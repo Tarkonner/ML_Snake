@@ -61,6 +61,14 @@ PrefabInstance:
       value: PlayerSnake Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3331848926571576303, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3331848926571576303, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3331848926571576303, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
       propertyPath: m_BehaviorType
       value: 1
       objectReference: {fileID: 0}
@@ -68,9 +76,25 @@ PrefabInstance:
       propertyPath: m_BrainParameters.VectorObservationSize
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 5501711478676167589, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6676187475054730374, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
       propertyPath: startBodySize
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6873189682387491924, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6954146446796350118, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107171386302636810, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 42804526320452302, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
@@ -81,7 +105,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4218471239017000936, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
-      insertIndex: 6
+      insertIndex: 7
       addedObject: {fileID: 8017936819932239523}
   m_SourcePrefab: {fileID: 100100000, guid: e7e3d8739de6dd2489d37839f51eaa10, type: 3}
 --- !u!1 &5298010714821845818 stripped
